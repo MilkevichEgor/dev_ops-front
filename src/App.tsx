@@ -1,34 +1,31 @@
 import React from 'react';
-import './App.css';
-import axios from 'axios';
+import { Route, Routes } from 'react-router-dom';
+import styled from 'styled-components';
 
-function App() {
-  const handle: React.FormEventHandler<HTMLFormElement> = async (event) => {
-    try {
-      event.preventDefault();
-      const response = await axios({
-        method: 'post',
-        url: 'http://localhost:4000/auth/signin',
-        data: {
-          email: '',
-          password: '',
-        },
-      });
-      console.log('response >>>', response);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+import Header from './ui/pages/Home/components/Header';
+import SignInForm from './ui/pages/Auth/SignIn';
+import SignUpForm from './ui/pages/Auth/SignUp';
+import Home from './ui/pages/Home';
+import Footer from './ui/pages/Home/components/Footer';
 
+const App = () => {
   return (
-    <form onSubmit={handle}>
-      <label htmlFor="email">Email:</label>
-      <input type="text" name="email" id="email" placeholder="email" />
-      <label htmlFor="password">Password: </label>
-      <input type="password" name="password" id="password" placeholder="password"/>
-      <button type="submit">SUBMIT</button>
-    </form>
+    <Wrapper>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signIn" element={<SignInForm />} />
+        <Route path="/signUp" element={<SignUpForm />} />
+      </Routes>
+      <Footer />
+    </Wrapper>
   );
-}
+};
 
 export default App;
+
+const Wrapper = styled.div`
+  max-width: 1280px;
+  width: 100%;
+  background: #E5E5E5;
+`;
