@@ -4,6 +4,11 @@ import YupString from 'yup/lib/string';
 import YupObject from 'yup/lib/object';
 import YupRef from 'yup/lib/Reference';
 import authAPI from '../../../api/authApi';
+import man from '../Images/man.png';
+import hide from '../Images/hide.png';
+import mail from '../Images/mail.png';
+import Wrapper from './Auth.styles';
+import CommonButton from '../../styles/CommonButton';
 
 const signUpValidationSchema = new YupObject().shape({
   email: new YupString().email('Invalid email address').required('Required'),
@@ -34,45 +39,69 @@ const SignUpForm = () => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="email">Email:</label>
-      <input
-        type="text"
-        id="email"
-        placeholder="Email"
-        {...formik.getFieldProps('email')}
-      />
-      {formik.touched.email && typeof formik.errors.email === 'string'
-        ? (<div>{formik.errors.email}</div>)
-        : null
-      }
+    <Wrapper>
+      <form
+        onSubmit={formik.handleSubmit}
+        className="form-wrapper">
+        <h1 className="title">Sign Up</h1>
 
-      <label htmlFor="password">Password: </label>
-      <input
-        type="password"
-        id="password"
-        placeholder="Password"
-        {...formik.getFieldProps('password')}
-      />
-      {formik.touched.password && typeof formik.errors.password === 'string'
-        ? (<div>{formik.errors.password}</div>)
-        : null
-      }
+        <div className="input-wrapper">
+          <div className="form">
+            <img src={mail} className="form__icon" />
+            <input
+              className="form__input"
+              type="text"
+              id="email"
+              placeholder="Email"
+              {...formik.getFieldProps('email')}
+            />
+            {formik.touched.email && typeof formik.errors.email === 'string'
+              ? (<div>{formik.errors.email}</div>)
+              : null
+            }
+          </div>
+          <p className="form__text">Enter your email</p>
 
-      <label htmlFor="passwordRepeat">Password: </label>
-      <input
-        type="password"
-        id="passwordRepeat"
-        placeholder="Password replay"
-        {...formik.getFieldProps('passwordRepeat')}
-      />
-      {formik.touched.passwordRepeat && typeof formik.errors.passwordRepeat === 'string'
-        ? (<div>{formik.errors.passwordRepeat}</div>)
-        : null
-      }
+          <div className="form">
+            <img src={hide} className="form__icon" />
+            <input
+              className="form__input"
+              type="password"
+              id="password"
+              placeholder="Password"
+              {...formik.getFieldProps('password')}
+            />
+            {formik.touched.password && typeof formik.errors.password === 'string'
+              ? (<div>{formik.errors.password}</div>)
+              : null
+            }
+          </div>
+          <p className="form__text">Enter your password</p>
 
-      <button type="submit">Sign up</button>
-    </form>
+          <div className="form">
+            <img src={hide} className="form__icon" />
+            <input
+              className="form__input"
+              type="password"
+              id="passwordRepeat"
+              placeholder="Password replay"
+              {...formik.getFieldProps('passwordRepeat')}
+            />
+            {formik.touched.passwordRepeat && typeof formik.errors.passwordRepeat === 'string'
+              ? (<div>{formik.errors.passwordRepeat}</div>)
+              : null
+            }
+          </div>
+          <p className="form__text">Repeat your password without errors</p>
+        </div>
+        <button type="submit" className="button">
+          <CommonButton>
+            Sign up
+          </CommonButton>
+        </button>
+      </form>
+      <img src={man} />
+    </Wrapper>
   );
 };
 
