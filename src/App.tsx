@@ -6,7 +6,7 @@ import Header from './ui/pages/Home/components/Header';
 import SignInForm from './ui/pages/Auth/SignIn';
 import SignUpForm from './ui/pages/Auth/SignUp';
 import Home from './ui/pages/Home';
-import Footer from './ui/pages/Home/components/Footer';
+import Footer from './ui/components/Footer';
 
 const App = () => {
   return (
@@ -27,5 +27,6 @@ export default App;
 const Wrapper = styled.div`
   max-width: 1280px;
   width: 100%;
-  background: #E5E5E5;
+  background: white;
+  margin: auto;
 `;

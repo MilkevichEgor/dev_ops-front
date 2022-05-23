@@ -1,14 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
 import Banner from './components/Banner';
+import AuthorizeBanner from './components/AuthorizeBanner';
+import Catalog from './Catalog/Catalog';
 
 const Home = () => {
   return (
     <>
       <Banner />
-      <div>Catalog</div>
+      <Catalog />
+      <AuthorizeBanner />
     </>
   );
 };
-
 export default Home;
