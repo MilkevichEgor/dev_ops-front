@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import axios from './axios';
 
 type User = {
@@ -23,11 +22,11 @@ type Options = {
 const path = '/auth';
 
 const signIn = (data: Options) => {
-  return axios.post<AxiosResponse<AuthReposnse>>(`${path}/signIn`, data);
+  return axios.post<AuthReposnse>(`${path}/signIn`, data);
 };
 
 const signUp = (data: Options) => {
-  return axios.post<AxiosResponse<AuthReposnse>>(`${path}/signUp`, data);
+  return axios.post<AuthReposnse>(`${path}/signUp`, data);
 };
 
 export default {

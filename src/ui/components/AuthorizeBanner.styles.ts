@@ -11,14 +11,15 @@ const Wrapper = styled.div`
   margin-top: 100px;
 
   .text-block {
+    position: relative;
     max-width: 415px;
     width: 100%;
     padding-right: 108px;
-    z-Index: 1;
+    z-index: 1;
   }
 
   .button {
-    z-index: 1;
+    text-decoration-line: none;
   }
 
   .info-block {
@@ -36,6 +37,8 @@ const Wrapper = styled.div`
     right: 0;
     bottom: 0;
   }
+
+  .link
 `;
 
 export default Wrapper;
