@@ -29,7 +29,7 @@ const Header = () => {
             placeholder="Search"
           />
         </div>
-        <Link className="link" to="/signIn">
+        <Link className="link" to="/signin">
           <CommonButton
             text="Log In / Sign Up"
           />

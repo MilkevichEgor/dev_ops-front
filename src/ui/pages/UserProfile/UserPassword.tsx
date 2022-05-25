@@ -1,6 +1,7 @@
 import React from 'react';
 import hideIcon from '../../images/hide.png';
-import Wrapper from './UserPassword.styles';
+import CommonInputField from '../../components/CommonInputField';
+import CommonButton from '../../components/CommonButton';
 
 type UserProfileProps = {
   isChange?: boolean;
@@ -9,47 +10,36 @@ type UserProfileProps = {
 const UserPassword: React.FC<UserProfileProps> = (props) => {
   if (props.isChange) {
     return (
-      <Wrapper>
-        <img className="icon" src={hideIcon} />
-        <div className="info__row">
-          <p className="info__row-name">Your password</p>
-          <p className="info__row-value">*************</p>
-        </div>
-      </Wrapper>
+      <CommonInputField
+        icon={hideIcon}
+        hint="Your password"
+        placeholder="*************"
+        disabled={true}
+      />
     );
   }
   return (
     <div>
-      <Wrapper>
-        <img className="icon" src={hideIcon} />
-        <div className="info__row">
-          <p className="info__row-name">Old password</p>
-          <input
-            className="info__row-value info__input"
-            type="text"
-            placeholder="*************" />
-        </div>
-      </Wrapper>
-      <Wrapper>
-        <img className="icon" src={hideIcon} />
-        <div className="info__row new-password">
-          <input
-            className="info__row-value info__input"
-            type="text"
-            placeholder="New password" />
-        </div>
-      </Wrapper>
+      <CommonInputField
+        icon={hideIcon}
+        hint="Old password"
+        placeholder="*************"
+        type="password"
+      />
+      <CommonInputField
+        icon={hideIcon}
+        placeholder='New password'
+      />
       <p className="new-password__row-name">Enter your password</p>
-      <Wrapper>
-        <img className="icon" src={hideIcon} />
-        <div className="info__row new-password">
-          <input
-            className="info__row-value info__input"
-            type="text"
-            placeholder="Password replay" />
-        </div>
-      </Wrapper>
+      <CommonInputField
+        icon={hideIcon}
+        placeholder='Password replay'
+        type='password'
+      />
       <p className="new-password__row-name">Repeat your passport withour errors</p>
+      <CommonButton
+        text="Confirm"
+      />
     </div>
   );
 };

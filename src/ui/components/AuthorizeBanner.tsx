@@ -21,7 +21,7 @@ const AuthorizeBanner = () => {
             <p className="text">
               Authorize now and discover the fabulous world of books
             </p>
-            <Link className="button" to="/signIn">
+            <Link className="button" to="/signin">
               <CommonButton text="Log In/ Sign Up" />
             </Link>
           </CommonTextBlock>

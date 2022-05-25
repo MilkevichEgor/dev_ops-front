@@ -22,11 +22,11 @@ type Options = {
 const path = '/auth';
 
 const signIn = (data: Options) => {
-  return axios.post<AuthReposnse>(`${path}/signIn`, data);
+  return axios.post<AuthReposnse>(`${path}/signin`, data);
 };
 
 const signUp = (data: Options) => {
-  return axios.post<AuthReposnse>(`${path}/signUp`, data);
+  return axios.post<AuthReposnse>(`${path}/signup`, data);
 };
 
 export default {

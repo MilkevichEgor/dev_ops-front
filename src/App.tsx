@@ -7,19 +7,20 @@ import SignUpForm from './ui/pages/Auth/SignUp';
 import Home from './ui/pages/Home';
 import Footer from './ui/containers/Footer';
 import UserProfile from './ui/pages/UserProfile/UserProfile';
+import MainWrapper from './ui/styles/MainWrapper';
 
 const App = () => {
   return (
     <>
       <Header />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signIn" element={<SignInForm />} />
-        <Route path="/signUp" element={<SignUpForm />} />
-        <Route path="/me" element={<UserProfile />} />
-      </Routes>
-
+      <MainWrapper>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signin" element={<SignInForm />} />
+          <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/me" element={<UserProfile />} />
+        </Routes>
+      </MainWrapper>
       <Footer />
     </>
   );

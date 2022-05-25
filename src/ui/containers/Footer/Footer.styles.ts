@@ -2,16 +2,18 @@ import styled from 'styled-components';
 
 const FooterWrapper = styled.footer`
   background: #0D1821;
+  margin-top: auto;
 
   .main-block {
     display: flex;
     justify-content: space-between;
     background: #0D1821;
-    margin-top: 150px;
+    /* margin-top: 100px; */
     padding: 73px 80px; 
     color: white;
     font-size: 20px;
     line-height: 30px;
+    flex-shrink: 0;
   }
 
   .logo {

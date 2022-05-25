@@ -38,6 +38,7 @@ const UserProfileWrapper = styled.div`
   }
 
   .title__change {
+    cursor: pointer;
     font-size: 14px;
     line-height: 21px;
     text-align: right;
