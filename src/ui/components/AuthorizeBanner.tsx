@@ -6,6 +6,7 @@ import castle from '../images/castle.png';
 import fairy from '../images/fairy.png';
 import Wrapper from './AuthorizeBanner.styles';
 import CommonWrapper from '../styles/CommonWrapper';
+import { routePath } from '../../constants';
 
 const AuthorizeBanner = () => {
   return (
@@ -21,7 +22,7 @@ const AuthorizeBanner = () => {
             <p className="text">
               Authorize now and discover the fabulous world of books
             </p>
-            <Link className="button" to="/signin">
+            <Link className="button" to={routePath.signIn}>
               <CommonButton text="Log In/ Sign Up" />
             </Link>
           </CommonTextBlock>

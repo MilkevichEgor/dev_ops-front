@@ -7,13 +7,14 @@ import Logo from '../../styles/Logo';
 import CommonButton from '../../components/CommonButton';
 import CommonWrapper from '../../styles/CommonWrapper';
 import HeaderWrapper from '../Header/Header.styles';
+import { routePath } from '../../../constants';
 
 const Header = () => {
   return (
     <CommonWrapper>
       <HeaderWrapper>
         <div className="link-block">
-          <Link to="/">
+          <Link to={routePath.home}>
             <Logo src={logo} />
           </Link>
           <span className="catalog-link">
@@ -29,7 +30,7 @@ const Header = () => {
             placeholder="Search"
           />
         </div>
-        <Link className="link" to="/signin">
+        <Link className="link" to={routePath.signIn}>
           <CommonButton
             text="Log In / Sign Up"
           />

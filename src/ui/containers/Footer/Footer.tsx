@@ -5,6 +5,7 @@ import map from '../../images/map.png';
 import Logo from '../../styles/Logo';
 import FooterWrapper from './Footer.styles';
 import CommonWrapper from '../../styles/CommonWrapper';
+import { routePath } from '../../../constants';
 
 const Footer = () => {
   return (
@@ -17,10 +18,10 @@ const Footer = () => {
             <p className="text">(480) 555-0103</p>
           </div>
           <div className="nav">
-            <Link to="/" className="link">Home Page</Link>
-            <Link to="/" className="link">Catalog</Link>
-            <Link to="/me" className="link">My Account</Link>
-            <Link to="/" className="link">Cart</Link>
+            <Link to={routePath.home} className="link">Home Page</Link>
+            <Link to={routePath.home} className="link">Catalog</Link>
+            <Link to={routePath.profile} className="link">My Account</Link>
+            <Link to={routePath.home} className="link">Cart</Link>
           </div>
           <div>
             <p className="text">6391 Elgin St. Celina, Delaware 10299</p>

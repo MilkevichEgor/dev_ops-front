@@ -3,8 +3,6 @@ import { persistStore, persistReducer, FLUSH, PAUSE, PERSIST, PURGE, REGISTER, R
 import storage from 'redux-persist/lib/storage';
 import rootReducer from './rootReducer';
 
-// export type RootState = ReturnType<typeof store.getState>
-
 const persistConfig = {
   key: 'root',
   version: 1,

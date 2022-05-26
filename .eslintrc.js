@@ -56,5 +56,6 @@ module.exports = {
     'import/extensions': 0,
     'import/no-extraneous-dependencies': 'off',
     'padded-blocks': ['error', 'never'],
+    'no-param-reassign': ['error', { props: false }],
   },
 };
