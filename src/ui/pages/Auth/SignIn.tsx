@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import YupString from 'yup/lib/string';
 import YupObject from 'yup/lib/object';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+
 import authAPI from '../../../api/authApi';
 import Wrapper from './Auth.styles';
 import man from '../../images/man.png';
@@ -15,6 +15,7 @@ import { User } from '../../../types';
 import { setUser } from '../../../store/reducer';
 import { routePath } from '../../../constants';
 import CommonInputField from '../../components/CommonInputField';
+import { useAppDispatch } from '../../../store';
 
 const signInValidationSchema = new YupObject().shape({
   email: new YupString().email('Invalid email address').required('Required'),
@@ -22,7 +23,7 @@ const signInValidationSchema = new YupObject().shape({
 });
 
 const SignInForm = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {
       email: '',

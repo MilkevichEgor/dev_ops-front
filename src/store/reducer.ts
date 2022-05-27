@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User } from '../types';
 
+export interface Store {
+  userReducer: State
+}
+
 export interface State {
   user?: User | null,
 }
