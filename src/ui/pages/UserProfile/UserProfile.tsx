@@ -5,14 +5,10 @@ import defaultAvatar from '../../images/defaultAvatar.png';
 import changeAvatarButton from '../../images/changeAvatarButton.png';
 import UserPassword from './UserPassword';
 import UserInfo from './UserInfo';
-import { useAppSelector } from '../../../store';
 
 const UserProfile = () => {
   const [changePassword, setChangePassword] = useState(false);
   const isChange = false;
-
-  const user = useAppSelector((state) => state.userReducer.user);
-  console.log('>>>>', user?.email);
 
   return (
     <CommonWrapper>

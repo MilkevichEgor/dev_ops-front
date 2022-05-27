@@ -9,10 +9,10 @@ const instance = axios.create({
 instance.interceptors.request.use((config) => {
   const token = Cookies.get('token');
   if (token) {
-    config.headers = {
-      ...config.headers,
-      authorization: `Bearer ${token}`,
-    };
+    if (!config.headers) {
+      config.headers = {};
+    }
+    config.headers.authorization = `Bearer ${token}`;
   }
 
   return config;

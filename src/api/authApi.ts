@@ -8,10 +8,10 @@ type User = {
   role: string;
 }
 
-type AuthReposnse = {
+type AuthResponse = {
   token: string;
   user: User
-  message: string;
+  message?: string;
 }
 
 type Options = {
@@ -19,17 +19,25 @@ type Options = {
   email: string;
 }
 
-const path = '/auth';
+export type Token = string | undefined;
+
+const authPath = '/auth';
+const userPath = '/user';
+
+const checkToken = (data: Token) => {
+  return axios.get<AuthResponse>(`${userPath}/me`, { data });
+};
 
 const signIn = (data: Options) => {
-  return axios.post<AuthReposnse>(`${path}/signin`, data);
+  return axios.post<AuthResponse>(`${authPath}/signin`, data);
 };
 
 const signUp = (data: Options) => {
-  return axios.post<AuthReposnse>(`${path}/signup`, data);
+  return axios.post<AuthResponse>(`${authPath}/signup`, data);
 };
 
 export default {
   signIn,
   signUp,
+  checkToken,
 };

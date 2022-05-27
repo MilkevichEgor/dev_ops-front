@@ -11,9 +11,10 @@ type CommonInputProps = {
   disabled?: boolean;
   value?: string;
   name?: string;
-  // formik?: (nameOrOptions: any) => FieldInputProps<any>;
+  submit?: React.FormEvent<HTMLFormElement>
   error?: string;
-  fieldInputProps?:FieldInputProps<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  fieldInputProps?: FieldInputProps<any>;
 }
 
 const CommonInputField: React.FC<CommonInputProps> = (props) => {
@@ -33,11 +34,11 @@ const CommonInputField: React.FC<CommonInputProps> = (props) => {
           disabled={props.disabled}
           value={props.value}
           {...props.fieldInputProps}
-          />
-          {props.error
-            ? (<div>{props.error}</div>)
-            : null
-          }
+        />
+        {props.error
+          ? (<div>{props.error}</div>)
+          : null
+        }
       </div>
     </CommonInputWrapper>
   );
