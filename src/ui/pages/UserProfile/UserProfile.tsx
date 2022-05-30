@@ -7,8 +7,16 @@ import UserPassword from './UserPassword';
 import UserInfo from './UserInfo';
 
 const UserProfile = () => {
-  const [changePassword, setChangePassword] = useState(false);
-  const isChange = false;
+  const [isChangeUserInfo, setIsChangeUserInfo] = useState(false);
+  const [isChangePassword, setIsChangePassword] = useState(false);
+
+  const toggleChangePassword = () => {
+    setIsChangePassword(!isChangePassword);
+  };
+
+  const toggleChangeUserInfo = () => {
+    setIsChangeUserInfo(!isChangeUserInfo);
+  };
 
   return (
     <CommonWrapper>
@@ -25,22 +33,24 @@ const UserProfile = () => {
           <div className="title">
             <p className="title__name">Personal information</p>
             <p
-              onClick={() => !isChange}
+              onClick={() => setIsChangeUserInfo(!isChangeUserInfo)}
               className="title__change">
               Change information</p>
           </div>
           <UserInfo
-            isChange={isChange}
+            isChangeUserInfo={isChangeUserInfo}
+            toggleChangeUserInfo={toggleChangeUserInfo}
           />
           <div className="title info__password">
             <p className="title__name">Password</p>
             <p
               className="title__change"
-              onClick={() => setChangePassword(!changePassword)}
+              onClick={() => toggleChangePassword()}
             >Change password</p>
           </div>
           <UserPassword
-            isChange={changePassword}
+            isChangePassword={!isChangePassword}
+            toggleChangePassword={toggleChangePassword}
           />
         </div>
       </UserProfileWrapper>

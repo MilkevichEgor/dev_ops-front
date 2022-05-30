@@ -6,7 +6,7 @@ export interface Store {
 }
 
 export interface State {
-  user?: User | null,
+  user: User | null,
 }
 
 const initialState: State = {

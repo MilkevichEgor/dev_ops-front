@@ -10,7 +10,7 @@ type CommonInputProps = {
   width?: string;
   disabled?: boolean;
   value?: string;
-  name?: string;
+  name: string;
   submit?: React.FormEvent<HTMLFormElement>
   error?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -18,7 +18,6 @@ type CommonInputProps = {
 }
 
 const CommonInputField: React.FC<CommonInputProps> = (props) => {
-  const name = props.name;
   return (
     <CommonInputWrapper>
       <img className="icon" src={props.icon} />

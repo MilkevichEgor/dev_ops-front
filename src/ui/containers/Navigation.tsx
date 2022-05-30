@@ -15,12 +15,17 @@ const Navigation = () => {
       <Route path={routePath.signUp} element={<SignUpForm />} />
       <Route
         path={routePath.profile}
-        element={
-          <RequireAuth>
+        element={(
+          <RequireAuth
+            redirectTo={routePath.signIn}
+          >
             <UserProfile />
           </RequireAuth>
-        }
+        )}
       />
+      <Route path="*" element={(
+        <h1>PAGE NOT FOUND!!!!! MOTHER FUCKER!!!</h1>
+      )} />
     </Routes>
   );
 };

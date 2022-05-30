@@ -3,39 +3,49 @@ import { useFormik } from 'formik';
 import CommonInputField from '../../components/CommonInputField';
 import defaultAvatar from '../../images/defaultAvatar.png';
 import mailIcon from '../../images/mail.png';
-import { useAppSelector } from '../../../store';
+import { useAppDispatch, useAppSelector } from '../../../store';
+import userApi from '../../../api/userApi';
+import { User } from '../../../types';
+import { setUser } from '../../../store/reducer';
+import CommonButton from '../../components/CommonButton';
 
 type UserInfoProps = {
-  isChange: boolean;
+  isChangeUserInfo: boolean;
   disabled?: boolean;
+  toggleChangeUserInfo: () => void;
 }
 
 const UserInfo: React.FC<UserInfoProps> = (props) => {
-  const user = useAppSelector((state) => state.userReducer.user);
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => state.userReducer.user) as User;
 
   const formik = useFormik({
     initialValues: {
-      name: user?.name || 'Anonymous',
-      email: user?.email,
+      name: user.name || '',
+      email: user.email,
     },
-    onSubmit: (values) => {
-      console.log('AAAAAAAAAAAAAAAaaa', values);
+    onSubmit: async (values) => {
+      try {
+        const response = await userApi.updateUser(user.id, values);
+        dispatch(setUser(response.data.user));
+        if (response.status === 200) {
+          props.toggleChangeUserInfo();
+        }
+      } catch (error) {
+        console.log('ERROR>>', error);
+      }
     },
   });
   return (
     <form
-      onKeyDown={(e) => {
-        if (e.key === 'Enter') {
-          formik.handleSubmit();
-        }
-      }}
-      >
+      onSubmit={formik.handleSubmit}
+    >
       <CommonInputField
         icon={defaultAvatar}
         hint="Your name"
         value={user?.name}
         name="name"
-        disabled={props.isChange}
+        disabled={!props.isChangeUserInfo}
         fieldInputProps={formik.getFieldProps('name')}
         error={formik?.touched.email ? formik?.errors.name : ''}
       />
@@ -44,9 +54,12 @@ const UserInfo: React.FC<UserInfoProps> = (props) => {
         hint="Your email"
         value={user?.email}
         name="email"
-        disabled={props.isChange}
+        disabled={!props.isChangeUserInfo}
         fieldInputProps={formik.getFieldProps('email')}
         error={formik?.touched.email ? formik?.errors.email : ''}
+      />
+      <CommonButton
+        text="Confirm"
       />
     </form>
   );

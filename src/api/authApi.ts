@@ -1,12 +1,5 @@
 import axios from './axios';
-
-type User = {
-  dob: string;
-  email: string;
-  id: number;
-  name: string;
-  role: string;
-}
+import { User, Token } from '../types';
 
 type AuthResponse = {
   token: string;
@@ -18,8 +11,6 @@ type Options = {
   password: string;
   email: string;
 }
-
-export type Token = string | undefined;
 
 const authPath = '/auth';
 const userPath = '/user';
