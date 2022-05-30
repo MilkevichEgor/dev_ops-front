@@ -32,7 +32,7 @@ const UserInfo: React.FC<UserInfoProps> = (props) => {
           props.toggleChangeUserInfo();
         }
       } catch (error) {
-        console.log('ERROR>>', error);
+        console.log('ERROR >>', error);
       }
     },
   });
