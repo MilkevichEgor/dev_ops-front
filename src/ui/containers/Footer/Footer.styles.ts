@@ -9,7 +9,7 @@ const FooterWrapper = styled.footer`
     justify-content: space-between;
     background: #0D1821;
     /* margin-top: 100px; */
-    padding: 73px 80px; 
+    padding: 73px 80px 0 80px; 
     color: white;
     font-size: 20px;
     line-height: 30px;

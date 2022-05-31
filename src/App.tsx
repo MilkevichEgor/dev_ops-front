@@ -10,6 +10,7 @@ import { setUser } from './store/reducer';
 
 const App = () => {
   const dispatch = useAppDispatch();
+  const [isAuthChecked, setIsAuthChecked] = useState(false);
   const [isAuthorized, setIsAuthorized] = useState(false);
 
   useEffect(() => {
@@ -18,12 +19,13 @@ const App = () => {
       const response = await authApi.checkToken(token).catch(() => null);
       if (response) {
         dispatch(setUser(response.data.user));
+        setIsAuthorized(true);
       }
-      setIsAuthorized(true);
+      setIsAuthChecked(true);
     })();
-  }, [setIsAuthorized, dispatch]);
+  }, [setIsAuthChecked, dispatch]);
 
-  if (!isAuthorized) {
+  if (!isAuthChecked) {
     return null;
   }
 

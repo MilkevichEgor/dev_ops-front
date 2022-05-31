@@ -3,7 +3,7 @@ import booksImg from '../../../images/books.png';
 import human from '../../../images/human.png';
 import CommonButton from '../../../components/CommonButton';
 import CommonTextBlock from '../../../styles/CommonTextBlock';
-import BannerWrapper from '../components/Banner.styles';
+import BannerWrapper from './Banner.styles';
 import CommonWrapper from '../../../styles/CommonWrapper';
 
 type Props = {

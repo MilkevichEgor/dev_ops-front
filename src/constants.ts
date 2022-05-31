@@ -3,4 +3,5 @@ export const routePath = {
   signIn: '/signin',
   signUp: '/signup',
   profile: '/me',
+  card: '/card',
 };

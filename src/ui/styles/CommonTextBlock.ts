@@ -20,6 +20,18 @@ const CommonTextBlock = styled.div`
   .button {
     display: inline-flex;
   }
+
+  @media (max-width: 1279px) {
+    max-height: 289px;
+    height: 100%;
+    padding: 45px 14px 49px 40px;
+
+    .title {
+      font-weight: 700;
+      line-height: 48px;
+      font-size: 32px;
+    }
+  }
 `;
 
 export default CommonTextBlock;

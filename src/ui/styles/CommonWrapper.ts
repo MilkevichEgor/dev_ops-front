@@ -7,6 +7,11 @@ const CommonWrapper = styled.div`
   margin: auto;
   flex-grow: 1;
   margin-bottom: 30px;
+
+  @media (max-width: 1279px) {
+    max-width: 804px;
+    margin-bottom: 10px;
+  }
 `;
 
 export default CommonWrapper;

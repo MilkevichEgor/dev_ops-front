@@ -8,16 +8,16 @@ const HeaderWrapper = styled.header`
 
   .search-field {
     display: flex;
-  background-color: #F0F4EF;
-  border-radius: 16px;
-  align-items: center;
-  max-width: 630px;
-  width: 100%;
+    background-color: #F0F4EF;
+    border-radius: 16px;
+    align-items: center;
+    max-width: 630px;
+    width: 100%;
   }
 
   .search-input {
     border: none;
-  background: #F0F4EF;
+    background: #F0F4EF;
   }
 
   .search-icon {
@@ -26,8 +26,8 @@ const HeaderWrapper = styled.header`
 
   .link-block {
     display: flex;
-  align-items: center;
-  justify-content: space-between;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .catalog-link {
@@ -36,6 +36,17 @@ const HeaderWrapper = styled.header`
 
   .link {
     text-decoration-line: none;
+  }
+
+  @media (max-width: 1279px) {
+    .catalog-link {
+      padding-left: 50px;
+    }
+
+    .search-field {
+      max-width: 247px;
+    }
+
   }
 `;
 

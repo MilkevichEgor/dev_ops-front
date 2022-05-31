@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { useAppSelector } from '../../../store';
 import logo from '../../images/logo.svg';
 import searchIcon from '../../images/SearchIcon.png';
 import Logo from '../../styles/Logo';
@@ -8,8 +9,11 @@ import CommonButton from '../../components/CommonButton';
 import CommonWrapper from '../../styles/CommonWrapper';
 import HeaderWrapper from '../Header/Header.styles';
 import { routePath } from '../../../constants';
+import AuthButtonsBlock from './AuthButtonsBlock';
 
 const Header = () => {
+  const user = useAppSelector((state) => state.userReducer.user);
+
   return (
     <CommonWrapper>
       <HeaderWrapper>
@@ -30,11 +34,19 @@ const Header = () => {
             placeholder="Search"
           />
         </div>
-        <Link className="link" to={routePath.signIn}>
+        {(user)
+          ? <AuthButtonsBlock />
+          : (<Link className="link" to={routePath.signIn}>
+            <CommonButton
+              text="Log In / Sign Up"
+            />
+          </Link>)
+        }
+        {/* <Link className="link" to={routePath.signIn}>
           <CommonButton
             text="Log In / Sign Up"
           />
-        </Link>
+        </Link> */}
       </HeaderWrapper>
     </CommonWrapper>
   );
