@@ -13,13 +13,17 @@ const UserProfileWrapper = styled.div`
   }
 
   .avatar-img {
-    padding: 77px;
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    border-radius: inherit;
   }
 
   .avatar-button {
     position: absolute;
     right: 20px;
     bottom: 20px;
+    cursor: pointer;
   }
 
   .info {
