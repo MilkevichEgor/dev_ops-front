@@ -11,7 +11,7 @@ const CommonButton: React.FC<ButtonProps> = (props) => {
   return (
     <CommonButtonWrapper
       type="submit"
-      >
+    >
       {props.text}
     </ CommonButtonWrapper>
   );

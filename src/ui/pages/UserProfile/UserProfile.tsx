@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import CommonWrapper from '../../styles/CommonWrapper';
 import UserProfileWrapper from './UserProfile.styles';
 import defaultAvatar from '../../images/defaultAvatar.png';
@@ -6,26 +6,16 @@ import changeAvatarButton from '../../images/changeAvatarButton.png';
 import UserPassword from './UserPassword';
 import UserInfo from './UserInfo';
 import userApi from '../../../api/userApi';
-import { useAppSelector } from '../../../store';
-import { User } from '../../../types';
+import { useAppDispatch, useAppSelector } from '../../../store';
+import config from '../../../config';
+import { setUser } from '../../../store/reducer';
 
 const UserProfile = () => {
+  const dispatch = useAppDispatch();
   const [isChangeUserInfo, setIsChangeUserInfo] = useState(false);
   const [isChangePassword, setIsChangePassword] = useState(false);
-  const [avatar, setAvatar] = useState(defaultAvatar);
-  const user = useAppSelector((state) => state.userReducer.user) as User;
-  if (user.avatar) {
-    useEffect(() => {
-      (async () => {
-        try {
-          const ava = `http://localhost:4000/${user.avatar}`;
-          await setAvatar(ava);
-        } catch (error) {
-          console.log(error);
-        }
-      })();
-    });
-  }
+  const user = useAppSelector((state) => state.userReducer.user);
+
   const toggleChangePassword = () => {
     setIsChangePassword(!isChangePassword);
   };
@@ -34,25 +24,30 @@ const UserProfile = () => {
     setIsChangeUserInfo(!isChangeUserInfo);
   };
 
-  const handleAvatar = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    try {
-      if (event.target.files) {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-        reader.onloadend = async () => {
+  const handleAvatar = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onloadend = async () => {
+        try {
           const base64String = reader.result;
           const encoded = JSON.stringify(base64String);
           const response = await userApi.uploadAvatar({ img: encoded });
-          if (response.status === 200) {
-            console.log('Fuck yeah!');
-          }
-        };
-        reader.readAsDataURL(file);
-      }
-    } catch (error) {
-      console.log('ERROR >>', error);
+          dispatch(setUser(response.data.user));
+        } catch (error) {
+          console.log('ERROR >>', error);
+        }
+      };
+      reader.readAsDataURL(file);
     }
   };
+
+  const avatar = useMemo(() => {
+    if (!user?.avatar) {
+      return defaultAvatar;
+    }
+    return `${config.apiBaseUrl}/${user.avatar}`;
+  }, [user?.avatar]);
 
   return (
     <CommonWrapper>

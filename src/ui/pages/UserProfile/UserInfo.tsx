@@ -28,9 +28,7 @@ const UserInfo: React.FC<UserInfoProps> = (props) => {
       try {
         const response = await userApi.updateUser(user.id, values);
         dispatch(setUser(response.data.user));
-        if (response.status === 200) {
-          props.toggleChangeUserInfo();
-        }
+        props.toggleChangeUserInfo();
       } catch (error) {
         console.log('ERROR >>', error);
       }
@@ -58,9 +56,11 @@ const UserInfo: React.FC<UserInfoProps> = (props) => {
         fieldInputProps={formik.getFieldProps('email')}
         error={formik?.touched.email ? formik?.errors.email : ''}
       />
-      <CommonButton
-        text="Confirm"
-      />
+      {props.isChangeUserInfo &&
+        <CommonButton
+          text="Confirm"
+        />
+      }
     </form>
   );
 };
