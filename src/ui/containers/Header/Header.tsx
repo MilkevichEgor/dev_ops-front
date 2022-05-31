@@ -36,11 +36,11 @@ const Header = () => {
         </div>
         {(user)
           ? <AuthButtonsBlock />
-          : (<Link className="link" to={routePath.signIn}>
-            <CommonButton
-              text="Log In / Sign Up"
-            />
-          </Link>)
+          : <Link className="link" to={routePath.signIn}>
+              <CommonButton
+                text="Log In / Sign Up"
+              />
+            </Link>
         }
         {/* <Link className="link" to={routePath.signIn}>
           <CommonButton

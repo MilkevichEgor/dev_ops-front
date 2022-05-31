@@ -89,7 +89,7 @@ const SignUpForm = () => {
           </div>
           <CommonButton text="Sign up" />
         </form>
-        <img src={man} />
+        <img className="image" src={man} />
       </Wrapper>
     </CommonWrapper>
   );

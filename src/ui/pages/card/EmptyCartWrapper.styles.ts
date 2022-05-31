@@ -16,6 +16,22 @@ const EmptyCartWrapper = styled.div`
     line-height: 36px;
     color: #344966;
   }
+
+  @media (max-width: 1279px) {
+    padding: 0 15px;
+    
+    .img {
+      height: 212px;
+      width: 350px;
+      padding: 0;
+    }
+
+    .text-block {
+      max-width: 310px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
 `;
 
 export default EmptyCartWrapper;

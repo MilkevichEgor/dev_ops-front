@@ -78,7 +78,7 @@ const UserProfile = () => {
             isChangeUserInfo={isChangeUserInfo}
             toggleChangeUserInfo={toggleChangeUserInfo}
           />
-          <div className="title info__password">
+          <div className="title title__description">
             <p className="title__name">Password</p>
             <p
               className="title__change"

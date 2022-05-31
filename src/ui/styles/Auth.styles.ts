@@ -61,6 +61,24 @@ const Wrapper = styled.div`
   .sign-up-button {
     padding: 10px 42px;
   }
+
+  @media (max-width: 1279px) {
+    margin: 15px;
+
+    .title {
+      font-size: 32px;
+      line-height: 48px;
+    }
+
+    .image {
+      width: 390px;
+      height: 333px;
+    }
+
+    /* .form {
+      width: 392px;
+    } */
+  }
 `;
 
 export default Wrapper;

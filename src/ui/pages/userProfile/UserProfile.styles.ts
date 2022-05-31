@@ -51,45 +51,25 @@ const UserProfileWrapper = styled.div`
     margin: 0;
   }
 
-  .icon {
-    width: 24px;
-    height: 100%;
-    padding: 20px 16px 20px 24px;
-  }
-
-  .info__field {
-    display: flex;
-    background: #F0F4EF;
-    border-radius: 16px;
-    width: 522px;
-    margin: 20px 0;
-  }
-
-  .info__general {
-    margin-bottom: 30px;
-  }
-
-  .info__row {
-    padding: 6px 0;
-  }
-
-  .info__row-name {
-    margin: 0;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: 0.75px;
-  }
-
-  .info__row-value {
-    margin: 0;
-    font-weight: 400;
-    font-size: 16px;
-    letter-spacing: 0.75px;
-    line-height: 28px;
-  }
-
-  .info__password {
+  .title__description {
     margin-top: 40px
+  }
+
+  @media (max-width: 1279px) {
+    .avatar-block {
+      width: 255px;
+      height: 255px;
+    }
+
+    .avatar-button {
+      width: 40px;
+      height: 40px;
+    }
+
+    .info {
+      padding-left: 20px;
+      width: 100%;
+    }
   }
 `;
 

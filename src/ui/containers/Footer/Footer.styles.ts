@@ -8,7 +8,6 @@ const FooterWrapper = styled.footer`
     display: flex;
     justify-content: space-between;
     background: #0D1821;
-    /* margin-top: 100px; */
     padding: 73px 80px 0 80px; 
     color: white;
     font-size: 20px;
@@ -48,6 +47,23 @@ const FooterWrapper = styled.footer`
   
   .link:active {
     color: white;
+  }
+
+  @media (max-width: 1279px) {
+    .main-block {
+      padding: 73px 20px 0 15px;
+      font-size: 16px;
+      line-height: 24px; 
+    }
+
+    .logo {
+      margin-bottom: 30px;
+    }
+
+    .map {
+      width: 392px;
+      height: 160px;
+    }
   }
 `;
 

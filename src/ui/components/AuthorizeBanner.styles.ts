@@ -38,7 +38,26 @@ const Wrapper = styled.div`
     bottom: 0;
   }
 
-  .link
+  @media (max-width: 1279px) {
+    margin-top: 0;
+    max-height: 400px;
+    height: 100%;
+
+    .main-img {
+      width: 389px;
+      height: 345px;
+      left: 0;
+    }
+
+    .background-img {
+      width: 377px;
+    }
+
+    .text-block {
+      padding: 80px 0 118px;
+      max-width: 392px;
+    }
+  }
 `;
 
 export default Wrapper;

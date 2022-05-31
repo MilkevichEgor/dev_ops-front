@@ -36,6 +36,7 @@ margin: 20px 0;
   font-size: 16px;
   letter-spacing: 0.75px;
   line-height: 28px;
+  background: inherit;
 }
 
 .info__password {
@@ -60,6 +61,11 @@ margin: 20px 0;
 
 .new-password__row-name {
   margin: 0;
+}
+
+@media (max-width: 1279px) {
+  max-width: 529px;
+  width: 100%;
 }
 `;
 

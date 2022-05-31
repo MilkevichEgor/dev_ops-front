@@ -89,7 +89,7 @@ const UserPassword: React.FC<UserProfileProps> = (props) => {
         fieldInputProps={formik.getFieldProps('password')}
         error={formik?.touched.password ? formik?.errors.password : ''}
       />
-      <p className="new-password__row-name">Enter your password</p>
+      <p>Enter your password</p>
       <CommonInputField
         icon={hideIcon}
         placeholder="Password replay"
@@ -98,7 +98,7 @@ const UserPassword: React.FC<UserProfileProps> = (props) => {
         fieldInputProps={formik.getFieldProps('passwordRepeat')}
         error={formik?.touched.passwordRepeat ? formik?.errors.passwordRepeat : ''}
       />
-      <p className="new-password__row-name">Repeat your passport withour errors</p>
+      <p>Repeat your passport withour errors</p>
       <CommonButton
         text="Confirm"
       />

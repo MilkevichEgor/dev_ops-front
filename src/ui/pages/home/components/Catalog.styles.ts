@@ -43,6 +43,13 @@ const CatalogWrapper = styled.div`
     height: 16px;
     padding: 17px;
   }
+
+  @media (max-width: 1279px) {
+    flex-direction: column;
+    .input {
+      width: 255px;
+    }
+  }
 `;
 
 export default CatalogWrapper;

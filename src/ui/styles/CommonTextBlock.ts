@@ -22,14 +22,18 @@ const CommonTextBlock = styled.div`
   }
 
   @media (max-width: 1279px) {
-    max-height: 289px;
-    height: 100%;
+    /* max-height: 289px;
+    height: 100%; */
     padding: 45px 14px 49px 40px;
 
     .title {
       font-weight: 700;
       line-height: 48px;
       font-size: 32px;
+    }
+
+    .text {
+      font-size: 16px;
     }
   }
 `;
