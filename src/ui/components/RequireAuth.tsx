@@ -4,9 +4,9 @@ import { useAppSelector } from '../../store';
 
 const RequireAuth: React.FC<{
   children: JSX.Element;
-  shouldRedirect?: boolean;
-  redirectTo?: string;
-}> = ({ children, redirectTo }) => {
+  noAuthOnly?: boolean;
+  redirectTo: string;
+}> = ({ children, redirectTo, noAuthOnly }) => {
   const user = useAppSelector((state) => state.userReducer.user);
 
   if (!user) {
@@ -16,7 +16,9 @@ const RequireAuth: React.FC<{
 
     return null;
   }
-
+  if (noAuthOnly) {
+    return <Navigate to={redirectTo} />;
+  }
   return children;
 };
 

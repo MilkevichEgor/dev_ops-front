@@ -4,7 +4,6 @@ import CommonButtonWrapper from './CommonButton.styled';
 type ButtonProps = {
   text?: string;
   padding?: string;
-  borderRadius?: string;
 }
 
 const CommonButton: React.FC<ButtonProps> = (props) => {

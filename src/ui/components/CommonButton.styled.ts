@@ -1,21 +1,26 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const defaultValues = {
   padding: '10px 50px',
-  borderRadius: 16,
+};
+
+const sizes = {
+  small: css``,
+  medium: css``,
+  large: css``,
 };
 
 const CommonButtonWrapper = styled.button<{
   size?: 'small' | 'medium' | 'large';
   padding?: string;
-  borderRaduis?: number;
 }>`
     display: flex;
     width: fit-content;
     align-items: center;
     background-color: #344966;
-    border-radius: ${(props) => props.borderRaduis ?? defaultValues.borderRadius}px;
+    border-radius: 16px;
     padding: ${(props) => props.padding ?? defaultValues.padding};
+    ${(props) => props.size ?? null}
     color: white;
     font-family: inherit;
     font-style: normal;

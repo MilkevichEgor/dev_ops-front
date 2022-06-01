@@ -12,10 +12,31 @@ const Navigation = () => {
   return (
     <Routes>
       <Route path={routePath.home} element={<Home />} />
-      <Route path={routePath.signIn} element={<SignInForm />} />
-      <Route path={routePath.signUp} element={<SignUpForm />} />
+
       <Route
-        path={routePath.card}
+        path={routePath.signIn}
+        element={(
+          <RequireAuth
+            redirectTo={routePath.home}
+            noAuthOnly={true}
+          >
+            <SignInForm />
+          </RequireAuth>
+        )} />
+
+      <Route
+        path={routePath.signUp}
+        element={(
+          <RequireAuth
+            redirectTo={routePath.home}
+            noAuthOnly={true}
+          >
+            <SignUpForm />
+          </RequireAuth>
+        )} />
+
+      <Route
+        path={routePath.cart}
         element={(
           <RequireAuth
             redirectTo={routePath.signIn}
@@ -24,6 +45,7 @@ const Navigation = () => {
           </RequireAuth>
         )}
       />
+
       <Route
         path={routePath.profile}
         element={(
@@ -34,6 +56,7 @@ const Navigation = () => {
           </RequireAuth>
         )}
       />
+
       <Route path="*" element={(
         <h1>PAGE NOT FOUND!!!!! MOTHER FUCKER!!!</h1>
       )} />

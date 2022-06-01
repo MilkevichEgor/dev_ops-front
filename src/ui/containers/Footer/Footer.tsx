@@ -21,7 +21,7 @@ const Footer = () => {
             <Link to={routePath.home} className="link">Home Page</Link>
             <Link to={routePath.home} className="link">Catalog</Link>
             <Link to={routePath.profile} className="link">My Account</Link>
-            <Link to={routePath.card} className="link">Cart</Link>
+            <Link to={routePath.cart} className="link">Cart</Link>
           </div>
           <div>
             <p className="text">6391 Elgin St. Celina, Delaware 10299</p>
