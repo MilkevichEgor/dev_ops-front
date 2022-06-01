@@ -34,19 +34,15 @@ const Header = () => {
             placeholder="Search"
           />
         </div>
-        {(user)
+        {user
           ? <AuthButtonsBlock />
-          : <Link className="link" to={routePath.signIn}>
+          : (
+            <Link className="link" to={routePath.signIn}>
               <CommonButton
                 text="Log In / Sign Up"
               />
             </Link>
-        }
-        {/* <Link className="link" to={routePath.signIn}>
-          <CommonButton
-            text="Log In / Sign Up"
-          />
-        </Link> */}
+          )}
       </HeaderWrapper>
     </CommonWrapper>
   );

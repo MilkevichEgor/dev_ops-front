@@ -65,6 +65,34 @@ const FooterWrapper = styled.footer`
       height: 160px;
     }
   }
+
+  @media (max-width: 833px) {
+    .main-block {
+      flex-direction: column;
+      padding: 73px 0 0 0;
+    }
+
+    .contacts {
+      padding-left: 5px;
+    }
+
+    .logo {
+      width: 88px;
+      height: 46px;
+    }
+
+    .map {
+      width: 291px;
+    }
+
+    .text {
+      margin-bottom: 5px;
+    }
+
+    .nav {
+      margin: 40px 0;
+    }
+  }
 `;
 
 export default FooterWrapper;

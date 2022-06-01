@@ -11,7 +11,7 @@ const Cart = () => {
       <EmptyCartWrapper>
         <img
           className="img"
-          src={booksImg}/>
+          src={booksImg} />
         <CommonTextBlock>
           <p className="title">Your cart is empty</p>
           <p className="text text-block">

@@ -43,6 +43,25 @@ const BannerWrapper = styled.div`
       width: 361px;
     }
   }
+
+  @media (max-width: 833px) {
+    max-height: 505px;
+    height: 505px;
+
+    .human-img {
+      width: 253px;
+      height: 282px;
+      right: unset;
+      padding: 0 18px;
+    }
+
+    .background-img {
+      width: 232px;
+      height: 140px;
+      top: 17px;
+      left: 70px;
+    }
+  }
 `;
 
 export default BannerWrapper;

@@ -27,8 +27,10 @@ const CommonButtonWrapper = styled.button<{
     cursor: pointer;
     border: none;
 
-  @media (max-width: 1279px) {
-    
+  @media (max-width: 833px) {
+    padding: 10px 17px;
+    font-size: 12px;
+    line-height: 18px;
   }
 `;
 

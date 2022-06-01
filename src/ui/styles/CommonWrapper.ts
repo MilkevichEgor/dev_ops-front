@@ -12,6 +12,11 @@ const CommonWrapper = styled.div`
     max-width: 804px;
     margin-bottom: 10px;
   }
+
+  @media (max-width: 833px) {
+    max-width: 290px;
+    margin-bottom: 5px;
+  }
 `;
 
 export default CommonWrapper;

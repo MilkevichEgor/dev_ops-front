@@ -50,6 +50,28 @@ const CatalogWrapper = styled.div`
       width: 255px;
     }
   }
+
+  @media (max-width: 833px) {
+    .title {
+      font-size: 18px;
+      line-height: 27px;
+      margin-bottom: 13px;
+    }
+
+    .form {
+      flex-direction: column;
+    }
+
+    .input {
+      width: 290px;
+      margin-bottom: 20px;
+    }
+
+    .filter {
+      font-size: 14px;
+      line-height: 28px;
+    }
+  }
 `;
 
 export default CatalogWrapper;

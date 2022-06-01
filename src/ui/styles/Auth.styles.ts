@@ -74,10 +74,35 @@ const Wrapper = styled.div`
       width: 390px;
       height: 333px;
     }
+  }
 
-    /* .form {
-      width: 392px;
-    } */
+  @media (max-width: 833px) {
+    flex-direction: column;
+    margin: 0;
+
+    .form-wrapper {
+      max-width: 290px;
+      width: 100%;
+    }
+
+    .title {
+      font-size: 18px;
+      line-height: 27px;
+    }
+
+    .input-wrapper {
+      margin: 10px 0 20px 0;
+    }
+
+    .image {
+      width: 290px;
+      height: 247px;
+    }
+
+    .question {
+      font-size: 14px;
+      line-height: 24px;
+    }
   }
 `;
 

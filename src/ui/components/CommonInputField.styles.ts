@@ -55,10 +55,6 @@ margin: 20px 0;
  align-items:center;
 }
 
-.test {
-  background:red;
-}
-
 .new-password__row-name {
   margin: 0;
 }
@@ -66,6 +62,31 @@ margin: 20px 0;
 @media (max-width: 1279px) {
   max-width: 529px;
   width: 100%;
+}
+
+@media (max-width: 833px) {
+  align-items: center;
+
+  .icon {
+    padding: 12px 16px 11px 24px;
+  }
+
+  .info__row-name {
+    font-size: 12px;
+    line-height: 24px;
+  }
+
+  .info__row-value {
+    font-size: 14px;
+  }
+
+  .info__row {
+    padding: 2px 0;
+  }
+
+  .no-hint {
+    padding: 14px 0;
+  }
 }
 `;
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAppSelector } from '../../store';
-import { routePath } from '../../constants';
 
 const RequireAuth: React.FC<{
   children: JSX.Element;

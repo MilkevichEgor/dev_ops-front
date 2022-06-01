@@ -58,6 +58,27 @@ const Wrapper = styled.div`
       max-width: 392px;
     }
   }
+
+  @media (max-width: 833px) {
+    max-height: 501px;
+    height: 501px;
+
+    .main-img {
+      width: 282px;
+      height: 250px;
+    }
+
+    .background-img {
+      width: 246px;
+      bottom: unset;
+      top: 0;
+    }
+
+    .text-block {
+      padding: 20px;
+      max-width: 249px;
+    }
+  }
 `;
 
 export default Wrapper;

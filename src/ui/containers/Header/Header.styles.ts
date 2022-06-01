@@ -48,6 +48,37 @@ const HeaderWrapper = styled.header`
     }
 
   }
+
+  @media (max-width: 833px) {
+    flex-wrap: wrap;
+
+    .catalog-link {
+      padding-left: 17px;
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    .search-field {
+      max-width: 290px;
+      width: 100%;
+      order: 1;
+      margin-top: 17px;
+    }
+
+    .search-icon {
+      width: 18px;
+      height: 18px;
+      padding: 14px 18px 15px 26px;
+    }
+
+    .link-block {
+      order: -2;
+    }
+
+    .icon {
+      display: flex;
+    }
+  }
 `;
 
 export default HeaderWrapper;

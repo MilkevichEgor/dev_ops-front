@@ -32,6 +32,22 @@ const EmptyCartWrapper = styled.div`
       line-height: 24px;
     }
   }
+
+  @media (max-width: 833px) {
+    flex-direction: column-reverse;
+    padding: 0;
+
+    .img {
+      height: 176px;
+      width: 290px;
+      margin-bottom: 100px;
+    }
+
+    .text-block {
+      padding: 15px 0 30px 0;
+    }
+
+  }
 `;
 
 export default EmptyCartWrapper;

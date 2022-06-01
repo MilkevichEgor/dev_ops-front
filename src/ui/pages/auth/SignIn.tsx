@@ -77,7 +77,7 @@ const SignInForm = () => {
           <CommonButton
             text="Log In"
           />
-          <h4>
+          <h4 className="question">
             Don`t you have an account yet?
             <Link to={routePath.signUp} className="button">
               <span>Let`s sign up!</span>

@@ -12,7 +12,7 @@ const Footer = () => {
     <FooterWrapper>
       <CommonWrapper>
         <div className="main-block ">
-          <div>
+          <div className="contacts">
             <Logo src={logo} className="logo" alt="store logo" />
             <p className="text">ye.alexey@gmail.com</p>
             <p className="text">(480) 555-0103</p>

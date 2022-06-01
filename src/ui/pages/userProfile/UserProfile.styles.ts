@@ -71,6 +71,35 @@ const UserProfileWrapper = styled.div`
       width: 100%;
     }
   }
+
+  @media (max-width: 833px) {
+    flex-direction: column;
+
+    .avatar-block {
+      width: 290px;
+      height: 290px;
+    }
+
+    .title {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .title__name {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .title__change {
+      font-size: 12px;
+      line-height: 18px;
+      text-align: left;
+      text-decoration-line: underline;
+      color: #8D9F4F;
+      margin: 0;
+    }
+  }
 `;
 
 export default UserProfileWrapper;
