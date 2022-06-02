@@ -32,6 +32,7 @@ const CommonButtonWrapper = styled.button<{
     cursor: pointer;
     border: none;
 
+
   @media (max-width: 833px) {
     padding: 10px 17px;
     font-size: 12px;
@@ -40,3 +41,12 @@ const CommonButtonWrapper = styled.button<{
 `;
 
 export default CommonButtonWrapper;
+
+    /* ${props => {
+      switch (props.size) {
+        case 'large':
+          return css`
+          
+          `
+      }
+    }} */

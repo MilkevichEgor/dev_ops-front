@@ -10,6 +10,7 @@ import CommonWrapper from '../../styles/CommonWrapper';
 import HeaderWrapper from '../Header/Header.styles';
 import { routePath } from '../../../constants';
 import AuthButtonsBlock from './AuthButtonsBlock';
+import CommonButtonWrapper from '../../components/CommonButton.styled';
 
 const Header = () => {
   const user = useAppSelector((state) => state.userReducer.user);
@@ -38,9 +39,12 @@ const Header = () => {
           ? <AuthButtonsBlock />
           : (
             <Link className="link" to={routePath.signIn}>
-              <CommonButton
-                text="Log In / Sign Up"
-              />
+              <CommonButtonWrapper
+                // text="Log In / Sign Up"
+                className="test"
+              >
+                Log In / Sign Up
+                </CommonButtonWrapper>
             </Link>
           )}
       </HeaderWrapper>

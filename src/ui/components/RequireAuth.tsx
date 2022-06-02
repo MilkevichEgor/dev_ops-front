@@ -10,6 +10,9 @@ const RequireAuth: React.FC<{
   const user = useAppSelector((state) => state.userReducer.user);
 
   if (!user) {
+    if (noAuthOnly) {
+      return children;
+    }
     if (redirectTo) {
       return <Navigate to={redirectTo} />;
     }

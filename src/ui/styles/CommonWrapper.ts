@@ -17,6 +17,9 @@ const CommonWrapper = styled.div`
     max-width: 290px;
     margin-bottom: 5px;
   }
+
+  .test {
+  }
 `;
 
 export default CommonWrapper;

@@ -17,3 +17,14 @@ export type AuthData = {
   password: string;
   email: string;
 };
+export interface Book {
+  author: string;
+  bookId: number;
+  cover: string;
+  dateOfIssue?: Date;
+  price: number;
+  quantity?: number;
+  title: string;
+}
+
+export type Books = Book[];

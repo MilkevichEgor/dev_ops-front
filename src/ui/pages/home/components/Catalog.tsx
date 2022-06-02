@@ -2,6 +2,7 @@ import React from 'react';
 import forwardIcon from '../../../images/forwardIcon.png';
 import CatalogWrapper from './Catalog.styles';
 import CommonWrapper from '../../../styles/CommonWrapper';
+import BooksList from './Books';
 
 const Catalog = () => {
   return (
@@ -26,6 +27,7 @@ const Catalog = () => {
           </div>
         </form>
       </CatalogWrapper>
+      <BooksList />
     </CommonWrapper>
   );
 };

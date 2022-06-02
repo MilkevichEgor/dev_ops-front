@@ -7,23 +7,23 @@ export interface Store {
 }
 
 export interface State {
-  user: User | null,
+  books: Books | [],
 }
 
 const initialState: State = {
-  user: null,
+  books: [],
 };
 
-const userReducer = createSlice({
+export const bookReducer = createSlice({
   initialState,
-  name: 'user',
+  name: 'books',
   reducers: {
-    setUser: (state, action: PayloadAction<User>) => {
-      state.user = action.payload;
+    setBooks: (state, action: PayloadAction<Books>) => {
+      state.books = action.payload;
     },
   },
 });
 
-export const { setUser } = userReducer.actions;
+export const { setBooks } = bookReducer.actions;
 
-export default userReducer.reducer;
+export default bookReducer.reducer;
