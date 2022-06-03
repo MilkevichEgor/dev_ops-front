@@ -7,6 +7,8 @@ import { useAppDispatch, useAppSelector } from '../../../../store';
 import { setBooks } from '../../../../store/bookReducer';
 import { Book } from '../../../../types';
 import BooksWrapper from './BooksWrapper';
+import { useParams } from 'react-router';
+import { useSearchParams } from 'react-router-dom';
 
 const div = styled.div`
   width: 305px;
@@ -23,26 +25,32 @@ const BooksList = () => {
   const books = useAppSelector((state) => state.bookReducer.books);
   console.log('books', books);
   const dispatch = useAppDispatch();
+  let [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
+   searchParams.forEach(par => {
+     console.log('PAR', par)
+   });
     (async () => {
       try {
-        const response = await bookApi.getAllBooks();
+        const response = await bookApi.getAllBooks({});
         dispatch(setBooks(response.data.books));
       } catch (err) {
         console.log('ERROR >>', err);
       }
     })();
-  }, [dispatch]);
+  }, [dispatch, searchParams]);
 
   return (
     <BooksWrapper>
+      <button onClick={() => setSearchParams({...searchParams, test: 'lala'}, {replace: false})}>set</button>
       {books.map((book: Book) => {
         return (
           <div
             className="book"
             key={book.bookId}
           >
-            <img src={`${config.apiBaseUrl}/book-cover/${book.cover}`} className="cover" alt="book cover" />
+            <img src={book.cover} className="cover" alt="book cover" />
             <p
               className="title"
             >

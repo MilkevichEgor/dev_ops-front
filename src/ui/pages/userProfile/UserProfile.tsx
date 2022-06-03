@@ -7,7 +7,6 @@ import UserPassword from './UserPassword';
 import UserInfo from './UserInfo';
 import userApi from '../../../api/userApi';
 import { useAppDispatch, useAppSelector } from '../../../store';
-import config from '../../../config';
 import { setUser } from '../../../store/reducer';
 
 const UserProfile = () => {
@@ -46,7 +45,7 @@ const UserProfile = () => {
     if (!user?.avatar) {
       return defaultAvatar;
     }
-    return `${config.apiBaseUrl}/${user.avatar}`;
+    return user.avatar;
   }, [user?.avatar]);
 
   return (
