@@ -2,7 +2,7 @@ import axios from './axios';
 
 const bookPath = '/book';
 
-type Options = {
+export type QuerySearchOptions = {
   page?: string;
   limit?: string;
   genres?: string;
@@ -12,12 +12,17 @@ type Options = {
   orderDir?: string;
 }
 
-const getAllBooks = (options: Options) => {
+const getAllBooks = (options: QuerySearchOptions) => {
   return axios.get(`${bookPath}/all`, {
     params: options,
   });
 };
 
+const getAllGenres = () => {
+  return axios.get(`${bookPath}/genres`);
+};
+
 export default {
   getAllBooks,
+  getAllGenres,
 };

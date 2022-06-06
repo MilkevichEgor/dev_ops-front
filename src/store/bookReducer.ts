@@ -1,16 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { User, Books } from '../types';
+import { Books } from '../types';
 
-export interface Store {
-  userReducer: State,
-  bookReducer: State
-}
-
-export interface State {
+export interface BookState {
   books: Books | [],
 }
 
-const initialState: State = {
+export const initialState: BookState = {
   books: [],
 };
 

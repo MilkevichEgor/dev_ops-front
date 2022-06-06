@@ -12,7 +12,7 @@ import CommonButton from '../../components/CommonButton';
 import CommonWrapper from '../../styles/CommonWrapper';
 import CommonInputField from '../../components/CommonInputField';
 import { useAppDispatch } from '../../../store';
-import { setUser } from '../../../store/reducer';
+import { setUser } from '../../../store/userReducer';
 
 const signUpValidationSchema = new YupObject().shape({
   email: new YupString().email('Invalid email address').required('Required'),

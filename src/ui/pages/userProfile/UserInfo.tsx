@@ -6,7 +6,7 @@ import mailIcon from '../../images/mail.png';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import userApi from '../../../api/userApi';
 import { User } from '../../../types';
-import { setUser } from '../../../store/reducer';
+import { setUser } from '../../../store/userReducer';
 import CommonButton from '../../components/CommonButton';
 
 type UserInfoProps = {

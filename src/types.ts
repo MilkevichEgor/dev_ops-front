@@ -26,5 +26,12 @@ export interface Book {
   quantity?: number;
   title: string;
 }
-
 export type Books = Book[];
+
+export interface Genre {
+  genreId: number;
+  name: string;
+}
+export type Genres = Genre[];
+
+

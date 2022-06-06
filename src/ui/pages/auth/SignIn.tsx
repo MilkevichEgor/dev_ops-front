@@ -11,7 +11,7 @@ import hide from '../../images/hide.png';
 import mail from '../../images/mail.png';
 import CommonButton from '../../components/CommonButton';
 import CommonWrapper from '../../styles/CommonWrapper';
-import { setUser } from '../../../store/reducer';
+import { setUser } from '../../../store/userReducer';
 import { routePath } from '../../../constants';
 import CommonInputField from '../../components/CommonInputField';
 import { useAppDispatch } from '../../../store';

@@ -7,7 +7,7 @@ import UserPassword from './UserPassword';
 import UserInfo from './UserInfo';
 import userApi from '../../../api/userApi';
 import { useAppDispatch, useAppSelector } from '../../../store';
-import { setUser } from '../../../store/reducer';
+import { setUser } from '../../../store/userReducer';
 
 const UserProfile = () => {
   const dispatch = useAppDispatch();

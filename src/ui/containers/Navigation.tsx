@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import SignInForm from '../pages/auth/SignIn';
 import SignUpForm from '../pages/auth/SignUp';
-import Home from '../pages/home/Home';
+import Home from '../pages/Home';
 import Cart from '../pages/card/Card';
 import UserProfile from '../pages/userProfile/UserProfile';
 import { routePath } from '../../constants';
@@ -18,7 +18,7 @@ const Navigation = () => {
         element={(
           <RequireAuth
             redirectTo={routePath.home}
-            noAuthOnly={true}
+            noAuthOnly
           >
             <SignInForm />
           </RequireAuth>
@@ -29,7 +29,7 @@ const Navigation = () => {
         element={(
           <RequireAuth
             redirectTo={routePath.home}
-            noAuthOnly={true}
+            noAuthOnly
           >
             <SignUpForm />
           </RequireAuth>
