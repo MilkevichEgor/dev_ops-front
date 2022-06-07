@@ -32,6 +32,5 @@ export interface Genre {
   genreId: number;
   name: string;
 }
+
 export type Genres = Genre[];
-
-
