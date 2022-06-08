@@ -1,16 +1,10 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import queryString from 'query-string';
-import { QuerySearchOptions } from '../../../../api/bookApi';
 import SortingListWrapper from './SortingList.styles';
 import getQueryParams from '../../../../utils/getQueryParams';
 
-type SortingListProps = {
-  querySearchOptions: QuerySearchOptions | undefined;
-  changeQuery: (options: QuerySearchOptions) => void;
-}
-
-const SortingList: React.FC<SortingListProps> = (props) => {
+const SortingList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const applySortOrder = (value: string) => {

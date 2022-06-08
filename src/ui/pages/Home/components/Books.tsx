@@ -3,10 +3,11 @@ import { useSearchParams } from 'react-router-dom';
 import CommonButton from '../../../components/CommonButton';
 import bookApi from '../../../../api/bookApi';
 import { useAppDispatch, useAppSelector } from '../../../../store';
-import { setBooks } from '../../../../store/bookReducer';
+import { setBooks, setPagesQuantity } from '../../../../store/bookReducer';
 import { Book } from '../../../../types';
 import BooksWrapper from './Books.styles';
 import { setGenres } from '../../../../store/genreReducer';
+import getQueryParams from '../../../../utils/getQueryParams';
 
 const BooksList = () => {
   const books = useAppSelector((state) => state.bookReducer.books);
@@ -14,16 +15,12 @@ const BooksList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    const search = {};
-    searchParams.forEach((value, key) => {
-      Object.assign(search, { [key]: value });
-    });
-    console.log('search', search);
-
+    const search = getQueryParams(searchParams);
     (async () => {
       try {
         const response = await bookApi.getAllBooks(search);
         dispatch(setBooks(response.data.books));
+        dispatch(setPagesQuantity(response.data.pagesQuantity));
       } catch (err) {
         console.log('ERROR >>', err);
       }
@@ -39,7 +36,6 @@ const BooksList = () => {
 
   return (
     <BooksWrapper>
-      {/* <button onClick={()=> setSearchParams({ ...searchParams, test: 'WORK' })}>set</button> */}
       {books.map((book: Book) => {
         return (
           <div

@@ -41,10 +41,7 @@ const UserPassword: React.FC<UserProfileProps> = (props) => {
         const { password, oldPassword } = values;
         const response = await userApi.updateUser(user.id, { oldPassword, password });
         if (response.status === 200) {
-          console.log('props.isChangePassword 1 >>', props.isChangePassword);
-
           props.toggleChangePassword();
-          console.log('props.isChangePassword 2 >>', props.isChangePassword);
         }
       } catch (error) {
         console.log('ERROR>>', error);

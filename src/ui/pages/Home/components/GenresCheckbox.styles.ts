@@ -20,6 +20,7 @@ const GenreCheckboxWrapper = styled.div`
     line-height: 28px;
     letter-spacing: 0.75px;
     margin: 10px 0;
+    cursor: pointer;
   }
 
   .checkbox {

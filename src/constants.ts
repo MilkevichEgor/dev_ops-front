@@ -5,3 +5,9 @@ export const routePath = {
   profile: '/me',
   cart: '/cart',
 };
+
+const booksQuantityPerPage = 12;
+
+export default {
+  booksQuantityPerPage,
+};

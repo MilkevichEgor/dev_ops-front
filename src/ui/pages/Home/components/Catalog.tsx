@@ -10,6 +10,7 @@ import PriceFilter from './PriceRangeFilter';
 import SortingList from './SortingList';
 import { QuerySearchOptions } from '../../../../api/bookApi';
 import getQueryParams from '../../../../utils/getQueryParams';
+import PaginationBlock from './PaginationBlock';
 
 const Catalog = () => {
   const [isGenresSelect, setIsGenresSelect] = useState(false);
@@ -17,6 +18,7 @@ const Catalog = () => {
   const [isPriceRangeSelect, setIsPriceRangeSelect] = useState(false);
   const [querySearchParams, setQuerySearchParams] = useState<QuerySearchOptions | undefined>();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [totalNumOfBooks, setTotalNumOfBooks] = useState<number>();
 
   const toggleIsGenresSelect = () => {
     setIsGenresSelect(!isGenresSelect);
@@ -26,6 +28,9 @@ const Catalog = () => {
   };
   const toggleIsOrderSelect = () => {
     setIsOrderSelect(!isOrderSelect);
+  };
+  const setBooksQuantity = (num: number) => {
+    setTotalNumOfBooks(num);
   };
 
   let sortByTitle = getQueryParams(searchParams).order || 'price';
@@ -39,18 +44,6 @@ const Catalog = () => {
     default:
       break;
   }
-
-  const changeQuery = (options: QuerySearchOptions) => {
-    setQuerySearchParams(options);
-    if (!querySearchParams) {
-      return;
-    }
-    const arr = queryString.stringify(
-      querySearchParams,
-    );
-    setSearchParams(arr);
-    console.log('querySearchParams', options);
-  };
 
   return (
     <CommonWrapper>
@@ -91,15 +84,13 @@ const Catalog = () => {
             <p className="filter">Sort by {sortByTitle}</p>
             <img src={forwardIcon} className="icon" />
             {isOrderSelect &&
-              <SortingList
-                querySearchOptions={querySearchParams}
-                changeQuery={changeQuery}
-              />
+              <SortingList />
             }
           </div>
         </div>
       </CatalogWrapper>
       <BooksList />
+      <PaginationBlock />
     </CommonWrapper>
   );
 };

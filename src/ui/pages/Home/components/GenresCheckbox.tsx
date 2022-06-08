@@ -60,21 +60,23 @@ const GenresCheckbox: React.FC<GenreCheckboxProps> = () => {
       >
         {genres.map((genre) => {
           return (
-            <div
-              key={genre.genreId}
-              className="option"
-
-            >
-              <input
-                className="checkbox"
-                type="checkbox"
-                name={genre.name}
-                value={genre.genreId}
-                checked={checkedGenres.includes(`${genre.genreId}`)}
-                onChange={getValues}
-              />
-              {genre.name}
-            </div>
+            <label htmlFor={genre.genreId.toString()} key={genre.genreId}>
+              <div
+                key={genre.genreId}
+                className="option"
+              >
+                <input
+                  id={genre.genreId.toString()}
+                  className="checkbox"
+                  type="checkbox"
+                  name={genre.name}
+                  value={genre.genreId}
+                  checked={checkedGenres.includes(`${genre.genreId}`)}
+                  onChange={getValues}
+                />
+                {genre.name}
+              </div>
+            </label>
           );
         })}
       </div>
