@@ -9,6 +9,7 @@ const GenreCheckboxWrapper = styled.div`
   flex-direction: column;
   background: #F0F4EF;
   border-radius: 16px;
+  margin-left: -15px;
 
   .genres-block {
     overflow: auto;

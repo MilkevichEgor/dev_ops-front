@@ -5,7 +5,7 @@ import bookApi from '../../../../api/bookApi';
 import { useAppDispatch, useAppSelector } from '../../../../store';
 import { setBooks } from '../../../../store/bookReducer';
 import { Book } from '../../../../types';
-import BooksWrapper from './BooksWrapper';
+import BooksWrapper from './Books.styles';
 import { setGenres } from '../../../../store/genreReducer';
 
 const BooksList = () => {

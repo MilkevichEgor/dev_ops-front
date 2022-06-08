@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import queryString from 'query-string';
 import { useAppSelector } from '../../../../store';
-import CommonButton from '../../../components/CommonButton';
 import GenreCheckboxWrapper from './GenresCheckbox.styles';
 import getQueryParams from '../../../../utils/getQueryParams';
 
@@ -10,7 +9,7 @@ type GenreCheckboxProps = {
   toggleGenreSelector: () => void;
 }
 
-const GenresCheckbox: React.FC<GenreCheckboxProps> = (props) => {
+const GenresCheckbox: React.FC<GenreCheckboxProps> = () => {
   const [checkedGenres, setCheckedGenres] = useState([] as string[]);
   const genres = useAppSelector((state) => state.genreReducer.genres);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -23,18 +22,19 @@ const GenresCheckbox: React.FC<GenreCheckboxProps> = (props) => {
     }
   }, [searchParams]);
 
-  const submitGenres = () => {
-    const arr = queryString.stringify(
-      {
-        genres: checkedGenres,
-      },
-      {
-        arrayFormat: 'comma',
-      },
-    );
-    setSearchParams(arr);
-    props.toggleGenreSelector();
-  };
+  useEffect(() => {
+    (() => {
+      const arr = queryString.stringify(
+        {
+          genres: checkedGenres,
+        },
+        {
+          arrayFormat: 'comma',
+        },
+      );
+      setSearchParams(arr);
+    })();
+  }, [checkedGenres]);
 
   const getValues = (e: React.ChangeEvent<HTMLInputElement>) => {
     const checkedGenreId = e.target.value;
@@ -78,15 +78,6 @@ const GenresCheckbox: React.FC<GenreCheckboxProps> = (props) => {
           );
         })}
       </div>
-      <CommonButton
-        text="Submit"
-        onClick={submitGenres}
-          // () => {
-          // const genres = checkedGenres.join(',');
-          // props.changeQuery({ genres });
-          // props.toggleGenreSelector();
-        // }
-      />
     </GenreCheckboxWrapper>
   );
 };
