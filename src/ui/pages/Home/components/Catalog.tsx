@@ -9,28 +9,32 @@ import GenresCheckbox from './GenresCheckbox';
 import PriceFilter from './PriceRangeFilter';
 import SortingList from './SortingList';
 import { QuerySearchOptions } from '../../../../api/bookApi';
+import { Genre } from '../../../../types';
 
 const Catalog = () => {
   const [isGenresSelect, setIsGenresSelect] = useState(false);
+  const [isOrderSelect, setIsOrderSelect] = useState(false);
+  const [querySearchParams, setQuerySearchParams] = useState<QuerySearchOptions | undefined>();
   const [searchParams, setSearchParams] = useSearchParams();
+
   const toggleIsGenresSelect = () => {
     setIsGenresSelect(!isGenresSelect);
   };
-
-  const querySearchOptions: QuerySearchOptions = {
+  const toggleIsOrderSelect = () => {
+    setIsOrderSelect(!isOrderSelect);
   };
 
-  const onSubmit = (values: string[]) => {
+
+  const changeQuery = (options: QuerySearchOptions) => {
+    setQuerySearchParams(options);
+    if (!querySearchParams) {
+      return;
+    }
     const arr = queryString.stringify(
-      querySearchOptions,
-      // {
-      //   genres: values,
-      // },
-      {
-        arrayFormat: 'comma',
-      },
+      querySearchParams,
     );
     setSearchParams(arr);
+    console.log('querySearchParams', options);
   };
 
   return (
@@ -47,23 +51,28 @@ const Catalog = () => {
             {isGenresSelect &&
               <GenresCheckbox
                 toggleGenreSelector={toggleIsGenresSelect}
-                onSubmit={onSubmit}
               />
             }
           </div>
+
           <div className="filterWrapper input">
             <p className="filter">Price</p>
             <img src={forwardIcon} className="icon" />
             {/* <PriceFilter /> */}
-            {/* <input type="range" name="" id="" /> */}
           </div>
-          <div className="filterWrapper input">
+
+          <div
+            className="filterWrapper input"
+            onClick={toggleIsOrderSelect}
+          >
             <p className="filter">Sort by price</p>
             <img src={forwardIcon} className="icon" />
-            <SortingList
-              querySearchOptions={querySearchOptions}
-            />
-            {/* <input type="radio" name="" id="" /> */}
+            {isOrderSelect &&
+              <SortingList
+                querySearchOptions={querySearchParams}
+                changeQuery={changeQuery}
+              />
+            }
           </div>
         </div>
       </CatalogWrapper>

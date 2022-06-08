@@ -18,6 +18,7 @@ const BooksList = () => {
     searchParams.forEach((value, key) => {
       Object.assign(search, { [key]: value });
     });
+    console.log('search', search);
 
     (async () => {
       try {

@@ -1,70 +1,76 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import queryString from 'query-string';
 import { QuerySearchOptions } from '../../../../api/bookApi';
 import SortingListWrapper from './SortingList.styles';
 
 type SortingListProps = {
-  querySearchOptions: QuerySearchOptions
+  querySearchOptions: QuerySearchOptions | undefined;
+  changeQuery: (options: QuerySearchOptions) => void;
 }
 
 const SortingList: React.FC<SortingListProps> = (props) => {
-  const [checkedOrder, setCheckedOrder] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
 
   const applySortOrder = (value: string) => {
-    props.querySearchOptions.order = value;
-    if (props.querySearchOptions.orderDir === 'ASC') {
-      props.querySearchOptions.orderDir = 'DESC';
-
-      return;
+    const query = {} as QuerySearchOptions;
+    searchParams.forEach((value, key) => {
+      Object.assign(query, { [key]: value });
+    });
+    query.order = value;
+    if (query.orderDir === 'ASC') {
+      query.orderDir = 'DESC';
+    } else {
+      query.orderDir = 'ASC';
     }
-    props.querySearchOptions.orderDir = 'ASC';
-
-    setCheckedOrder(value);
-    console.log('value', value);
+    const arr = queryString.stringify(
+      query,
+    );
+    setSearchParams(arr);
   };
 
   return (
     <SortingListWrapper>
+
       <ul>
-        <li
-          onClick={() => {
-            applySortOrder('price');
-          }}
-        >
-          Price
-        </li>
-        <li
-          onClick={() => {
-            applySortOrder('title');
-          }}
-        >
-          Name
-        </li>
-        <li
-          onClick={() => {
-            applySortOrder('author');
-          }}
-        >
-          Author Name
-        </li>
-        <li
-          onClick={() => {
-            applySortOrder('rating');
-          }}
-        >
-          Rating
-        </li>
-        <li
-          onClick={() => {
-            applySortOrder('dateOfIssue');
-          }}
-        >
-          Date of issue
-        </li>
+        {sortArray.map((item) => {
+          return (
+            <li
+              key={item.type}
+              onClick={() => {
+                applySortOrder(item.type);
+              }}
+            >
+              {item.title}
+            </li>
+          );
+        })}
       </ul>
     </SortingListWrapper>
   );
 };
 
 export default SortingList;
+
+const sortArray = [
+  {
+    title: 'Price',
+    type: 'price',
+  },
+  {
+    title: 'Name',
+    type: 'title',
+  },
+  {
+    title: 'Author',
+    type: 'author',
+  },
+  {
+    title: 'Rating',
+    type: 'rating',
+  },
+  {
+    title: 'Date of issue',
+    type: 'dateOfIssue',
+  },
+];

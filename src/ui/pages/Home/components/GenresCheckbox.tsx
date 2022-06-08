@@ -1,38 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../../store';
-import { setGenres } from '../../../../store/genreReducer';
-import bookApi, { QuerySearchOptions } from '../../../../api/bookApi';
-import { Genre } from '../../../../types';
+import queryString from 'query-string';
+import { useAppSelector } from '../../../../store';
 import CommonButton from '../../../components/CommonButton';
 import GenreCheckboxWrapper from './GenresCheckbox.styles';
+import getQueryParams from '../../../../utils/getQueryParams';
 
 type GenreCheckboxProps = {
   toggleGenreSelector: () => void;
-  onSubmit: (values: string[]) => void;
 }
 
 const GenresCheckbox: React.FC<GenreCheckboxProps> = (props) => {
   const [checkedGenres, setCheckedGenres] = useState([] as string[]);
   const genres = useAppSelector((state) => state.genreReducer.genres);
   const [searchParams, setSearchParams] = useSearchParams();
-  const search = {} as QuerySearchOptions;
 
   useEffect(() => {
-    searchParams.forEach((value, key) => {
-      Object.assign(search, { [key]: value });
-      const genresFromQuery = search.genres?.split(',');
-      if (genresFromQuery) {
-        setCheckedGenres(genresFromQuery);
-      }
-    });
+    const query = getQueryParams(searchParams);
+    const genresFromQuery = query.genres?.split(',');
+    if (genresFromQuery) {
+      setCheckedGenres(genresFromQuery);
+    }
   }, [searchParams]);
+
+  const submitGenres = () => {
+    const arr = queryString.stringify(
+      {
+        genres: checkedGenres,
+      },
+      {
+        arrayFormat: 'comma',
+      },
+    );
+    setSearchParams(arr);
+    props.toggleGenreSelector();
+  };
 
   const getValues = (e: React.ChangeEvent<HTMLInputElement>) => {
     const checkedGenreId = e.target.value;
 
     if (checkedGenres.includes(checkedGenreId)) {
-      const filteredGenres = checkedGenres.filter((i) => i !== checkedGenreId);
+      const filteredGenres = checkedGenres.filter((genre) => genre !== checkedGenreId);
       return setCheckedGenres(filteredGenres);
     }
     setCheckedGenres([...checkedGenres, checkedGenreId]);
@@ -42,8 +50,6 @@ const GenresCheckbox: React.FC<GenreCheckboxProps> = (props) => {
     <GenreCheckboxWrapper
       onClick={(e) => {
         e.stopPropagation();
-        props.onSubmit(checkedGenres);
-        props.toggleGenreSelector();
       }}
     >
       <div
@@ -74,6 +80,12 @@ const GenresCheckbox: React.FC<GenreCheckboxProps> = (props) => {
       </div>
       <CommonButton
         text="Submit"
+        onClick={submitGenres}
+          // () => {
+          // const genres = checkedGenres.join(',');
+          // props.changeQuery({ genres });
+          // props.toggleGenreSelector();
+        // }
       />
     </GenreCheckboxWrapper>
   );
