@@ -5,7 +5,6 @@ const CommonWrapper = styled.div`
   width: 100%;
   background: white;
   margin: auto;
-  flex-grow: 1;
   margin-bottom: 30px;
 
   @media (max-width: 1279px) {

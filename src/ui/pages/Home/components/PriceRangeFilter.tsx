@@ -5,6 +5,7 @@ import queryString from 'query-string';
 import { useSearchParams } from 'react-router-dom';
 import PriceFilterWrapper from '../components/PriceFilter.styles';
 import getQueryParams from '../../../../utils/getQueryParams';
+import arrowUpIcon from '../../../images/arrowUp.png';
 
 interface MultiRangeSliderProps {
   min: number;
@@ -63,6 +64,8 @@ const PriceFilter: FC<MultiRangeSliderProps> = (props) => {
         e.stopPropagation();
       }}
     >
+      <img src={arrowUpIcon} className="arrow-up" />
+
       <input
         type="range"
         min={props.min}

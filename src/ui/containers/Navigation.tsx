@@ -10,57 +10,57 @@ import RequireAuth from '../components/RequireAuth';
 
 const Navigation = () => {
   return (
-    <Routes>
-      <Route path={routePath.home} element={<Home />} />
+      <Routes>
+        <Route path={routePath.home} element={<Home />} />
 
-      <Route
-        path={routePath.signIn}
-        element={(
-          <RequireAuth
-            redirectTo={routePath.home}
-            noAuthOnly
-          >
-            <SignInForm />
-          </RequireAuth>
+        <Route
+          path={routePath.signIn}
+          element={(
+            <RequireAuth
+              redirectTo={routePath.home}
+              noAuthOnly
+            >
+              <SignInForm />
+            </RequireAuth>
+          )} />
+
+        <Route
+          path={routePath.signUp}
+          element={(
+            <RequireAuth
+              redirectTo={routePath.home}
+              noAuthOnly
+            >
+              <SignUpForm />
+            </RequireAuth>
+          )} />
+
+        <Route
+          path={routePath.cart}
+          element={(
+            <RequireAuth
+              redirectTo={routePath.signIn}
+            >
+              <Cart />
+            </RequireAuth>
+          )}
+        />
+
+        <Route
+          path={routePath.profile}
+          element={(
+            <RequireAuth
+              redirectTo={routePath.signIn}
+            >
+              <UserProfile />
+            </RequireAuth>
+          )}
+        />
+
+        <Route path="*" element={(
+          <h1>PAGE NOT FOUND!!!!! MOTHER FUCKER!!!</h1>
         )} />
-
-      <Route
-        path={routePath.signUp}
-        element={(
-          <RequireAuth
-            redirectTo={routePath.home}
-            noAuthOnly
-          >
-            <SignUpForm />
-          </RequireAuth>
-        )} />
-
-      <Route
-        path={routePath.cart}
-        element={(
-          <RequireAuth
-            redirectTo={routePath.signIn}
-          >
-            <Cart />
-          </RequireAuth>
-        )}
-      />
-
-      <Route
-        path={routePath.profile}
-        element={(
-          <RequireAuth
-            redirectTo={routePath.signIn}
-          >
-            <UserProfile />
-          </RequireAuth>
-        )}
-      />
-
-      <Route path="*" element={(
-        <h1>PAGE NOT FOUND!!!!! MOTHER FUCKER!!!</h1>
-      )} />
-    </Routes>
+      </Routes>
   );
 };
 

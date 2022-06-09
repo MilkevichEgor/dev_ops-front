@@ -18,6 +18,14 @@ const SortingListWrapper = styled.div`
   li {
     margin: 12px 0;
   }
+
+  .arrow-up {
+    width: 33px;
+    height: 20px;
+    position: absolute;
+    top: -14px;
+    left: 11px;
+  }
 `;
 
 export default SortingListWrapper;

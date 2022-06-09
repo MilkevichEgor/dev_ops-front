@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import queryString from 'query-string';
 import forwardIcon from '../../../images/forwardIcon.png';
 import CatalogWrapper from './Catalog.styles';
 import CommonWrapper from '../../../styles/CommonWrapper';
@@ -8,17 +7,15 @@ import BooksList from './Books';
 import GenresCheckbox from './GenresCheckbox';
 import PriceFilter from './PriceRangeFilter';
 import SortingList from './SortingList';
-import { QuerySearchOptions } from '../../../../api/bookApi';
 import getQueryParams from '../../../../utils/getQueryParams';
 import PaginationBlock from './PaginationBlock';
+
 
 const Catalog = () => {
   const [isGenresSelect, setIsGenresSelect] = useState(false);
   const [isOrderSelect, setIsOrderSelect] = useState(false);
   const [isPriceRangeSelect, setIsPriceRangeSelect] = useState(false);
-  const [querySearchParams, setQuerySearchParams] = useState<QuerySearchOptions | undefined>();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [totalNumOfBooks, setTotalNumOfBooks] = useState<number>();
 
   const toggleIsGenresSelect = () => {
     setIsGenresSelect(!isGenresSelect);
@@ -28,9 +25,6 @@ const Catalog = () => {
   };
   const toggleIsOrderSelect = () => {
     setIsOrderSelect(!isOrderSelect);
-  };
-  const setBooksQuantity = (num: number) => {
-    setTotalNumOfBooks(num);
   };
 
   let sortByTitle = getQueryParams(searchParams).order || 'price';
@@ -72,7 +66,7 @@ const Catalog = () => {
             {isPriceRangeSelect &&
               <PriceFilter
                 min={1}
-                max={999}
+                max={100}
               />
             }
           </div>

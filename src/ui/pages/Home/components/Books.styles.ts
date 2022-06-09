@@ -32,6 +32,32 @@ const BooksWrapper = styled.div`
     color: #B9BAC4;
     margin: 0 0 20px 0;
   }
+
+  @media (max-width: 1310px) {
+    gap: 30px 20px;
+
+    .book {
+      width: 254px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+    .cover {
+      height: 372px;
+      width: 254px;
+    }
+  }
+
+  @media (max-width: 833px) {
+    .book {
+      width: 135px;
+      font-size: 14px;
+      line-height: 21px;
+    }
+    .cover {
+      height: 192px;
+      width: 135px;
+    }
+  }
 `;
 
 export default BooksWrapper;

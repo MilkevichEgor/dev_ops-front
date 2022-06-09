@@ -7,6 +7,7 @@ import Navigation from './ui/containers/Navigation';
 import authApi from './api/authApi';
 import { useAppDispatch } from './store';
 import { setUser } from './store/userReducer';
+import MainWrapper from './ui/styles/Main.styles';
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -32,7 +33,9 @@ const App = () => {
   return (
     <>
       <Header />
-      <Navigation />
+      <MainWrapper>
+        <Navigation />
+      </MainWrapper>
       <Footer />
     </>
   );

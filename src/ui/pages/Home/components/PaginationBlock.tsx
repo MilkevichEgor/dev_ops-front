@@ -1,35 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import queryString from 'query-string';
-import styled from 'styled-components';
 import { useAppSelector } from '../../../../store';
 import arrow from '../../../images/pageForwardArrow.png';
 import getQueryParams from '../../../../utils/getQueryParams';
-
-const PaginationWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 60px 0 60px;
-  .back {
-    transform: rotate(180deg);
-  }
-
-  .arrow {
-    margin: 0 36px;
-  }
-
-  .page {
-    width: 9px;
-    height: 9px;
-    border: 3px solid #0D1821;
-    border-radius: 50%;
-    margin: 0 36px;
-  }
-
-  .page__current {
-    background-color: #0D1821
-  }
-`;
+import PaginationWrapper from './PaginationBlock.styles';
 
 const PaginationBlock = () => {
   const totalPages = useAppSelector((state) => state.bookReducer.pages);
@@ -45,18 +20,20 @@ const PaginationBlock = () => {
         setCurrentPage(+query.page);
       }
     }
-  }, []);
+  }, [totalPages]);
 
   useEffect(() => {
     if (currentPage) {
+      if (currentPage > totalPages.length) {
+        setCurrentPage(1);
+      }
+
       query.page = currentPage.toString();
-      const arr = queryString.stringify(
-        query,
-      );
+      const arr = queryString.stringify(query, { skipEmptyString: true });
 
       setSearchParams(arr);
     }
-  }, [currentPage]);
+  }, [currentPage, totalPages]);
 
   const turnPage = (dir: 'back' | 'forward') => {
     if (!currentPage) {
@@ -77,34 +54,37 @@ const PaginationBlock = () => {
   };
 
   return (
-    <PaginationWrapper>
-      <img
-        src={arrow}
-        className="arrow back"
-        alt="back arrow"
-        onClick={() => turnPage('back')}
-      />
-      {totalPages.map((page, index) => {
-        let style = 'page';
-        if (index + 1 === currentPage) {
-          style = 'page page__current';
-        }
-        return (
-          <div
-            key={index}
-            className={style}
-          >
+    <nav>
+      {totalPages.length > 1 &&
+        <PaginationWrapper>
+          <img
+            src={arrow}
+            className="arrow back"
+            alt="back arrow"
+            onClick={() => turnPage('back')}
+          />
+          {totalPages.map((page, index) => {
+            let style = 'page';
+            if (index + 1 === currentPage) {
+              style = 'page page__current';
+            }
+            return (
+              <div
+                key={index}
+                className={style}
+              >
 
-          </div>
-        );
-      }) || null}
-      <img
-        src={arrow}
-        className="arrow forward"
-        alt="arrow forward"
-        onClick={() => turnPage('forward')}
-      />
-    </PaginationWrapper>
+              </div>
+            );
+          }) || null}
+          <img
+            src={arrow}
+            className="arrow forward"
+            alt="arrow forward"
+            onClick={() => turnPage('forward')}
+          />
+        </PaginationWrapper>}
+    </nav>
   );
 };
 

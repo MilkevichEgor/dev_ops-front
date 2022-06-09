@@ -30,6 +30,23 @@ const GenreCheckboxWrapper = styled.div`
     margin-left: 15px;
     vertical-align: bottom;
   }
+
+  .arrow-up {
+    width: 33px;
+    height: 20px;
+    position: absolute;
+    top: -14px;
+    left: 11px;
+  }
+
+  @media (max-width: 1310px) {
+    width: 290px;
+  }
+
+  @media (max-width: 833px) {
+    width: 100%;
+    z-index: 1;
+  }
 `;
 
 export default GenreCheckboxWrapper;

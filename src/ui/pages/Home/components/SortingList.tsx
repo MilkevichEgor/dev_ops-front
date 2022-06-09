@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import queryString from 'query-string';
 import SortingListWrapper from './SortingList.styles';
 import getQueryParams from '../../../../utils/getQueryParams';
+import arrowUpIcon from '../../../images/arrowUp.png';
 
 const SortingList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -23,7 +24,7 @@ const SortingList = () => {
 
   return (
     <SortingListWrapper>
-
+      <img src={arrowUpIcon} className="arrow-up" />
       <ul>
         {sortArray.map((item) => {
           return (

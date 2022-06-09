@@ -99,6 +99,32 @@ const PriceFilterWrapper = styled.div`
   pointer-events: all;
   position: relative;
 }
+
+.arrow-up {
+    width: 33px;
+    height: 20px;
+    position: absolute;
+    top: -14px;
+    left: 11px;
+  }
+
+  @media (max-width: 1310px) {
+    width: 290px;
+    
+    .thumb {
+      width: 270px;
+    }
+
+    .slider {
+      width: 260px;
+    }
+  }
+
+  @media (max-width: 833px) {
+    width: 100%;
+    z-index: 1;
+  }
+
 `;
 
 export default PriceFilterWrapper;

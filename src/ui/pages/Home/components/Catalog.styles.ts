@@ -69,6 +69,7 @@ const CatalogWrapper = styled.div`
 
     .input {
       width: 290px;
+      margin-left: 0;
       margin-bottom: 20px;
     }
 
