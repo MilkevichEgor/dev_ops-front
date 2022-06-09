@@ -1,3 +1,5 @@
+import { AxiosResponse } from 'axios';
+import { Book } from '../types';
 import axios from './axios';
 
 const bookPath = '/book';
@@ -22,7 +24,12 @@ const getAllGenres = () => {
   return axios.get(`${bookPath}/genres`);
 };
 
+const getOneBook = (id: string): Promise<AxiosResponse<{book: Book}>> => {
+  return axios.get(`${bookPath}/${id}`);
+};
+
 export default {
   getAllBooks,
   getAllGenres,
+  getOneBook,
 };

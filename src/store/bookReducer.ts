@@ -3,12 +3,12 @@ import { Books } from '../types';
 
 export interface BookState {
   books: Books | [],
-  pages: number[],
+  pages: number,
 }
 
 export const initialState: BookState = {
   books: [],
-  pages: [1],
+  pages: 0,
 };
 
 export const bookReducer = createSlice({

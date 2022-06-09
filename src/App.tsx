@@ -12,7 +12,6 @@ import MainWrapper from './ui/styles/Main.styles';
 const App = () => {
   const dispatch = useAppDispatch();
   const [isAuthChecked, setIsAuthChecked] = useState(false);
-  const [isAuthorized, setIsAuthorized] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -20,7 +19,6 @@ const App = () => {
       const response = await authApi.checkToken(token).catch(() => null);
       if (response) {
         dispatch(setUser(response.data.user));
-        setIsAuthorized(true);
       }
       setIsAuthChecked(true);
     })();
@@ -33,9 +31,11 @@ const App = () => {
   return (
     <>
       <Header />
+
       <MainWrapper>
         <Navigation />
       </MainWrapper>
+
       <Footer />
     </>
   );

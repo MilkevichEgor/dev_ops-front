@@ -2,17 +2,18 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import SignInForm from '../pages/auth/SignIn';
 import SignUpForm from '../pages/auth/SignUp';
-import Home from '../pages/Home';
+import Home from '../pages/home';
 import Cart from '../pages/card/Card';
 import UserProfile from '../pages/userProfile/UserProfile';
 import { routePath } from '../../constants';
 import RequireAuth from '../components/RequireAuth';
+import ProductPage from '../pages/productPage/ProductPage';
 
 const Navigation = () => {
   return (
       <Routes>
         <Route path={routePath.home} element={<Home />} />
-
+        <Route path={routePath.product} element={<ProductPage />} />
         <Route
           path={routePath.signIn}
           element={(
