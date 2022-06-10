@@ -13,6 +13,9 @@ const useQuery = <QueryType extends object>() => {
 
   const setParams = React.useCallback((data: Partial<QueryType>) => {
     Object.entries(data).forEach(([key, value]) => {
+      if (!value) {
+        return URLSearchParams.delete(key);
+      }
       URLSearchParams.set(key, value as string);
     });
     setURLSearchParams(URLSearchParams);

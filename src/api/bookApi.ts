@@ -12,6 +12,7 @@ export type QuerySearchOptions = {
   priceTo?: string;
   order?: string;
   orderDir?: string;
+  value?: string;
 }
 
 const getAllBooks = (options: QuerySearchOptions) => {
@@ -24,6 +25,12 @@ const getAllGenres = () => {
   return axios.get(`${bookPath}/genres`);
 };
 
+const searchForValue = (options: QuerySearchOptions) => {
+  return axios.get(`${bookPath}/search`, {
+    params: options,
+  });
+};
+
 const getOneBook = (id: string): Promise<AxiosResponse<{book: Book}>> => {
   return axios.get(`${bookPath}/${id}`);
 };
@@ -32,4 +39,5 @@ export default {
   getAllBooks,
   getAllGenres,
   getOneBook,
+  searchForValue,
 };

@@ -4,10 +4,8 @@ export const routePath = {
   signUp: '/signup',
   profile: '/me',
   cart: '/cart',
-  product: '/product/:id',
-  getProductUrl(id: number) {
-    return `/product/${id}`;
-  },
+  product: '/product',
+  search: '/search',
 };
 
 export const booksQuantityPerPage = 12;

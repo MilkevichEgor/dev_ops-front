@@ -16,8 +16,14 @@ const HeaderWrapper = styled.header`
   }
 
   .search-input {
+    width: inherit;
     border: none;
     background: #F0F4EF;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.75px;
+    outline: none;
   }
 
   .search-icon {

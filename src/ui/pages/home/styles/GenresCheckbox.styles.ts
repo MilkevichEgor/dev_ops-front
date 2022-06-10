@@ -28,6 +28,7 @@ const GenreCheckboxWrapper = styled.div`
     height: 1.85em;
     border-radius: 50%;
     margin-left: 15px;
+    margin-right: 10px;
     vertical-align: bottom;
   }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { useAppSelector } from '../../../store';
 import logo from '../../images/logo.svg';
@@ -11,9 +11,24 @@ import HeaderWrapper from '../Header/Header.styles';
 import { routePath } from '../../../constants';
 import AuthButtonsBlock from './AuthButtonsBlock';
 import CommonButtonWrapper from '../../components/CommonButton.styled';
+import useQuery from '../../../utils/useQuery';
+import { QuerySearchOptions } from '../../../api/bookApi';
 
 const Header = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [parsedParams, setParams] = useQuery<QuerySearchOptions>();
   const user = useAppSelector((state) => state.userReducer.user);
+
+  const handleSearchRequest: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.key === 'Enter') {
+      const value = e.currentTarget.value;
+      setParams({ value });
+      if (location.pathname !== '/') {
+        navigate(`${routePath.home}?value=${value}`);
+      }
+    }
+  };
 
   return (
     <CommonWrapper>
@@ -26,15 +41,18 @@ const Header = () => {
             Catalog
           </span>
         </div>
-        <div className="search-field">
+        <label htmlFor="global-search"
+          className="search-field"
+        >
           <img className="search-icon" src={searchIcon} />
           <input
             className="search-input"
             type="text"
             id="global-search"
             placeholder="Search"
+            onKeyDown={handleSearchRequest}
           />
-        </div>
+        </label>
         {user
           ? <AuthButtonsBlock />
           : (
@@ -44,7 +62,7 @@ const Header = () => {
                 className="test"
               >
                 Log In / Sign Up
-                </CommonButtonWrapper>
+              </CommonButtonWrapper>
             </Link>
           )}
       </HeaderWrapper>
