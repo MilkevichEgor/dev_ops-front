@@ -25,6 +25,7 @@ export interface Book {
   price: number;
   quantity?: number;
   title: string;
+  description: string;
 }
 export type Books = Book[];
 
