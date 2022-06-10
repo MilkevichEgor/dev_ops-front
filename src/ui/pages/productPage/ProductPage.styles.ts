@@ -29,6 +29,34 @@ const ProductPageWrapper = styled.div`
     line-height: 36px;
   }
 
+  .rating {
+    display: flex;
+    height: 28px;
+    margin: 30px 0;
+  }
+
+  .rating__averageRate {
+    display: flex;
+    margin-right: 41px;
+  }
+
+  .icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 14px;
+  }
+
+  .arrow {
+    opacity: 0.2;
+    margin: 0 10px 0 44px;
+  }
+
+  .updateRate {
+    display: flex;
+    align-items: center;
+    color: #B9BAC4;
+  }
+
   .description__text {
     font-size: 16px;
     line-height: 24px;
