@@ -1,29 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import queryString from 'query-string';
 import { useAppSelector } from '../../../../store';
 import arrow from '../../../images/pageForwardArrow.png';
-import getQueryParams from '../../../../utils/getQueryParams';
 import PaginationWrapper from '../styles/PaginationBlock.styles';
 import useQuery from '../../../../utils/useQuery';
 import { QuerySearchOptions } from '../../../../api/bookApi';
 
 const PaginationBlock = () => {
   const [parsedParams, setParams] = useQuery<QuerySearchOptions>();
-  const [searchParams, setSearchParams] = useSearchParams();
   const [currentPage, setCurrentPage] = useState<number>();
   const totalPages = useAppSelector((state) => state.bookReducer.pages);
-  // const query = getQueryParams(searchParams);
 
   useEffect(() => {
     if (!currentPage) {
-      // if (!query.page) {
       if (!parsedParams.page) {
         console.log('!currentPage');
         setCurrentPage(1);
       } else {
         console.log('currentPage');
-        // setCurrentPage(+query.page);
         setCurrentPage(+parsedParams.page);
       }
     }
@@ -31,14 +24,9 @@ const PaginationBlock = () => {
 
   useEffect(() => {
     if (currentPage) {
-      // if (currentPage > totalPages || !query.page) {
       if (totalPages > 0 && (currentPage > totalPages || !parsedParams.page)) {
         setCurrentPage(1);
       }
-      // query.page = currentPage.toString();
-      // const arr = queryString.stringify(query, { skipEmptyString: true });
-
-      // setSearchParams(arr);
       setParams({ page: currentPage.toString() });
     }
   }, [currentPage, totalPages]);

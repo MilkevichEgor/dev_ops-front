@@ -15,6 +15,12 @@ export type QuerySearchOptions = {
   value?: string;
 }
 
+export type SetRatingOptions = {
+  book_id: number;
+  rating: number;
+  user_id: number;
+}
+
 const getAllBooks = (options: QuerySearchOptions) => {
   return axios.get(`${bookPath}/all`, {
     params: options,
@@ -35,9 +41,14 @@ const getOneBook = (id: string): Promise<AxiosResponse<{book: Book}>> => {
   return axios.get(`${bookPath}/${id}`);
 };
 
+const setRating = (data: SetRatingOptions) => {
+  return axios.post(`${bookPath}/rate`, data);
+};
+
 export default {
   getAllBooks,
   getAllGenres,
   getOneBook,
   searchForValue,
+  setRating,
 };

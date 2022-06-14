@@ -1,30 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import bookApi from '../../../api/bookApi';
-import { Book } from '../../../types';
+import { Book, RatingObj } from '../../../types';
 import CommonButton from '../../components/CommonButton';
 import Rating from '../../components/Rating';
 import CommonWrapper from '../../styles/CommonWrapper';
 import ProductPageWrapper from './ProductPage.styles';
 import filledStarIcon from '../../images/StarFilled.png';
 import backArrow from '../../images/backArrow.png';
+import { useAppSelector } from '../../../store';
 
 const ProductPage = () => {
   const [book, setBook] = useState<Book>();
+  const [isChangeRating, setIsChangeRating] = useState(false);
+  const user = useAppSelector((state) => state.userReducer.user);
   const params = useParams();
+
   useEffect(() => {
     try {
       (async () => {
         if (!params.id) return;
         const response = await bookApi.getOneBook(params.id);
         setBook(response.data.book);
-        console.log('response', response.data);
       })();
     } catch (err) {
       console.log('ERROR', err);
     }
   }, [params.id]);
   if (!book) return null;
+
+  const handleChangeRating = () => {
+    setIsChangeRating(!isChangeRating);
+  };
+
+  const currentUserRating = user?.ratings?.find((item: RatingObj) => {
+    return item.book.bookId === book.bookId;
+  });
   return (
     <CommonWrapper>
       <ProductPageWrapper>
@@ -45,12 +56,22 @@ const ProductPage = () => {
                 src={filledStarIcon}
                 className="icon"
               />
-              <div className="updateRate">{'5.0'}</div>
+              <div className="updateRate">{book.averageRate}</div>
             </div>
-            <Rating />
-            <div className="updateRate">
+            <Rating
+              book_id={book.bookId}
+              rate={currentUserRating?.rating || 0}
+              isChangeRating={isChangeRating}
+              handleChangeRating={handleChangeRating}
+            />
+            <div
+              className="updateRate"
+              onClick={handleChangeRating}
+            >
               <img className="arrow" src={backArrow} />
-              <p>Rate this book</p>
+              {isChangeRating
+                ? <p>Rate this book</p>
+                : <p>Update rating</p>}
             </div>
           </div>
 

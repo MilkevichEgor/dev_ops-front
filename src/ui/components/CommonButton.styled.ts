@@ -1,14 +1,14 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const defaultValues = {
   padding: '10px 50px',
 };
 
-const sizes = {
-  small: css``,
-  medium: css``,
-  large: css``,
-};
+// const sizes = {
+//   small: css``,
+//   medium: css``,
+//   large: css``,
+// };
 
 const CommonButtonWrapper = styled.button<{
   size?: 'small' | 'medium' | 'large';
@@ -42,11 +42,11 @@ const CommonButtonWrapper = styled.button<{
 
 export default CommonButtonWrapper;
 
-    /* ${props => {
+/* ${props => {
       switch (props.size) {
         case 'large':
           return css`
-          
+
           `
       }
     }} */

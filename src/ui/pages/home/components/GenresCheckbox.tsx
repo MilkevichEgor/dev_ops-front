@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import queryString from 'query-string';
 import { useAppSelector } from '../../../../store';
 import GenreCheckboxWrapper from '../styles/GenresCheckbox.styles';
-import getQueryParams from '../../../../utils/getQueryParams';
 import arrowUpIcon from '../../../images/arrowUp.png';
 import useQuery from '../../../../utils/useQuery';
 import { QuerySearchOptions } from '../../../../api/bookApi';
@@ -17,11 +14,7 @@ const GenresCheckbox: React.FC<GenreCheckboxProps> = () => {
   const genres = useAppSelector((state) => state.genreReducer.genres);
   const [parsedParams, setParams] = useQuery<QuerySearchOptions>();
 
-  const [searchParams, setSearchParams] = useSearchParams();
-  // const query = getQueryParams(searchParams);
-
   useEffect(() => {
-    // const genresFromQuery = query.genres?.split(',');
     if (parsedParams.genres) {
       const genresFromQuery = parsedParams.genres.split(',');
 
@@ -32,10 +25,7 @@ const GenresCheckbox: React.FC<GenreCheckboxProps> = () => {
   }, [parsedParams.genres]);
 
   const updateFilterQuery = (genres: string[]) => {
-    // query.genres = genres.toString();
     parsedParams.genres = genres.toString();
-    // const arr = queryString.stringify(query, { skipEmptyString: true });
-    // setSearchParams(arr);
     setParams(parsedParams);
   };
 

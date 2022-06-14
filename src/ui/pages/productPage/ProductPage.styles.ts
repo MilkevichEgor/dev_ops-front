@@ -55,6 +55,7 @@ const ProductPageWrapper = styled.div`
     display: flex;
     align-items: center;
     color: #B9BAC4;
+    cursor: pointer;
   }
 
   .description__text {

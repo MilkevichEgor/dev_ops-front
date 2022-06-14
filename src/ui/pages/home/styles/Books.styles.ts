@@ -33,6 +33,14 @@ const BooksWrapper = styled.div`
     margin: 0 0 20px 0;
   }
 
+  .rating {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    line-height: 24px;
+    color: #B9BAC4;
+  }
+
   @media (max-width: 1310px) {
     gap: 30px 20px;
 

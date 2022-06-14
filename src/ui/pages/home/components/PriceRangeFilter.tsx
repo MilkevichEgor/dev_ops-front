@@ -1,9 +1,6 @@
 import React, { ChangeEvent, FC, useCallback, useEffect, useState, useRef } from 'react';
 import classnames from 'classnames';
-import queryString from 'query-string';
-import { useSearchParams } from 'react-router-dom';
 import PriceFilterWrapper from '../styles/PriceFilter.styles';
-import getQueryParams from '../../../../utils/getQueryParams';
 import arrowUpIcon from '../../../images/arrowUp.png';
 import useQuery from '../../../../utils/useQuery';
 import { QuerySearchOptions } from '../../../../api/bookApi';
@@ -14,9 +11,8 @@ interface MultiRangeSliderProps {
 }
 
 const PriceFilter: FC<MultiRangeSliderProps> = (props) => {
-  const [parsedParams, setParams] = useQuery<QuerySearchOptions>();
+  const [, setParams] = useQuery<QuerySearchOptions>();
 
-  const [searchParams, setSearchParams] = useSearchParams();
   const [minVal, setMinVal] = useState(props.min);
   const [maxVal, setMaxVal] = useState(props.max);
   const minValRef = useRef<HTMLInputElement>(null);
@@ -52,15 +48,6 @@ const PriceFilter: FC<MultiRangeSliderProps> = (props) => {
   }, [maxVal, getPercent]);
 
   const setPriceRange: React.MouseEventHandler<HTMLDivElement> = () => {
-    // const query = getQueryParams(searchParams);
-    // query.priceFrom = minVal.toString();
-    // query.priceTo = maxVal.toString();
-    // const arr = queryString.stringify(
-    //   query,
-    // );
-    // setSearchParams(arr);
-    // parsedParams.priceFrom = minVal.toString();
-    // parsedParams.priceTo = maxVal.toString();
     setParams({
       priceFrom: minVal.toString(),
       priceTo: maxVal.toString(),

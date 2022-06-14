@@ -3,6 +3,12 @@ export interface User {
   email: string,
   name?: string,
   avatar?: string,
+  ratings?: RatingObj[]
+}
+
+export type RatingObj = {
+  book: Book,
+  rating: number,
 }
 
 export type Token = string | undefined;
@@ -26,6 +32,7 @@ export interface Book {
   quantity?: number;
   title: string;
   description: string;
+  averageRate: number;
 }
 export type Books = Book[];
 

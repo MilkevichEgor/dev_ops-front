@@ -19,6 +19,10 @@ instance.interceptors.request.use((config) => {
 });
 
 instance.interceptors.response.use((response) => {
+  if (response.data === 'OK') {
+    return response;
+  }
+
   if ('token' in response.data) {
     Cookies.set('token', response.data.token);
   }

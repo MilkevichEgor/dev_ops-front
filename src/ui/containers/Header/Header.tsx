@@ -5,7 +5,6 @@ import { useAppSelector } from '../../../store';
 import logo from '../../images/logo.svg';
 import searchIcon from '../../images/SearchIcon.png';
 import Logo from '../../styles/Logo';
-import CommonButton from '../../components/CommonButton';
 import CommonWrapper from '../../styles/CommonWrapper';
 import HeaderWrapper from '../Header/Header.styles';
 import { routePath } from '../../../constants';
@@ -17,7 +16,7 @@ import { QuerySearchOptions } from '../../../api/bookApi';
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [parsedParams, setParams] = useQuery<QuerySearchOptions>();
+  const [, setParams] = useQuery<QuerySearchOptions>();
   const user = useAppSelector((state) => state.userReducer.user);
 
   const handleSearchRequest: React.KeyboardEventHandler<HTMLInputElement> = (e) => {

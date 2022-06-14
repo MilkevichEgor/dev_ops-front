@@ -9,6 +9,7 @@ import BooksWrapper from '../styles/Books.styles';
 import { setGenres } from '../../../../store/genreReducer';
 import constants, { routePath } from '../../../../constants';
 import useQuery from '../../../../utils/useQuery';
+import Rating from '../../../components/Rating';
 
 const BooksList = () => {
   const books = useAppSelector((state) => state.bookReducer.books);
@@ -52,16 +53,21 @@ const BooksList = () => {
                 className="cover"
                 alt="book cover"
               />
-              <p
-                className="title"
-              >
+              <p className="title">
                 {book.title}
               </p>
             </Link>
-            <p
-              className="author"
-            >
-              {book.author}</p>
+            <p className="author">
+              {book.author}
+            </p>
+            <div className="rating">
+              <Rating
+                rate={book.averageRate}
+                isChangeRating={false}
+                book_id={book.bookId}
+              />
+              <div>{book.averageRate}</div>
+            </div>
             <CommonButton
               text={`$${book.price} USD`}
             />
