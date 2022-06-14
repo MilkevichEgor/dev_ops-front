@@ -82,6 +82,35 @@ const ProductPageWrapper = styled.div`
   .button-block__button {
     margin-right: 82px;
   }
+
+  @media (max-width: 1279px) {
+    .cover {
+      width: 391px;
+      height: 584px;
+    }
+
+    .title {
+      font-size: 32px;
+      line-height: 48px;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      line-height: 30px;
+    }
+
+    .book-info {
+      max-width: 392px;
+    }
+
+    .button-block {
+      margin-top: 50 px;
+    }
+
+    .button-block__button {
+      margin-right: 20px;
+    }
+  }
 `;
 
 export default ProductPageWrapper;

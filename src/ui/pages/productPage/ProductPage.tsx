@@ -9,6 +9,7 @@ import ProductPageWrapper from './ProductPage.styles';
 import filledStarIcon from '../../images/StarFilled.png';
 import backArrow from '../../images/backArrow.png';
 import { useAppSelector } from '../../../store';
+import Comments from './Comments';
 
 const ProductPage = () => {
   const [book, setBook] = useState<Book>();
@@ -100,6 +101,7 @@ const ProductPage = () => {
           </div>
         </div>
       </ProductPageWrapper>
+      <Comments />
     </CommonWrapper>
   );
 };

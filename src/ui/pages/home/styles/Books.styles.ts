@@ -36,9 +36,11 @@ const BooksWrapper = styled.div`
   .rating {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 16px;
     line-height: 24px;
     color: #B9BAC4;
+    margin: 21px 0 32px 0;
   }
 
   @media (max-width: 1310px) {
@@ -64,6 +66,10 @@ const BooksWrapper = styled.div`
     .cover {
       height: 192px;
       width: 135px;
+    }
+
+    .rating {
+      margin: 15px 0 18px 0;
     }
   }
 `;
