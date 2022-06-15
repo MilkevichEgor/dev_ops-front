@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+
 import bookApi from '../../../api/bookApi';
 import { Book, RatingObj } from '../../../types';
 import CommonButton from '../../components/CommonButton';
@@ -17,19 +18,23 @@ const ProductPage = () => {
   const user = useAppSelector((state) => state.userReducer.user);
   const params = useParams();
 
+  const setBookInState = (book: Book) => {
+    setBook(book);
+  };
+
   useEffect(() => {
     try {
       (async () => {
         if (!params.id) return;
         const response = await bookApi.getOneBook(params.id);
-        setBook(response.data.book);
+        setBookInState(response.data.book);
       })();
     } catch (err) {
       console.log('ERROR', err);
     }
   }, [params.id]);
-  if (!book) return null;
 
+  if (!book) return null;
   const handleChangeRating = () => {
     setIsChangeRating(!isChangeRating);
   };
@@ -88,7 +93,8 @@ const ProductPage = () => {
                 Paperback
               </p>
               <CommonButton
-                text={`$ ${book.price} USD`} />
+                text={`$ ${book.price} USD`}
+              />
             </div>
             <div className="button-block__button">
               <p className="button-block__description">
@@ -101,7 +107,10 @@ const ProductPage = () => {
           </div>
         </div>
       </ProductPageWrapper>
-      <Comments />
+      <Comments
+        setBookInState={setBookInState}
+        book={book}
+      />
     </CommonWrapper>
   );
 };

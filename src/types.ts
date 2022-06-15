@@ -33,12 +33,20 @@ export interface Book {
   title: string;
   description: string;
   averageRate: number;
+  comments: Comment[]
 }
 export type Books = Book[];
 
 export interface Genre {
   genreId: number;
   name: string;
+}
+
+export type Comment = {
+  comment_id: number;
+  date: string;
+  text: string;
+  user: User;
 }
 
 export type Genres = Genre[];

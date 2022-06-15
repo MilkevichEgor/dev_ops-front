@@ -47,6 +47,7 @@ margin: 20px 0;
   border: none;
   outline: none;
   background: inherit;
+  -webkit-box-shadow: inset 0 0 0 50px #f0f4ef;
 }
 
 .no-hint {

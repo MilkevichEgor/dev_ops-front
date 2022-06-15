@@ -10,13 +10,14 @@ const CommentsWrapper = styled.div`
     font-size: 32px;
     line-height: 48px;
   }
-
+  
   .comment {
     display: flex;
     max-width: 783px;
     width: 100%;
     border-radius: 16px;
     background: #F0F4EF;
+    margin: 10px 0;
   }
 
   .avatar {
@@ -52,6 +53,7 @@ const CommentsWrapper = styled.div`
   }
 
   .textarea {
+    box-sizing: border-box;
     border: none;
     margin: 60px 0 30px 0;
     padding: 20px 24px;
@@ -62,6 +64,10 @@ const CommentsWrapper = styled.div`
     font-size: 16px;
     line-height: 28px;
     letter-spacing: 0.75px;
+  }
+
+  .textarea:focus {
+    outline: none;
   }
 `;
 export default CommentsWrapper;

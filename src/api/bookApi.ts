@@ -21,6 +21,12 @@ export type SetRatingOptions = {
   user_id: number;
 }
 
+export type AddCommentOptions = {
+  book_id: number;
+  text: string;
+  user_id: number;
+}
+
 const getAllBooks = (options: QuerySearchOptions) => {
   return axios.get(`${bookPath}/all`, {
     params: options,
@@ -45,10 +51,15 @@ const setRating = (data: SetRatingOptions) => {
   return axios.post(`${bookPath}/rate`, data);
 };
 
+const addComment = (data: AddCommentOptions) => {
+  return axios.post(`${bookPath}/addComment`, data);
+};
+
 export default {
   getAllBooks,
   getAllGenres,
   getOneBook,
   searchForValue,
   setRating,
+  addComment,
 };

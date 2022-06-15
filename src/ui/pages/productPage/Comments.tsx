@@ -1,58 +1,86 @@
 import React from 'react';
-import { useAppSelector } from '../../../store';
+import { useFormik } from 'formik';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+import bookApi from '../../../api/bookApi';
+import { Book } from '../../../types';
 import CommonButton from '../../components/CommonButton';
 import CommentsWrapper from './Comments.styles';
+import { useAppSelector } from '../../../store';
 
-type Comment = {
-  id: number,
-  avatar?: string,
-  name?: string,
-  date: string,
-  text: string,
+type CommentsProps = {
+  book: Book,
+  setBookInState: (data: Book) => void,
 }
 
-const Comments = () => {
+const Comments: React.FC<CommentsProps> = (props) => {
   const user = useAppSelector((state) => state.userReducer.user);
-  const arr: Comment[] = [{
-    id: 1,
-    avatar: user?.avatar,
-    name: user?.name,
-    date: 'Left a comment two days ago',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  }];
+  const commentsArray = props.book.comments;
+  const formik = useFormik({
+    initialValues: {
+      text: '',
+    },
+    onSubmit: async (value) => {
+      try {
+        if (!user) { return; }
+        const newComment = {
+          text: value.text.trim(),
+          book_id: props.book.bookId,
+          user_id: user.id,
+        };
+        const response = await bookApi.addComment(newComment);
+        value.text = '';
+        props.book.comments.push(response.data.comment);
+        props.setBookInState(props.book);
+      } catch (error) {
+        console.log('ERROR>>', error);
+      }
+    },
+  });
+
+  const dateToDateAgo = (date: string) => {
+    dayjs.extend(relativeTime);
+    const newDate = dayjs(date).fromNow();
+    return `Left a comment ${newDate}`;
+  };
+
   return (
     <CommentsWrapper>
       <h1 className="title">Comments</h1>
-      {arr && <div className="comments">
-        {arr.map((comment) => {
+      {commentsArray.length > 0 && <div className="comments">
+        {commentsArray.map((comment) => {
           return (
             <div
-              key={comment.id}
+              key={comment.comment_id}
               className="comment"
             >
-              <img src={comment.avatar} className="avatar" />
+              <img src={comment.user.avatar} className="avatar" />
               <div className="content_block">
-                <p className="author_name">{comment.name}</p>
-                <p className="date">{comment.date}</p>
+                <p className="author_name">{comment.user.name}</p>
+                <p className="date">{dateToDateAgo(comment.date)}</p>
                 <p className="text">{comment.text}</p>
               </div>
             </div>
           );
         })}
       </div>}
-      <div>
-        <textarea
-          name=""
-          id=""
-          placeholder="Share a comment"
-          className="textarea comment"
-          // cols={30}
-          rows={3}
+      {user &&
+        <form
+          onSubmit={formik.handleSubmit}
+          className="comment_form"
         >
-        </textarea>
-        <CommonButton
-          text="Post a comment" />
-      </div>
+          <textarea
+            id=""
+            placeholder="Share a comment"
+            className="textarea comment"
+            rows={3}
+            {...formik.getFieldProps('text')}
+            {...formik?.touched.text ? formik?.errors.text : ''}
+          />
+          <CommonButton
+            text="Post a comment" />
+        </form>}
     </CommentsWrapper>
   );
 };

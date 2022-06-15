@@ -42,7 +42,7 @@ const UserProfile = () => {
   };
 
   const avatar = useMemo(() => {
-    if (!user?.avatar) {
+    if (!user?.avatar || user?.avatar === 'http://localhost:4000/user/null') {
       return defaultAvatar;
     }
     return user.avatar;
