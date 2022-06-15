@@ -9,7 +9,19 @@ import bookApi from '../../api/bookApi';
 const RatingWrapper = styled.div`
   .star {
     margin: 0 17.5px 0 0;
-    /* width: 20%; */
+  }
+
+  @media (max-width: 1279px) {
+    .star {
+      width: 23px;
+      height: 23px;
+    }
+
+  @media (max-width: 833px) {
+    .star {
+      width: 14px;
+      height: 14px;
+    }
   }
 `;
 

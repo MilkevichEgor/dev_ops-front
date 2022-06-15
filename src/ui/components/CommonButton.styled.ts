@@ -31,6 +31,7 @@ const CommonButtonWrapper = styled.button<{
     text-decoration-line: none;
     cursor: pointer;
     border: none;
+    white-space: nowrap;
 
 
   @media (max-width: 833px) {

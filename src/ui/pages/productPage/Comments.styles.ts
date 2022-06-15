@@ -3,14 +3,12 @@ import styled from 'styled-components';
 const CommentsWrapper = styled.div`
   margin-top: 88px;
 
-
-
   .title {
     font-weight: 700;
     font-size: 32px;
     line-height: 48px;
   }
-  
+
   .comment {
     display: flex;
     max-width: 783px;
@@ -50,6 +48,7 @@ const CommentsWrapper = styled.div`
   .text {
     letter-spacing: 0.75px;
     color: #344966;
+    margin: 0;
   }
 
   .textarea {
@@ -68,6 +67,59 @@ const CommentsWrapper = styled.div`
 
   .textarea:focus {
     outline: none;
+  }
+
+  @media (max-width: 1279px) {
+    .comments {
+      max-width: 667px;
+    }
+
+    .comment_form {
+      max-width: 738px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 833px) {
+    .comment {
+      display: grid;
+      grid-template-columns: 58px auto;
+    }
+
+    .avatar {
+      width: 35px;
+      height: 35px;
+      margin: 13px 13px 0 10px;
+      grid-row-start: 1;
+    }
+
+    .text {
+      margin: 20px 0 30px 0;
+      grid-column-start: 1;
+      grid-column-end: 3;
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    .content_block {
+      margin: 10px 0 15px 0;
+    }
+
+    .author_name {
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    .date {
+      font-size: 10px;
+      line-height: 15px;
+    }
+
+    .comment {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 28px;
+    }
   }
 `;
 export default CommentsWrapper;

@@ -59,8 +59,8 @@ const Comments: React.FC<CommentsProps> = (props) => {
               <div className="content_block">
                 <p className="author_name">{comment.user.name}</p>
                 <p className="date">{dateToDateAgo(comment.date)}</p>
-                <p className="text">{comment.text}</p>
               </div>
+              <p className="text">{comment.text}</p>
             </div>
           );
         })}
@@ -71,7 +71,6 @@ const Comments: React.FC<CommentsProps> = (props) => {
           className="comment_form"
         >
           <textarea
-            id=""
             placeholder="Share a comment"
             className="textarea comment"
             rows={3}
@@ -79,8 +78,10 @@ const Comments: React.FC<CommentsProps> = (props) => {
             {...formik?.touched.text ? formik?.errors.text : ''}
           />
           <CommonButton
-            text="Post a comment" />
-        </form>}
+            text="Post a comment"
+          />
+        </form>
+      }
     </CommentsWrapper>
   );
 };

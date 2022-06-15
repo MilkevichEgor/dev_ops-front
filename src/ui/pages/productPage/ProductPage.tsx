@@ -57,12 +57,12 @@ const ProductPage = () => {
             {book.author}
           </p>
           <div className="rating">
-            <div className="rating__averageRate">
+            <div className="average_rate">
               <img
                 src={filledStarIcon}
                 className="icon"
               />
-              <div className="updateRate">{book.averageRate}</div>
+              <div className="update_rate">{book.averageRate}</div>
             </div>
             <Rating
               book_id={book.bookId}
@@ -71,7 +71,7 @@ const ProductPage = () => {
               handleChangeRating={handleChangeRating}
             />
             <div
-              className="updateRate"
+              className="update_rate"
               onClick={handleChangeRating}
             >
               <img className="arrow" src={backArrow} />
@@ -80,8 +80,9 @@ const ProductPage = () => {
                 : <p>Update rating</p>}
             </div>
           </div>
-
-          <p className="subtitle">
+        </div>
+        <div className="description">
+          <p className="subtitle description__title">
             Description
           </p>
           <p className="description__text">

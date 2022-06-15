@@ -1,19 +1,22 @@
 import styled from 'styled-components';
 
 const ProductPageWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  column-gap: 128px;
   color: #0D1821;
   
   .cover {
     width: 522px;
     height: 779px;
     border-radius: 16px;
+    grid-row-start: 1;
+    grid-row-end: 3;
   }
 
   .book-info {
     max-width: 630px;
     width: 100%;
+    grid-row-start: 1;
   }
 
   .title {
@@ -35,7 +38,7 @@ const ProductPageWrapper = styled.div`
     margin: 30px 0;
   }
 
-  .rating__averageRate {
+  .average_rate {
     display: flex;
     margin-right: 41px;
   }
@@ -49,9 +52,10 @@ const ProductPageWrapper = styled.div`
   .arrow {
     opacity: 0.2;
     margin: 0 10px 0 44px;
+    white-space: nowrap;
   }
 
-  .updateRate {
+  .update_rate {
     display: flex;
     align-items: center;
     color: #B9BAC4;
@@ -84,6 +88,9 @@ const ProductPageWrapper = styled.div`
   }
 
   @media (max-width: 1279px) {
+    column-gap: 21px;
+    -webkit-column-gap: 21px;
+
     .cover {
       width: 391px;
       height: 584px;
@@ -109,6 +116,81 @@ const ProductPageWrapper = styled.div`
 
     .button-block__button {
       margin-right: 20px;
+    }
+
+    .icon {
+      width: 23px;
+      height: 23px;
+    }
+
+    .rating {
+      flex-wrap: wrap;
+      align-items: center;
+      row-gap: 17px;
+      margin-bottom: 90px;
+    }
+
+    .arrow {
+      margin: 0 10px 0 41px;
+    }
+
+    .average_rate {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 833px) {
+    .cover {
+      width: 135px;
+      height: 202px;
+    }
+
+    .title {
+      font-size: 18px;
+      line-height: 20px;
+      width: 135px;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      line-height: 28px;
+    }
+
+    .icon {
+      width: 14px;
+      height: 14px;
+    }
+
+    .arrow {
+      display: none;
+    }
+
+    .rating {
+      row-gap: 17px;
+      margin-bottom: 90px;
+    }
+
+    .update_rate > p {
+      font-size: 12px;
+      line-height: 18px;
+      margin: 0;
+    }
+
+    .description {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+
+    .description__title {
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    .description__text {
+      font-size: 12px;
+      line-height: 18px;
+      max-width: 290px;
+      width: 100%;
     }
   }
 `;
