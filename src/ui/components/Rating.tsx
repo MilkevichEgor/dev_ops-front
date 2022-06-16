@@ -16,7 +16,6 @@ type RatingProps = {
 const Rating: React.FC<RatingProps> = (props) => {
   const user = useAppSelector((state) => state.userReducer.user);
   const [rating, setRating] = useState(props.rate || 0);
-  console.log('rating', rating);
 
   useEffect(() => {
     if (props.isChangeRating) {

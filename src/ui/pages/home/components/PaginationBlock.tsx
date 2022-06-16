@@ -13,10 +13,8 @@ const PaginationBlock = () => {
   useEffect(() => {
     if (!currentPage) {
       if (!parsedParams.page) {
-        console.log('!currentPage');
         setCurrentPage(1);
       } else {
-        console.log('currentPage');
         setCurrentPage(+parsedParams.page);
       }
     }

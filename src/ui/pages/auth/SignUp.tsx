@@ -1,5 +1,8 @@
 import React from 'react';
-import { useFormik } from 'formik';
+import { useFormik, ErrorMessage } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import { AxiosError } from 'axios';
+
 import YupString from 'yup/lib/string';
 import YupObject from 'yup/lib/object';
 import YupRef from 'yup/lib/Reference';
@@ -13,12 +16,13 @@ import CommonWrapper from '../../styles/CommonWrapper';
 import CommonInputField from '../../components/CommonInputField';
 import { useAppDispatch } from '../../../store';
 import { setUser } from '../../../store/userReducer';
+import { routePath } from '../../../constants';
 
 const signUpValidationSchema = new YupObject().shape({
   email: new YupString().email('Invalid email address').required('Required'),
   password: new YupString().required('Required'),
   passwordRepeat: new YupString().when('password', {
-    is: (value: string) => (!!(value && value.length > 0)), // eslinter :(
+    is: (value: string) => (!!(value && value.length > 0)),
     then: new YupString().oneOf(
       [new YupRef('password')],
       'Both password need to be the same',
@@ -28,6 +32,8 @@ const signUpValidationSchema = new YupObject().shape({
 
 const SignUpForm = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -42,8 +48,19 @@ const SignUpForm = () => {
           password: values.password,
         });
         dispatch(setUser(response.data.user));
+
+        if (response.status === 201) {
+          return navigate(`${routePath.home}`);
+        }
       } catch (error) {
-        console.log('ERROR>>', error);
+        if (error instanceof AxiosError) {
+          const status = error.response?.status;
+          if (status === 403) {
+            formik.setErrors({
+              email: error.response?.data.data.message,
+            });
+          }
+        }
       }
     },
   });
@@ -83,7 +100,7 @@ const SignUpForm = () => {
               name="passwordRepeat"
               placeholder="Password replay"
               fieldInputProps={formik.getFieldProps('passwordRepeat')}
-              error={formik?.touched.password ? formik?.errors.password : ''}
+              error={formik?.touched.passwordRepeat ? formik?.errors.passwordRepeat : ''}
             />
             <p className="form__text">Repeat your password without errors</p>
           </div>

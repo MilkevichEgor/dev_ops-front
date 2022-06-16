@@ -13,20 +13,33 @@ type CommonInputProps = {
   name: string;
   submit?: React.FormEvent<HTMLFormElement>
   error?: string;
+  success?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fieldInputProps?: FieldInputProps<any>;
 }
 
 const CommonInputField: React.FC<CommonInputProps> = (props) => {
   return (
-    <>
-    <CommonInputWrapper isError={!!props.error}>
+    <CommonInputWrapper
+      isError={!!props.error}
+      isSuccess={!!props.success}
+    >
       <img className="icon" src={props.icon} />
       <div className={props.hint ? 'info__row' : 'info__row no-hint'}>
+        {props.error
+          ? (<div
+            className="error"
+          >{props.error}</div>)
+          : null
+        }
         {props.hint &&
           <p className="info__row-name">
             {props.hint}
           </p>
+        }
+        {props.success
+          ? <div className="success" />
+          : null
         }
         <input
           name={props.name}
@@ -37,13 +50,9 @@ const CommonInputField: React.FC<CommonInputProps> = (props) => {
           value={props.value}
           {...props.fieldInputProps}
         />
+
       </div>
     </CommonInputWrapper>
-        {props.error
-          ? (<div>{props.error}</div>)
-          : null
-        }
-        </>
   );
 };
 
