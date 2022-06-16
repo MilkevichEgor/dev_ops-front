@@ -1,19 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import booksImg from '../../../images/books.png';
 import human from '../../../images/human.png';
 import CommonButton from '../../../components/CommonButton';
 import CommonTextBlock from '../../../styles/CommonTextBlock';
 import BannerWrapper from '../styles/Banner.styles';
 import CommonWrapper from '../../../styles/CommonWrapper';
+import { routePath } from '../../../../constants';
 
-type Props = {
-  containerClassName?: string;
-};
-
-const Banner: React.FC<Props> = (props) => {
+const Banner = () => {
   return (
     <CommonWrapper>
-      <BannerWrapper className={props.containerClassName}>
+      <BannerWrapper>
         <img
           src={booksImg}
           alt="background image with books"
@@ -24,7 +23,12 @@ const Banner: React.FC<Props> = (props) => {
           <p className="text text-block">
             Buy two books and get one for free
           </p>
-          <CommonButton text="Choose a book"/>
+          <Link className="link" to={routePath.home}>
+            <CommonButton
+              size="permanent"
+              text="Choose a book"
+            />
+          </Link>
         </CommonTextBlock>
         <img
           className="human-img"

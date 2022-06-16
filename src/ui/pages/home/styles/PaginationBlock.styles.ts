@@ -9,8 +9,12 @@ const PaginationWrapper = styled.div`
   }
 
   .arrow {
-    margin: 0 36px;
     cursor: pointer;
+  }
+
+  .pages {
+    display: flex;
+    margin: 0 53px;
   }
 
   .page {
@@ -18,7 +22,7 @@ const PaginationWrapper = styled.div`
     height: 9px;
     border: 3px solid #0D1821;
     border-radius: 50%;
-    margin: 0 36px;
+    margin: 0 18px;
     cursor: pointer;
   }
 

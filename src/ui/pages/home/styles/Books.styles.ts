@@ -71,6 +71,11 @@ const BooksWrapper = styled.div`
     .rating {
       margin: 15px 0 18px 0;
     }
+
+    .average_rating {
+      font-size: 12px;
+      line-height: 20px;
+    }
   }
 `;
 

@@ -1,19 +1,8 @@
 import { AxiosResponse } from 'axios';
-import { Book } from '../types';
+import { Book, QuerySearchOptions } from '../types';
 import axios from './axios';
 
 const bookPath = '/book';
-
-export type QuerySearchOptions = {
-  page?: string;
-  limit?: string;
-  genres?: string;
-  priceFrom?: string;
-  priceTo?: string;
-  order?: string;
-  orderDir?: string;
-  value?: string;
-}
 
 export type SetRatingOptions = {
   book_id: number;

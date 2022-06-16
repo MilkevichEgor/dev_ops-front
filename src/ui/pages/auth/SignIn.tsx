@@ -75,10 +75,11 @@ const SignInForm = () => {
             <p className="form__text">Enter your password</p>
           </div>
           <CommonButton
+            size="permanent"
             text="Log In"
           />
           <h4 className="question">
-            Don`t you have an account yet?
+            Don`t you have an account yet? &nbsp;
             <Link to={routePath.signUp} className="button">
               <span>Let`s sign up!</span>
             </Link>

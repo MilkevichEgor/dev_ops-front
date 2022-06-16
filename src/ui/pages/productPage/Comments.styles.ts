@@ -10,12 +10,13 @@ const CommentsWrapper = styled.div`
   }
 
   .comment {
-    display: flex;
     max-width: 783px;
     width: 100%;
     border-radius: 16px;
     background: #F0F4EF;
     margin: 10px 0;
+    display: grid;
+    grid-template-columns: 100px auto;
   }
 
   .avatar {
@@ -27,7 +28,7 @@ const CommentsWrapper = styled.div`
   }
 
   .content_block {
-    margin: 35px 30px 25px 0;
+    margin: 35px 30px 0 0;
   }
 
   .author_name {
@@ -48,7 +49,9 @@ const CommentsWrapper = styled.div`
   .text {
     letter-spacing: 0.75px;
     color: #344966;
-    margin: 0;
+    margin-bottom: 25px;
+    grid-column-start: 2;
+    grid-column-end: 3
   }
 
   .textarea {
@@ -94,7 +97,7 @@ const CommentsWrapper = styled.div`
     }
 
     .text {
-      margin: 20px 0 30px 0;
+      margin: 15px 0 10px 10px;
       grid-column-start: 1;
       grid-column-end: 3;
       font-size: 12px;
@@ -102,7 +105,7 @@ const CommentsWrapper = styled.div`
     }
 
     .content_block {
-      margin: 10px 0 15px 0;
+      margin-top: 10px;
     }
 
     .author_name {
@@ -111,6 +114,7 @@ const CommentsWrapper = styled.div`
     }
 
     .date {
+      margin: 0;
       font-size: 10px;
       line-height: 15px;
     }

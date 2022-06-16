@@ -19,11 +19,14 @@ type CommonInputProps = {
 
 const CommonInputField: React.FC<CommonInputProps> = (props) => {
   return (
-    <CommonInputWrapper>
+    <>
+    <CommonInputWrapper isError={!!props.error}>
       <img className="icon" src={props.icon} />
       <div className={props.hint ? 'info__row' : 'info__row no-hint'}>
-        {(props.hint) &&
-          <p className="info__row-name">{props.hint}</p>
+        {props.hint &&
+          <p className="info__row-name">
+            {props.hint}
+          </p>
         }
         <input
           name={props.name}
@@ -34,12 +37,13 @@ const CommonInputField: React.FC<CommonInputProps> = (props) => {
           value={props.value}
           {...props.fieldInputProps}
         />
+      </div>
+    </CommonInputWrapper>
         {props.error
           ? (<div>{props.error}</div>)
           : null
         }
-      </div>
-    </CommonInputWrapper>
+        </>
   );
 };
 

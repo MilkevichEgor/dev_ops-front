@@ -38,10 +38,15 @@ const HeaderWrapper = styled.header`
 
   .catalog-link {
     padding-left: 128px;
+    color: black;
   }
 
   .link {
     text-decoration-line: none;
+  }
+
+  .link:visited {
+    color: black;
   }
 
   @media (max-width: 1279px) {

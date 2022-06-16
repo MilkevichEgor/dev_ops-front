@@ -18,12 +18,16 @@ const AuthorizeBanner = () => {
         <div className="info-block">
           <img src={fairy} className="background-img" alt="fairy image" />
           <CommonTextBlock className="text-block">
-            <p className="title">Authorize now</p>
+            <p className="title">
+              Authorize now
+            </p>
             <p className="text">
               Authorize now and discover the fabulous world of books
             </p>
             <Link className="button" to={routePath.signIn}>
-              <CommonButton text="Log In/ Sign Up" />
+              <CommonButton
+                size="permanent"
+                text="Log In/ Sign Up" />
             </Link>
           </CommonTextBlock>
         </div>

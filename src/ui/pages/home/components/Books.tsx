@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CommonButton from '../../../components/CommonButton';
-import bookApi, { QuerySearchOptions } from '../../../../api/bookApi';
+import bookApi from '../../../../api/bookApi';
 import { useAppDispatch, useAppSelector } from '../../../../store';
 import { setBooks, setPagesQuantity } from '../../../../store/bookReducer';
-import { Book } from '../../../../types';
+import { Book, QuerySearchOptions } from '../../../../types';
 import BooksWrapper from '../styles/Books.styles';
 import { setGenres } from '../../../../store/genreReducer';
 import constants, { routePath } from '../../../../constants';
@@ -66,9 +66,12 @@ const BooksList = () => {
                 isChangeRating={false}
                 book_id={book.bookId}
               />
-              <div>{book.averageRate}</div>
+              <div className="average_rating">
+                {book.averageRate}
+              </div>
             </div>
             <CommonButton
+              size="container"
               text={`$${book.price} USD`}
             />
           </div>

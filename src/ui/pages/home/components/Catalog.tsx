@@ -8,7 +8,7 @@ import PriceFilter from './PriceRangeFilter';
 import SortingList from './SortingList';
 import PaginationBlock from './PaginationBlock';
 import useQuery from '../../../../utils/useQuery';
-import { QuerySearchOptions } from '../../../../api/bookApi';
+import { QuerySearchOptions } from '../../../../types';
 
 const Catalog = () => {
   const [isGenresSelect, setIsGenresSelect] = useState(false);

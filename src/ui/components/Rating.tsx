@@ -1,29 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { Rating as RatingStars } from 'react-simple-star-rating';
 import emptyStarIcon from '../images/Star.png';
 import filledStarIcon from '../images/StarFilled.png';
 import { useAppSelector } from '../../store';
 import bookApi from '../../api/bookApi';
-
-const RatingWrapper = styled.div`
-  .star {
-    margin: 0 17.5px 0 0;
-  }
-
-  @media (max-width: 1279px) {
-    .star {
-      width: 23px;
-      height: 23px;
-    }
-
-  @media (max-width: 833px) {
-    .star {
-      width: 14px;
-      height: 14px;
-    }
-  }
-`;
+import RatingWrapper from './Rating.styles';
 
 type RatingProps = {
   book_id: number,

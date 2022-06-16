@@ -87,7 +87,10 @@ const SignUpForm = () => {
             />
             <p className="form__text">Repeat your password without errors</p>
           </div>
-          <CommonButton text="Sign up" />
+          <CommonButton
+            size="permanent"
+            text="Sign up"
+          />
         </form>
         <img className="image" src={man} />
       </Wrapper>

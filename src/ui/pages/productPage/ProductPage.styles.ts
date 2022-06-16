@@ -73,18 +73,18 @@ const ProductPageWrapper = styled.div`
     word-wrap: break-word;
   }
 
-  .button-block {
+  .buttons-block {
     display: flex;
-    margin-top: 74px;
+    column-gap: 74px;
   }
 
   .button-block__description {
     color: #344966;
     margin: 0 0 14px 0;
   }
-
+  
   .button-block__button {
-    margin-right: 82px;
+    width: 243px;
   }
 
   @media (max-width: 1279px) {
@@ -110,12 +110,13 @@ const ProductPageWrapper = styled.div`
       max-width: 392px;
     }
 
-    .button-block {
-      margin-top: 50 px;
+    .buttons-block {
+      margin-top: 50px;
+      column-gap: 50px;
     }
 
     .button-block__button {
-      margin-right: 20px;
+      width: 188px;
     }
 
     .icon {
@@ -191,6 +192,15 @@ const ProductPageWrapper = styled.div`
       line-height: 18px;
       max-width: 290px;
       width: 100%;
+    }
+
+    .buttons-block {
+      margin-top: 30px;
+      column-gap: 20px;
+    }
+
+    .button-block__button {
+      width: 135px;
     }
   }
 `;

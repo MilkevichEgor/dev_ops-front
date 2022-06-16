@@ -13,6 +13,17 @@ export type RatingObj = {
 
 export type Token = string | undefined;
 
+export type QuerySearchOptions = {
+  page?: string;
+  limit?: string;
+  genres?: string;
+  priceFrom?: string;
+  priceTo?: string;
+  order?: string;
+  orderDir?: string;
+  value?: string;
+}
+
 export type AuthResponse = {
   token: string;
   user: User

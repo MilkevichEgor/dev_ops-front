@@ -1,26 +1,40 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const defaultValues = {
-  padding: '10px 50px',
-};
+type StylesProps = {
+  size: 'container' | 'small' | 'common' | 'permanent'
+}
 
-// const sizes = {
-//   small: css``,
-//   medium: css``,
-//   large: css``,
-// };
+const permanentButtonStyles = css`
+  padding: 10px 50px;
+`;
 
-const CommonButtonWrapper = styled.button<{
-  size?: 'small' | 'medium' | 'large';
-  padding?: string;
-}>`
+const commonButtonStyles = css`
+  padding: 10px 50px;
+
+  @media (max-width: 833px) {
+    padding: 10px 17px;
+  }
+`;
+
+const smallButtonStyles = css`
+    width: 500px;
+    @media (max-width: 833px) {
+      width: 20px;
+    }
+    
+`;
+const containerButtonStyles = css`
+  padding: 10px;
+  width: 100%;
+  justify-content: center;
+`;
+
+const CommonButtonWrapper = styled.button<StylesProps>`
     display: flex;
     width: fit-content;
     align-items: center;
     background-color: #344966;
     border-radius: 16px;
-    padding: ${(props) => props.padding ?? defaultValues.padding};
-    ${(props) => props.size ?? null}
     color: white;
     font-family: inherit;
     font-style: normal;
@@ -33,21 +47,23 @@ const CommonButtonWrapper = styled.button<{
     border: none;
     white-space: nowrap;
 
+    ${(props) => {
+    switch (props.size) {
+      case 'permanent':
+        return permanentButtonStyles;
+      case 'container':
+        return containerButtonStyles;
+      case 'small':
+        return smallButtonStyles;
+      default:
+        return commonButtonStyles;
+    }
+  }};
 
   @media (max-width: 833px) {
-    padding: 10px 17px;
     font-size: 12px;
     line-height: 18px;
   }
 `;
 
 export default CommonButtonWrapper;
-
-/* ${props => {
-      switch (props.size) {
-        case 'large':
-          return css`
-
-          `
-      }
-    }} */

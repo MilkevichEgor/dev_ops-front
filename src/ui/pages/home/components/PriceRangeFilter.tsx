@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import PriceFilterWrapper from '../styles/PriceFilter.styles';
 import arrowUpIcon from '../../../images/arrowUp.png';
 import useQuery from '../../../../utils/useQuery';
-import { QuerySearchOptions } from '../../../../api/bookApi';
+import { QuerySearchOptions } from '../../../../types';
 
 interface MultiRangeSliderProps {
   min: number;

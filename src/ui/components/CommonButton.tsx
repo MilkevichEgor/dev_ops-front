@@ -2,8 +2,8 @@ import React from 'react';
 import CommonButtonWrapper from './CommonButton.styled';
 
 type ButtonProps = {
+  size?: 'container' | 'small' | 'common' | 'permanent'
   text?: string;
-  padding?: string;
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
 }
@@ -13,6 +13,7 @@ const CommonButton: React.FC<ButtonProps> = (props) => {
 
   return (
     <CommonButtonWrapper
+      size={props.size || 'common'}
       type={type}
       onClick={props.onClick}
     >

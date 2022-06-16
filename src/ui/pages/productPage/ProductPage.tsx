@@ -11,6 +11,8 @@ import filledStarIcon from '../../images/StarFilled.png';
 import backArrow from '../../images/backArrow.png';
 import { useAppSelector } from '../../../store';
 import Comments from './Comments';
+import AuthDependentRenderController from '../../components/AuthDependentRenderController';
+import AuthorizeBanner from '../../components/AuthorizeBanner';
 
 const ProductPage = () => {
   const [book, setBook] = useState<Book>();
@@ -75,7 +77,7 @@ const ProductPage = () => {
               onClick={handleChangeRating}
             >
               <img className="arrow" src={backArrow} />
-              {isChangeRating
+              {isChangeRating || !currentUserRating?.rating
                 ? <p>Rate this book</p>
                 : <p>Update rating</p>}
             </div>
@@ -88,13 +90,14 @@ const ProductPage = () => {
           <p className="description__text">
             {book.description}
           </p>
-          <div className="button-block">
+          <div className="buttons-block">
             <div className="button-block__button">
               <p className="button-block__description">
                 Paperback
               </p>
               <CommonButton
-                text={`$ ${book.price} USD`}
+                size="container"
+                text="Not available"
               />
             </div>
             <div className="button-block__button">
@@ -102,6 +105,7 @@ const ProductPage = () => {
                 Hardcover
               </p>
               <CommonButton
+                size="container"
                 text={`$ ${book.price} USD`}
               />
             </div>
@@ -112,6 +116,11 @@ const ProductPage = () => {
         setBookInState={setBookInState}
         book={book}
       />
+      <AuthDependentRenderController
+        noAuthOnly
+      >
+        <AuthorizeBanner />
+      </AuthDependentRenderController>
     </CommonWrapper>
   );
 };

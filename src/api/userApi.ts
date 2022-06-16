@@ -1,6 +1,6 @@
 import axios from './axios';
 
-type UpdateUser = {
+type UpdateUserData = {
   name?: string;
   email?: string;
   password?: string;
@@ -13,7 +13,7 @@ type UploadAvatar = {
 
 const userPath = '/user';
 
-const updateUser = (id: number, data: UpdateUser) => {
+const updateUser = (id: number, data: UpdateUserData) => {
   return axios.patch(`${userPath}/${id}`, data);
 };
 

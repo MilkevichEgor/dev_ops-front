@@ -25,6 +25,14 @@ const BannerWrapper = styled.div`
     padding-left: 136px;
   }
 
+  .link {
+    text-decoration-line: none;
+  }
+
+  .link:visited {
+    color: black;
+  }
+
   @media (max-width: 1279px) {
     max-height: 289px;
     height: 100%;

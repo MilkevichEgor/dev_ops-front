@@ -7,7 +7,7 @@ type AuthResponse = {
   message?: string;
 }
 
-type Options = {
+type AuthOptions = {
   password: string;
   email: string;
 }
@@ -19,11 +19,11 @@ const checkToken = (data: Token) => {
   return axios.get<AuthResponse>(`${userPath}/me`, { data });
 };
 
-const signIn = (data: Options) => {
+const signIn = (data: AuthOptions) => {
   return axios.post<AuthResponse>(`${authPath}/signin`, data);
 };
 
-const signUp = (data: Options) => {
+const signUp = (data: AuthOptions) => {
   return axios.post<AuthResponse>(`${authPath}/signup`, data);
 };
 

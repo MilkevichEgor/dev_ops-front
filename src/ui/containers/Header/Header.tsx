@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-import { useAppSelector } from '../../../store';
 import logo from '../../images/logo.svg';
 import searchIcon from '../../images/SearchIcon.png';
 import Logo from '../../styles/Logo';
@@ -9,15 +8,15 @@ import CommonWrapper from '../../styles/CommonWrapper';
 import HeaderWrapper from '../Header/Header.styles';
 import { routePath } from '../../../constants';
 import AuthButtonsBlock from './AuthButtonsBlock';
-import CommonButtonWrapper from '../../components/CommonButton.styled';
 import useQuery from '../../../utils/useQuery';
-import { QuerySearchOptions } from '../../../api/bookApi';
+import { QuerySearchOptions } from '../../../types';
+import AuthDependentRenderController from '../../components/AuthDependentRenderController';
+import CommonButton from '../../components/CommonButton';
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [, setParams] = useQuery<QuerySearchOptions>();
-  const user = useAppSelector((state) => state.userReducer.user);
 
   const handleSearchRequest: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key === 'Enter') {
@@ -36,9 +35,11 @@ const Header = () => {
           <Link to={routePath.home}>
             <Logo src={logo} />
           </Link>
-          <span className="catalog-link">
-            Catalog
-          </span>
+          <Link className="link" to={routePath.home}>
+            <span className="catalog-link">
+              Catalog
+            </span>
+          </Link>
         </div>
         <label htmlFor="global-search"
           className="search-field"
@@ -52,18 +53,21 @@ const Header = () => {
             onKeyDown={handleSearchRequest}
           />
         </label>
-        {user
-          ? <AuthButtonsBlock />
-          : (
-            <Link className="link" to={routePath.signIn}>
-              <CommonButtonWrapper
-                // text="Log In / Sign Up"
-                className="test"
-              >
-                Log In / Sign Up
-              </CommonButtonWrapper>
-            </Link>
-          )}
+
+        <AuthDependentRenderController>
+          <AuthButtonsBlock />
+        </AuthDependentRenderController>
+
+        <AuthDependentRenderController
+          noAuthOnly
+        >
+          <Link className="link" to={routePath.signIn}>
+            <CommonButton
+              text="Log In / Sign Up"
+            />
+          </Link>
+        </AuthDependentRenderController>
+
       </HeaderWrapper>
     </CommonWrapper>
   );

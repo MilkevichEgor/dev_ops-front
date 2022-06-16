@@ -17,6 +17,10 @@ const EmptyCartWrapper = styled.div`
     color: #344966;
   }
 
+  .link {
+    text-decoration: none;
+  }
+
   @media (max-width: 1279px) {
     padding: 0 15px;
     

@@ -13,7 +13,9 @@ const Footer = () => {
       <CommonWrapper>
         <div className="main-block ">
           <div className="contacts">
-            <Logo src={logo} className="logo" alt="store logo" />
+            <Link to={routePath.home}>
+              <Logo src={logo} className="logo" alt="store logo" />
+            </Link>
             <p className="text">ye.alexey@gmail.com</p>
             <p className="text">(480) 555-0103</p>
           </div>

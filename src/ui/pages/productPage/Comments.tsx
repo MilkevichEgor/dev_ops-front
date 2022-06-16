@@ -8,6 +8,7 @@ import { Book } from '../../../types';
 import CommonButton from '../../components/CommonButton';
 import CommentsWrapper from './Comments.styles';
 import { useAppSelector } from '../../../store';
+import AuthDependentRenderController from '../../components/AuthDependentRenderController';
 
 type CommentsProps = {
   book: Book,
@@ -65,7 +66,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
           );
         })}
       </div>}
-      {user &&
+      <AuthDependentRenderController>
         <form
           onSubmit={formik.handleSubmit}
           className="comment_form"
@@ -75,13 +76,13 @@ const Comments: React.FC<CommentsProps> = (props) => {
             className="textarea comment"
             rows={3}
             {...formik.getFieldProps('text')}
-            {...formik?.touched.text ? formik?.errors.text : ''}
           />
           <CommonButton
+            size="permanent"
             text="Post a comment"
           />
         </form>
-      }
+      </AuthDependentRenderController>
     </CommentsWrapper>
   );
 };

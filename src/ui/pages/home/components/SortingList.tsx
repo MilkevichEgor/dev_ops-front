@@ -2,7 +2,7 @@ import React from 'react';
 import SortingListWrapper from '../styles/SortingList.styles';
 import arrowUpIcon from '../../../images/arrowUp.png';
 import useQuery from '../../../../utils/useQuery';
-import { QuerySearchOptions } from '../../../../api/bookApi';
+import { QuerySearchOptions } from '../../../../types';
 
 const SortingList = () => {
   const [parsedParams, setParams] = useQuery<QuerySearchOptions>();

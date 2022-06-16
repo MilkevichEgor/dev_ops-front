@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
-const CommonInputWrapper = styled.div`
+type StylesProps = {
+  isError?: boolean;
+}
+
+const CommonInputWrapper = styled.div<StylesProps>`
 display: flex;
 background: #F0F4EF;
 border-radius: 16px;
 width: 522px;
 margin: 20px 0;
+border:  2px solid ${(p) => (p.isError ? 'red' : 'transparent')};
 
 .icon {
   width: 24px;

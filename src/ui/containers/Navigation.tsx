@@ -6,9 +6,8 @@ import Home from '../pages/home';
 import Cart from '../pages/card/Card';
 import UserProfile from '../pages/userProfile/UserProfile';
 import { routePath } from '../../constants';
-import RequireAuth from '../components/RequireAuth';
+import AuthDependentRenderController from '../components/AuthDependentRenderController';
 import ProductPage from '../pages/productPage/ProductPage';
-import SearchResult from '../components/SearchResult';
 
 const Navigation = () => {
   return (
@@ -18,50 +17,45 @@ const Navigation = () => {
       <Route
         path={routePath.signIn}
         element={(
-          <RequireAuth
+          <AuthDependentRenderController
             redirectTo={routePath.home}
             noAuthOnly
           >
             <SignInForm />
-          </RequireAuth>
+          </AuthDependentRenderController>
         )} />
 
       <Route
         path={routePath.signUp}
         element={(
-          <RequireAuth
+          <AuthDependentRenderController
             redirectTo={routePath.home}
             noAuthOnly
           >
             <SignUpForm />
-          </RequireAuth>
+          </AuthDependentRenderController>
         )} />
 
       <Route
         path={routePath.cart}
         element={(
-          <RequireAuth
+          <AuthDependentRenderController
             redirectTo={routePath.signIn}
           >
             <Cart />
-          </RequireAuth>
+          </AuthDependentRenderController>
         )}
       />
 
       <Route
         path={routePath.profile}
         element={(
-          <RequireAuth
+          <AuthDependentRenderController
             redirectTo={routePath.signIn}
           >
             <UserProfile />
-          </RequireAuth>
+          </AuthDependentRenderController>
         )}
-      />
-
-      <Route
-        path={routePath.search}
-        element={<SearchResult />}
       />
 
       <Route path="*" element={(

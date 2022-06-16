@@ -3,7 +3,7 @@ import { useAppSelector } from '../../../../store';
 import GenreCheckboxWrapper from '../styles/GenresCheckbox.styles';
 import arrowUpIcon from '../../../images/arrowUp.png';
 import useQuery from '../../../../utils/useQuery';
-import { QuerySearchOptions } from '../../../../api/bookApi';
+import { QuerySearchOptions } from '../../../../types';
 
 type GenreCheckboxProps = {
   toggleGenreSelector: () => void;
