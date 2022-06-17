@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
+import { AxiosError } from 'axios';
 import YupString from 'yup/lib/string';
 import YupObject from 'yup/lib/object';
 import YupRef from 'yup/lib/Reference';
+
 import hideIcon from '../../images/hide.png';
+import showIcon from '../../images/View.png';
 import CommonInputField from '../../components/CommonInputField';
 import CommonButton from '../../components/CommonButton';
 import { useAppSelector } from '../../../store';
@@ -29,6 +32,8 @@ const changePasswordValidationSchema = new YupObject().shape({
 
 const UserPassword: React.FC<UserProfileProps> = (props) => {
   const user = useAppSelector((state) => state.userReducer.user) as User;
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       oldPassword: '',
@@ -39,15 +44,33 @@ const UserPassword: React.FC<UserProfileProps> = (props) => {
     onSubmit: async (values) => {
       try {
         const { password, oldPassword } = values;
-        const response = await userApi.updateUser(user.id, { oldPassword, password });
-        if (response.status === 200) {
-          props.toggleChangePassword();
-        }
+        await userApi.updateUser(user.id, { oldPassword, password });
+        props.toggleChangePassword();
+        formik.setStatus('Success!');
+        setTimeout(() => {
+          formik.setStatus(false);
+        }, 2000);
       } catch (error) {
-        console.log('ERROR>>', error);
+        if (error instanceof AxiosError) {
+          const status = error.response?.status;
+          if (status === 403) {
+            formik.setErrors({
+              oldPassword: error.response?.data.data.message,
+            });
+          }
+        }
       }
     },
   });
+
+  const icon = isPasswordVisible ? showIcon : hideIcon;
+  const inputType = isPasswordVisible ? 'text' : 'password';
+
+  const togglePasswordVisibility = () => {
+    console.log('isPasswordVisible', isPasswordVisible);
+
+    setIsPasswordVisible(!isPasswordVisible);
+  };
 
   if (props.isChangePassword) {
     return (
@@ -57,6 +80,7 @@ const UserPassword: React.FC<UserProfileProps> = (props) => {
         hint="Your password"
         placeholder="*************"
         disabled={true}
+        success={formik.status}
       />
     );
   }
@@ -70,30 +94,33 @@ const UserPassword: React.FC<UserProfileProps> = (props) => {
       onSubmit={formik.handleSubmit}
     >
       <CommonInputField
-        icon={hideIcon}
+        icon={icon}
         name="oldPassword"
         hint="Old password"
         placeholder="*************"
-        type="password"
+        type={inputType}
         fieldInputProps={formik.getFieldProps('oldPassword')}
         error={formik?.touched.oldPassword ? formik?.errors.oldPassword : ''}
+        onClickOnIcon={togglePasswordVisibility}
       />
       <CommonInputField
-        icon={hideIcon}
+        icon={icon}
         name="password"
         type="password"
         placeholder="New password"
         fieldInputProps={formik.getFieldProps('password')}
         error={formik?.touched.password ? formik?.errors.password : ''}
+        onClickOnIcon={togglePasswordVisibility}
       />
       <p>Enter your password</p>
       <CommonInputField
-        icon={hideIcon}
+        icon={icon}
         placeholder="Password replay"
         type="password"
         name="passwordRepeat"
         fieldInputProps={formik.getFieldProps('passwordRepeat')}
         error={formik?.touched.passwordRepeat ? formik?.errors.passwordRepeat : ''}
+        onClickOnIcon={togglePasswordVisibility}
       />
       <p>Repeat your passport withour errors</p>
       <CommonButton

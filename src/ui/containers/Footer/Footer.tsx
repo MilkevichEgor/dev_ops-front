@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logoWhiteLetters.png';
 import map from '../../images/map.png';
-import Logo from '../../styles/Logo';
+import Logo from '../../styles/Logo.styles';
 import FooterWrapper from './Footer.styles';
-import CommonWrapper from '../../styles/CommonWrapper';
+import CommonWrapper from '../../styles/CommonWrapper.styles';
 import { routePath } from '../../../constants';
 
 const Footer = () => {

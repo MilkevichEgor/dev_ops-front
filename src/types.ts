@@ -46,7 +46,7 @@ export interface Book {
   averageRate: number;
   comments: Comment[]
 }
-export type Books = Book[];
+export type BooksArray = Book[];
 
 export interface Genre {
   genreId: number;

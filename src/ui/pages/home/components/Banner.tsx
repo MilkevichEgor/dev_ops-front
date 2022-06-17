@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import booksImg from '../../../images/books.png';
 import human from '../../../images/human.png';
 import CommonButton from '../../../components/CommonButton';
-import CommonTextBlock from '../../../styles/CommonTextBlock';
+import CommonTextBlock from '../../../styles/CommonTextBlock.styles';
 import BannerWrapper from '../styles/Banner.styles';
-import CommonWrapper from '../../../styles/CommonWrapper';
+import CommonWrapper from '../../../styles/CommonWrapper.styles';
 import { routePath } from '../../../../constants';
 
 const Banner = () => {

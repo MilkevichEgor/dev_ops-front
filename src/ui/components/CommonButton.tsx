@@ -1,5 +1,5 @@
 import React from 'react';
-import CommonButtonWrapper from './CommonButton.styled';
+import CommonButtonWrapper from '../styles/CommonButton.styled';
 
 type ButtonProps = {
   size?: 'container' | 'small' | 'common' | 'permanent'

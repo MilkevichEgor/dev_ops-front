@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import YupString from 'yup/lib/string';
 import YupObject from 'yup/lib/object';
 import { Link, useNavigate } from 'react-router-dom';
+import { AxiosError } from 'axios';
 
 import authAPI from '../../../api/authApi';
 import Wrapper from '../../styles/Auth.styles';
@@ -10,7 +11,7 @@ import man from '../../images/man.png';
 import hide from '../../images/hide.png';
 import mail from '../../images/mail.png';
 import CommonButton from '../../components/CommonButton';
-import CommonWrapper from '../../styles/CommonWrapper';
+import CommonWrapper from '../../styles/CommonWrapper.styles';
 import { setUser } from '../../../store/userReducer';
 import { routePath } from '../../../constants';
 import CommonInputField from '../../components/CommonInputField';
@@ -41,7 +42,19 @@ const SignInForm = () => {
           return navigate(`${routePath.home}`);
         }
       } catch (error) {
-        console.log('ERROR>>', error);
+        if (error instanceof AxiosError) {
+          const status = error.response?.status;
+          if (status === 403) {
+            formik.setErrors({
+              password: error.response?.data.data.message,
+            });
+          }
+          if (status === 404) {
+            formik.setErrors({
+              email: error.response?.data.data.message,
+            });
+          }
+        }
       }
     },
   });

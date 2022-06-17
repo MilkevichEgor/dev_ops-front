@@ -44,6 +44,10 @@ const addComment = (data: AddCommentOptions) => {
   return axios.post(`${bookPath}/addComment`, data);
 };
 
+const getRecommendations = () => {
+  return axios.get(`${bookPath}/recommendations`);
+};
+
 export default {
   getAllBooks,
   getAllGenres,
@@ -51,4 +55,5 @@ export default {
   searchForValue,
   setRating,
   addComment,
+  getRecommendations,
 };

@@ -26,6 +26,7 @@ const BooksWrapper = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-decoration: none;
   }
 
   .author {

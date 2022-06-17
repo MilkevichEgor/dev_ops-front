@@ -1,6 +1,6 @@
 import { FieldInputProps } from 'formik';
 import React from 'react';
-import CommonInputWrapper from '../components/CommonInputField.styles';
+import CommonInputWrapper from '../styles/CommonInputField.styles';
 
 type CommonInputProps = {
   icon: string;
@@ -16,6 +16,7 @@ type CommonInputProps = {
   success?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fieldInputProps?: FieldInputProps<any>;
+  onClickOnIcon?: () => void;
 }
 
 const CommonInputField: React.FC<CommonInputProps> = (props) => {
@@ -24,7 +25,11 @@ const CommonInputField: React.FC<CommonInputProps> = (props) => {
       isError={!!props.error}
       isSuccess={!!props.success}
     >
-      <img className="icon" src={props.icon} />
+      <img
+        className="icon"
+        src={props.icon}
+        onClick={props.onClickOnIcon}
+      />
       <div className={props.hint ? 'info__row' : 'info__row no-hint'}>
         {props.error
           ? (<div

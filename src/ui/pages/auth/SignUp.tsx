@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFormik, ErrorMessage } from 'formik';
+import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
 
@@ -12,7 +12,7 @@ import hide from '../../images/hide.png';
 import mail from '../../images/mail.png';
 import Wrapper from '../../styles/Auth.styles';
 import CommonButton from '../../components/CommonButton';
-import CommonWrapper from '../../styles/CommonWrapper';
+import CommonWrapper from '../../styles/CommonWrapper.styles';
 import CommonInputField from '../../components/CommonInputField';
 import { useAppDispatch } from '../../../store';
 import { setUser } from '../../../store/userReducer';

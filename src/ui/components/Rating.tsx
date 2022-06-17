@@ -4,7 +4,7 @@ import emptyStarIcon from '../images/Star.png';
 import filledStarIcon from '../images/StarFilled.png';
 import { useAppSelector } from '../../store';
 import bookApi from '../../api/bookApi';
-import RatingWrapper from './Rating.styles';
+import RatingWrapper from '../styles/Rating.styles';
 
 type RatingProps = {
   book_id: number,

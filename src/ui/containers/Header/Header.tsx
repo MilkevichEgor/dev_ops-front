@@ -3,8 +3,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import logo from '../../images/logo.svg';
 import searchIcon from '../../images/SearchIcon.png';
-import Logo from '../../styles/Logo';
-import CommonWrapper from '../../styles/CommonWrapper';
+import Logo from '../../styles/Logo.styles';
+import CommonWrapper from '../../styles/CommonWrapper.styles';
 import HeaderWrapper from '../Header/Header.styles';
 import { routePath } from '../../../constants';
 import AuthButtonsBlock from './AuthButtonsBlock';

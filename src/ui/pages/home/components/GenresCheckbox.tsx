@@ -4,6 +4,8 @@ import GenreCheckboxWrapper from '../styles/GenresCheckbox.styles';
 import arrowUpIcon from '../../../images/arrowUp.png';
 import useQuery from '../../../../utils/useQuery';
 import { QuerySearchOptions } from '../../../../types';
+import checkedIcon from '../../../images/checkboxChecked.png';
+import unchekedIcon from '../../../images/checkboxUnchecked.png';
 
 type GenreCheckboxProps = {
   toggleGenreSelector: () => void;
@@ -73,7 +75,12 @@ const GenresCheckbox: React.FC<GenreCheckboxProps> = () => {
                   value={genre.genreId}
                   checked={checkedGenres.includes(`${genre.genreId}`)}
                   onChange={getValues}
+                  hidden
                 />
+                {checkedGenres.includes(`${genre.genreId}`)
+                  ? <img className="checkbox_icon" src={checkedIcon} />
+                  : <img className="checkbox_icon" src={unchekedIcon} />
+                }
                 {genre.name}
               </div>
             </label>

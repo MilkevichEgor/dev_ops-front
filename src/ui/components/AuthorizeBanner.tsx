@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CommonButton from '../components/CommonButton';
-import CommonTextBlock from '../styles/CommonTextBlock';
+import CommonTextBlock from '../styles/CommonTextBlock.styles';
 import castle from '../images/castle.png';
 import fairy from '../images/fairy.png';
-import Wrapper from './AuthorizeBanner.styles';
-import CommonWrapper from '../styles/CommonWrapper';
+import Wrapper from '../styles/AuthorizeBanner.styles';
+import CommonWrapper from '../styles/CommonWrapper.styles';
 import { routePath } from '../../constants';
 
 const AuthorizeBanner = () => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import forwardIcon from '../../../images/forwardIcon.png';
 import CatalogWrapper from '../styles/Catalog.styles';
-import CommonWrapper from '../../../styles/CommonWrapper';
+import CommonWrapper from '../../../styles/CommonWrapper.styles';
 import BooksList from './Books';
 import GenresCheckbox from './GenresCheckbox';
 import PriceFilter from './PriceRangeFilter';

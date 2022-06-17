@@ -33,7 +33,6 @@ const UserInfo: React.FC<UserInfoProps> = (props) => {
         setTimeout(() => {
           formik.setStatus(false);
         }, 2000);
-        console.log('formik.status', formik.status);
       } catch (error) {
         console.log('ERROR >>', error);
       }
@@ -61,6 +60,7 @@ const UserInfo: React.FC<UserInfoProps> = (props) => {
         disabled={!props.isChangeUserInfo}
         fieldInputProps={formik.getFieldProps('email')}
         error={formik?.touched.email ? formik?.errors.email : ''}
+        success={formik.status}
       />
       {props.isChangeUserInfo &&
         <CommonButton

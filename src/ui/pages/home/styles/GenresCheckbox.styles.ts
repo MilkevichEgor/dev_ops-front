@@ -23,13 +23,11 @@ const GenreCheckboxWrapper = styled.div`
     cursor: pointer;
   }
 
-  .checkbox {
-    width: 1.85em;
-    height: 1.85em;
-    border-radius: 50%;
-    margin-left: 15px;
-    margin-right: 10px;
-    vertical-align: bottom;
+  .checkbox_icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: text-bottom;
+    margin: 0 10px 0 15px;
   }
 
   .arrow-up {

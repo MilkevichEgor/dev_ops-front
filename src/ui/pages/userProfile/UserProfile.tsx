@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import CommonWrapper from '../../styles/CommonWrapper';
+import CommonWrapper from '../../styles/CommonWrapper.styles';
 import UserProfileWrapper from './UserProfile.styles';
 import defaultAvatar from '../../images/defaultAvatar.png';
 import changeAvatarButton from '../../images/changeAvatarButton.png';
