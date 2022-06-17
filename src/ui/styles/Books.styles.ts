@@ -1,8 +1,16 @@
 import styled from 'styled-components';
 
-const BooksWrapper = styled.div`
+type StylesProps = {
+  wrap: boolean;
+}
+
+const BooksWrapper = styled.div<StylesProps>`
   display: flex;
-  flex-wrap: wrap;
+  ${(props) => (props.wrap
+    ? 'flex-wrap: wrap;'
+    : `flex-wrap: nowrap;
+      overflow: hidden;`
+  )}
   margin-top: 50px;
   gap: 80px 20px;
   font-size: 20px;
@@ -42,6 +50,10 @@ const BooksWrapper = styled.div`
     line-height: 24px;
     color: #B9BAC4;
     margin: 21px 0 32px 0;
+  }
+
+  .link {
+    text-decoration: none;
   }
 
   @media (max-width: 1310px) {

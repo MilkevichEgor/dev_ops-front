@@ -14,7 +14,6 @@ const Recommendations = () => {
       try {
         const response = await bookApi.getRecommendations();
         dispatch(setRecommended(response.data));
-        console.log('response.data', response.data);
       } catch (err) {
         console.log('ERROR >>', err);
       }
@@ -23,8 +22,9 @@ const Recommendations = () => {
 
   return (
     <RecommendationsWrapper>
-      <h1 className="title">Recommendations</h1>
+      <h1 className="block_title">Recommendations</h1>
         <BooksRender
+          wrap={false}
           booksArray={recommendedBooks}
         />
     </RecommendationsWrapper>

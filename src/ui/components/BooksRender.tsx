@@ -8,18 +8,23 @@ import { Book as BookType } from '../../types';
 
 type BookProps = {
   booksArray: BookType[];
+  wrap: boolean;
 }
 
 const BooksRender: React.FC<BookProps> = (props) => {
   return (
-    <BooksWrapper>
+    <BooksWrapper
+      wrap={props.wrap}
+    >
       {props.booksArray.map((book: BookType) => {
         return (
           <div
             className="book"
             key={book.bookId}
           >
-            <Link to={{ pathname: `${routePath.product}/${book.bookId}` }}>
+            <Link
+              className="link"
+              to={{ pathname: `${routePath.product}/${book.bookId}` }}>
               <img
                 src={book.cover}
                 className="cover"

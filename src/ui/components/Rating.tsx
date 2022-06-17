@@ -8,18 +8,17 @@ import RatingWrapper from '../styles/Rating.styles';
 
 type RatingProps = {
   book_id: number,
-  rate: number,
+  rate: number | 0,
   isChangeRating: boolean,
   handleChangeRating?: () => void,
 }
 
 const Rating: React.FC<RatingProps> = (props) => {
   const user = useAppSelector((state) => state.userReducer.user);
-  const [rating, setRating] = useState(props.rate || 0);
+  const [rating, setRating] = useState(props.rate);
 
   useEffect(() => {
     if (props.isChangeRating) {
-      console.log('props.isChangeRating', props.isChangeRating);
       setRating(0);
     }
   }, [props.isChangeRating]);

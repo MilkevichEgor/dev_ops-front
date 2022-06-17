@@ -32,7 +32,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
         };
         const response = await bookApi.addComment(newComment);
         value.text = '';
-        props.book.comments.push(response.data.comment);
+        props.book.comments.push(response.data.newComment);
         props.setBookInState(props.book);
       } catch (error) {
         console.log('ERROR>>', error);
