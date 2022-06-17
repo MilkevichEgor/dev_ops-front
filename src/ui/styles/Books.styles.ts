@@ -28,6 +28,13 @@ const BooksWrapper = styled.div<StylesProps>`
     border-radius: 16px;
   }
 
+  .favorite {
+    position: relative;
+    top: -496px;
+    left: 20px;
+    cursor: pointer;
+  }
+
   .title {
     color: #344966;
     margin: 30px 0 0 0;

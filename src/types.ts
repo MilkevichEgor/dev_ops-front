@@ -3,12 +3,18 @@ export interface User {
   email: string,
   name?: string,
   avatar?: string,
-  ratings?: RatingObj[]
+  ratings?: RatingObj[],
+  favorites?: Favorite[],
 }
 
 export type RatingObj = {
   book: Book,
   rating: number,
+}
+
+export type Favorite = {
+  book: Book,
+  favorite_id: string,
 }
 
 export type Token = string | undefined;
