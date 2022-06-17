@@ -2,11 +2,13 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAppSelector } from '../../store';
 
-const AuthDependentRenderController: React.FC<{
+type PropsType = {
   children: JSX.Element;
   noAuthOnly?: boolean;
   redirectTo?: string;
-}> = (props) => {
+}
+
+const AuthDependentRenderController: React.FC<PropsType> = (props) => {
   const user = useAppSelector((state) => state.userReducer.user);
 
   if (!user) {

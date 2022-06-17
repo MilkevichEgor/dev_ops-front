@@ -1,11 +1,5 @@
 import axios from './axios';
-import { User, Token } from '../types';
-
-type AuthResponse = {
-  token: string;
-  user: User
-  message?: string;
-}
+import { AuthResponse } from '../types';
 
 type AuthOptions = {
   password: string;
@@ -13,11 +7,6 @@ type AuthOptions = {
 }
 
 const authPath = '/auth';
-const userPath = '/user';
-
-const checkToken = (data: Token) => {
-  return axios.get<AuthResponse>(`${userPath}/me`, { data });
-};
 
 const signIn = (data: AuthOptions) => {
   return axios.post<AuthResponse>(`${authPath}/signin`, data);
@@ -30,5 +19,4 @@ const signUp = (data: AuthOptions) => {
 export default {
   signIn,
   signUp,
-  checkToken,
 };

@@ -3,17 +3,29 @@ import { Route, Routes } from 'react-router-dom';
 import SignInForm from '../pages/auth/SignIn';
 import SignUpForm from '../pages/auth/SignUp';
 import Home from '../pages/home';
-import Cart from '../pages/card/Card';
-import UserProfile from '../pages/userProfile/UserProfile';
+import Cart from '../pages/cart';
+import UserProfile from '../pages/userProfile';
 import { routePath } from '../../constants';
 import AuthDependentRenderController from '../components/AuthDependentRenderController';
-import ProductPage from '../pages/productPage/ProductPage';
+import ProductPage from '../pages/productPage';
 
 const Navigation = () => {
   return (
     <Routes>
-      <Route path={routePath.home} element={<Home />} />
-      <Route path={`${routePath.product}/:id`} element={<ProductPage />} />
+      <Route
+        path={routePath.home}
+        element={
+          <Home />
+        }
+      />
+
+      <Route
+        path={`${routePath.product}/:id`}
+        element={
+          <ProductPage />
+        }
+      />
+
       <Route
         path={routePath.signIn}
         element={(
@@ -23,7 +35,8 @@ const Navigation = () => {
           >
             <SignInForm />
           </AuthDependentRenderController>
-        )} />
+        )}
+      />
 
       <Route
         path={routePath.signUp}
@@ -34,7 +47,8 @@ const Navigation = () => {
           >
             <SignUpForm />
           </AuthDependentRenderController>
-        )} />
+        )}
+      />
 
       <Route
         path={routePath.cart}
@@ -60,7 +74,8 @@ const Navigation = () => {
 
       <Route path="*" element={(
         <h1>PAGE NOT FOUND!!!</h1>
-      )} />
+      )}
+      />
     </Routes>
   );
 };

@@ -1,4 +1,5 @@
 import axios from './axios';
+import { Token, AuthResponse } from '../types';
 
 type UpdateUserData = {
   name?: string;
@@ -21,7 +22,12 @@ const uploadAvatar = (data: UploadAvatar) => {
   return axios.post(`${userPath}/upload-avatar`, data);
 };
 
+const checkToken = (data: Token) => {
+  return axios.get<AuthResponse>(`${userPath}/me`, { data });
+};
+
 export default {
   updateUser,
   uploadAvatar,
+  checkToken,
 };

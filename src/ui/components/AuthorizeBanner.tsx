@@ -1,22 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CommonButton from '../components/CommonButton';
-import CommonTextBlock from '../styles/CommonTextBlock.styles';
+
+import { routePath } from '../../constants';
 import castle from '../images/castle.png';
 import fairy from '../images/fairy.png';
+import CommonButton from '../components/CommonButton';
+import CommonTextBlock from '../styles/CommonTextBlock.styles';
 import Wrapper from '../styles/AuthorizeBanner.styles';
 import CommonWrapper from '../styles/CommonWrapper.styles';
-import { routePath } from '../../constants';
 
 const AuthorizeBanner = () => {
   return (
     <CommonWrapper>
       <Wrapper>
         <div>
-          <img src={castle} className="main-img" alt="castle image" />
+          <img
+            src={castle}
+            className="main-img"
+            alt="castle image"
+          />
         </div>
         <div className="info-block">
-          <img src={fairy} className="background-img" alt="fairy image" />
+          <img
+            src={fairy}
+            className="background-img"
+            alt="fairy image"
+          />
           <CommonTextBlock className="text-block">
             <p className="title">
               Authorize now

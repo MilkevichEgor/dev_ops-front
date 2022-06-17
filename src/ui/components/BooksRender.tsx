@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import { routePath } from '../../constants';
-import BooksWrapper from '../styles/Books.styles';
+import { Book as BookType } from '../../types';
 import CommonButton from './CommonButton';
 import Rating from './Rating';
-import { Book as BookType } from '../../types';
+import BooksWrapper from '../styles/Books.styles';
 
 type BookProps = {
   booksArray: BookType[];

@@ -1,5 +1,6 @@
-import { FieldInputProps } from 'formik';
 import React from 'react';
+import { FieldInputProps } from 'formik';
+
 import CommonInputWrapper from '../styles/CommonInputField.styles';
 
 type CommonInputProps = {
@@ -55,7 +56,6 @@ const CommonInputField: React.FC<CommonInputProps> = (props) => {
           value={props.value}
           {...props.fieldInputProps}
         />
-
       </div>
     </CommonInputWrapper>
   );
