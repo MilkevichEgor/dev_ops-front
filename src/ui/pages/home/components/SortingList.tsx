@@ -9,6 +9,7 @@ const SortingList = () => {
 
   const applySortOrder = (value: string) => {
     parsedParams.order = value;
+
     if (parsedParams.orderDir === 'ASC') {
       parsedParams.orderDir = 'DESC';
     } else {
@@ -55,7 +56,7 @@ const sortArray = [
   },
   {
     title: 'Rating',
-    type: 'rating',
+    type: 'averageRate',
   },
   {
     title: 'Date of issue',

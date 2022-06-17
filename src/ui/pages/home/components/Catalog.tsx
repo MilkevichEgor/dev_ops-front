@@ -32,6 +32,9 @@ const Catalog = () => {
     case 'dateOfIssue':
       sortByTitle = 'date';
       break;
+    case 'averageRate':
+      sortByTitle = 'rating';
+      break;
     case 'title':
       sortByTitle = 'name';
       break;
