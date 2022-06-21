@@ -8,6 +8,7 @@ import UserProfile from '../pages/userProfile';
 import { routePath } from '../../constants';
 import AuthDependentRenderController from '../components/AuthDependentRenderController';
 import ProductPage from '../pages/productPage';
+import Favorites from '../pages/favorites';
 
 const Navigation = () => {
   return (
@@ -68,6 +69,17 @@ const Navigation = () => {
             redirectTo={routePath.signIn}
           >
             <UserProfile />
+          </AuthDependentRenderController>
+        )}
+      />
+
+      <Route
+        path={routePath.favorites}
+        element={(
+          <AuthDependentRenderController
+            redirectTo={routePath.signIn}
+          >
+            <Favorites />
           </AuthDependentRenderController>
         )}
       />

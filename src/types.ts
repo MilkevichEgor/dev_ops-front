@@ -4,17 +4,12 @@ export interface User {
   name?: string,
   avatar?: string,
   ratings?: RatingObj[],
-  favorites?: Favorite[],
+  books?: BooksArray,
 }
 
 export type RatingObj = {
   book: Book,
   rating: number,
-}
-
-export type Favorite = {
-  book: Book,
-  favorite_id: string,
 }
 
 export type Token = string | undefined;
@@ -50,7 +45,8 @@ export interface Book {
   title: string;
   description: string;
   averageRate: number;
-  comments: Comment[]
+  comments: Comment[];
+  isInFavorite: boolean;
 }
 export type BooksArray = Book[];
 

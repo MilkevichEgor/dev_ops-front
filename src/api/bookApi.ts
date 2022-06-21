@@ -16,9 +16,13 @@ export type AddCommentOptions = {
   user_id: number;
 }
 
-const getAllBooks = (options: QuerySearchOptions) => {
+export type GetAllBooksOptions = {
+  options: QuerySearchOptions;
+}
+
+const getAllBooks = (data: GetAllBooksOptions) => {
   return axios.get(`${bookPath}/all`, {
-    params: options,
+    params: data.options,
   });
 };
 

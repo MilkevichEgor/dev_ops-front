@@ -12,7 +12,7 @@ const AuthButtonsBlock = () => {
       <Link to={routePath.cart}>
         <img src={cartIcon} className="icon" />
       </Link>
-      <Link to={routePath.profile}>
+      <Link to={routePath.favorites} >
         <img src={favoritesIcon} className="icon" />
       </Link>
       <Link to={routePath.profile}>

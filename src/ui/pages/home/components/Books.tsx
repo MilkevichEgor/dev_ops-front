@@ -10,6 +10,7 @@ import useQuery from '../../../../utils/useQuery';
 import BooksRender from '../../../components/BooksRender';
 
 const BooksList = () => {
+  const user = useAppSelector((state) => state.userReducer.user);
   const books = useAppSelector((state) => state.bookReducer.books);
   const dispatch = useAppDispatch();
   const [parsedParams] = useQuery<QuerySearchOptions>();
@@ -17,7 +18,12 @@ const BooksList = () => {
   useEffect(() => {
     (async () => {
       try {
-        const response = await bookApi.getAllBooks(parsedParams);
+        // let response;
+        // if (user) {
+        //   const options = { options: parsedParams, user: user.id };
+        //   response = await bookApi.getAllBooks(options);
+        // }
+        const response = await bookApi.getAllBooks({ options: parsedParams });
 
         dispatch(setBooks(response.data.books));
         const pagesQuantity = Math.ceil(
@@ -28,7 +34,7 @@ const BooksList = () => {
         console.log('ERROR >>', err);
       }
     })();
-  }, [dispatch, parsedParams]);
+  }, [dispatch, parsedParams, user]);
 
   useEffect(() => {
     (async () => {
@@ -38,10 +44,10 @@ const BooksList = () => {
   }, [dispatch]);
 
   return (
-      <BooksRender
-        wrap
-        booksArray={books}
-      />
+    <BooksRender
+      wrap="wrap"
+      booksArray={books}
+    />
   );
 };
 

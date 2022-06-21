@@ -48,10 +48,13 @@ const ProductPage = () => {
   return (
     <CommonWrapper>
       <ProductPageWrapper>
-        <img
-          className="cover"
-          src={book.cover}
-          alt={`${book.title} cover`} />
+        <div className="cover">
+          <img
+            className="cover_img"
+            src={book.cover}
+            alt={`${book.title} cover_img`}
+          />
+        </div>
         <div className="book-info">
           <p className="title">
             {book.title}

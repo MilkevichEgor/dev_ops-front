@@ -24,7 +24,7 @@ const Recommendations = () => {
     <RecommendationsWrapper>
       <h1 className="block_title">Recommendations</h1>
         <BooksRender
-          wrap={false}
+          wrap="nowrap"
           booksArray={recommendedBooks}
         />
     </RecommendationsWrapper>

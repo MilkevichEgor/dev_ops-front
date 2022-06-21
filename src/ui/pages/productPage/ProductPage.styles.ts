@@ -4,13 +4,16 @@ const ProductPageWrapper = styled.div`
   display: grid;
   column-gap: 128px;
   color: #0D1821;
-  
+
   .cover {
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+  
+  .cover_img {
     width: 522px;
     height: 779px;
     border-radius: 16px;
-    grid-row-start: 1;
-    grid-row-end: 3;
   }
 
   .book-info {

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 type StylesProps = {
-  wrap: boolean;
+  wrap: 'wrap' | 'nowrap';
 }
 
 const BooksWrapper = styled.div<StylesProps>`
   display: flex;
-  ${(props) => (props.wrap
+  ${(props) => (props.wrap === 'wrap'
     ? 'flex-wrap: wrap;'
     : `flex-wrap: nowrap;
       overflow: hidden;`
@@ -17,6 +17,7 @@ const BooksWrapper = styled.div<StylesProps>`
   line-height: 30px;
 
   .book {
+    position: relative;
     width: 305px;
     font-size: 20px;
     line-height: 30px;
@@ -29,8 +30,8 @@ const BooksWrapper = styled.div<StylesProps>`
   }
 
   .favorite {
-    position: relative;
-    top: -496px;
+    position: absolute;
+    top: 20px;
     left: 20px;
     cursor: pointer;
   }
@@ -75,6 +76,13 @@ const BooksWrapper = styled.div<StylesProps>`
       height: 372px;
       width: 254px;
     }
+
+    .favorite {
+      width: 38px;
+      height: 38px;
+      top: 16px;
+      left: 16px;
+    }
   }
 
   @media (max-width: 833px) {
@@ -95,6 +103,13 @@ const BooksWrapper = styled.div<StylesProps>`
     .average_rating {
       font-size: 12px;
       line-height: 20px;
+    }
+
+    .favorite {
+      width: 25px;
+      height: 25px;
+      top: 16px;
+      left: 19px;
     }
   }
 `;
