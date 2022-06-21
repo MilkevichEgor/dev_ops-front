@@ -67,8 +67,6 @@ const UserPassword: React.FC<UserProfileProps> = (props) => {
   const inputType = isPasswordVisible ? 'text' : 'password';
 
   const togglePasswordVisibility = () => {
-    console.log('isPasswordVisible', isPasswordVisible);
-
     setIsPasswordVisible(!isPasswordVisible);
   };
 
@@ -78,7 +76,7 @@ const UserPassword: React.FC<UserProfileProps> = (props) => {
         icon={hideIcon}
         name="password"
         hint="Your password"
-        placeholder="*************"
+        placeholder="********"
         disabled={true}
         success={formik.status}
       />

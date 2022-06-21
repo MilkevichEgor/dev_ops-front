@@ -23,20 +23,20 @@ const BooksWrapper = styled.div<StylesProps>`
     line-height: 30px;
   }
 
-  .cover {
+  .book__cover {
     height: 448px;
     width: 305px;
     border-radius: 16px;
   }
 
-  .favorite {
+  .book__favorite {
     position: absolute;
     top: 20px;
     left: 20px;
     cursor: pointer;
   }
 
-  .title {
+  .book__title {
     color: #344966;
     margin: 30px 0 0 0;
     white-space: nowrap;
@@ -45,12 +45,12 @@ const BooksWrapper = styled.div<StylesProps>`
     text-decoration: none;
   }
 
-  .author {
+  .book__author {
     color: #B9BAC4;
     margin: 0 0 20px 0;
   }
 
-  .rating {
+  .book__rating {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -60,7 +60,7 @@ const BooksWrapper = styled.div<StylesProps>`
     margin: 21px 0 32px 0;
   }
 
-  .link {
+  .book__link {
     text-decoration: none;
   }
 
@@ -72,12 +72,12 @@ const BooksWrapper = styled.div<StylesProps>`
       font-size: 16px;
       line-height: 24px;
     }
-    .cover {
+    .book__cover {
       height: 372px;
       width: 254px;
     }
 
-    .favorite {
+    .book__favorite {
       width: 38px;
       height: 38px;
       top: 16px;
@@ -91,21 +91,21 @@ const BooksWrapper = styled.div<StylesProps>`
       font-size: 14px;
       line-height: 21px;
     }
-    .cover {
+    .book__cover {
       height: 192px;
       width: 135px;
     }
 
-    .rating {
+    .book__rating {
       margin: 15px 0 18px 0;
     }
 
-    .average_rating {
+    .book__average-rating {
       font-size: 12px;
       line-height: 20px;
     }
 
-    .favorite {
+    .book__favorite {
       width: 25px;
       height: 25px;
       top: 16px;

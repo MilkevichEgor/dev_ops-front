@@ -1,30 +1,3 @@
-export interface User {
-  id: number,
-  email: string,
-  name?: string,
-  avatar?: string,
-  ratings?: RatingObj[],
-  books?: BooksArray,
-}
-
-export type RatingObj = {
-  book: Book,
-  rating: number,
-}
-
-export type Token = string | undefined;
-
-export type QuerySearchOptions = {
-  page?: string;
-  limit?: string;
-  genres?: string;
-  priceFrom?: string;
-  priceTo?: string;
-  order?: string;
-  orderDir?: string;
-  value?: string;
-}
-
 export type AuthResponse = {
   token: string;
   user: User
@@ -35,6 +8,23 @@ export type AuthData = {
   password: string;
   email: string;
 };
+
+export type Token = string | undefined;
+
+export interface User {
+  id: number;
+  email: string;
+  name?: string;
+  avatar?: string;
+  ratings?: RatingObj[];
+  books?: BooksArray;
+}
+
+export type RatingObj = {
+  book: Book;
+  rating: number;
+}
+
 export interface Book {
   author: string;
   bookId: number;
@@ -49,6 +39,17 @@ export interface Book {
   isInFavorite: boolean;
 }
 export type BooksArray = Book[];
+
+export type QuerySearchOptions = {
+  page?: string;
+  limit?: string;
+  genres?: string;
+  priceFrom?: string;
+  priceTo?: string;
+  order?: string;
+  orderDir?: string;
+  value?: string;
+}
 
 export interface Genre {
   genreId: number;

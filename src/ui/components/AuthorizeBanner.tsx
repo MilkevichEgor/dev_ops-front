@@ -17,14 +17,12 @@ const AuthorizeBanner = () => {
           <img
             src={castle}
             className="main-img"
-            alt="castle image"
           />
         </div>
         <div className="info-block">
           <img
             src={fairy}
             className="background-img"
-            alt="fairy image"
           />
           <CommonTextBlock className="text-block">
             <p className="title">

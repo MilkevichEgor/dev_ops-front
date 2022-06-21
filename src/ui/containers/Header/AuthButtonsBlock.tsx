@@ -10,13 +10,22 @@ const AuthButtonsBlock = () => {
   return (
     <AuthButtonsWrapper>
       <Link to={routePath.cart}>
-        <img src={cartIcon} className="icon" />
+        <img
+          src={cartIcon}
+          className="icon"
+        />
       </Link>
       <Link to={routePath.favorites} >
-        <img src={favoritesIcon} className="icon" />
+        <img
+          src={favoritesIcon}
+          className="icon"
+        />
       </Link>
       <Link to={routePath.profile}>
-        <img src={profileIcon} className="icon" />
+        <img
+          src={profileIcon}
+          className="icon"
+        />
       </Link>
     </AuthButtonsWrapper>
   );

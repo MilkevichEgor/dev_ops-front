@@ -40,7 +40,8 @@ const Rating: React.FC<RatingProps> = (props) => {
 
   const handleRating = (rate: number) => {
     setRating(rate / 20);
-    if (!props.handleChangeRating) return;
+    if (!props.handleChangeRating) { return; }
+
     props.handleChangeRating();
     updateRating(rate / 20);
   };

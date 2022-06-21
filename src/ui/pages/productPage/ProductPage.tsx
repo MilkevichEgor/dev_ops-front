@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 
 import bookApi from '../../../api/bookApi';
 import { Book, RatingObj } from '../../../types';
@@ -14,8 +14,10 @@ import Comments from './Comments';
 import AuthDependentRenderController from '../../components/AuthDependentRenderController';
 import AuthorizeBanner from '../../components/AuthorizeBanner';
 import Recommendations from './Recommendations';
+import { routePath } from '../../../constants';
 
 const ProductPage = () => {
+  const navigate = useNavigate();
   const [book, setBook] = useState<Book>();
   const [isChangeRating, setIsChangeRating] = useState(false);
   const user = useAppSelector((state) => state.userReducer.user);
@@ -38,7 +40,12 @@ const ProductPage = () => {
   }, [params.id]);
 
   if (!book) return null;
+
   const handleChangeRating = () => {
+    if (!user) {
+      return navigate(routePath.signIn);
+    }
+
     setIsChangeRating(!isChangeRating);
   };
 
@@ -52,7 +59,6 @@ const ProductPage = () => {
           <img
             className="cover_img"
             src={book.cover}
-            alt={`${book.title} cover_img`}
           />
         </div>
         <div className="book-info">
@@ -68,7 +74,9 @@ const ProductPage = () => {
                 src={filledStarIcon}
                 className="icon"
               />
-              <div className="update_rate">{book.averageRate}</div>
+              <div className="update_rate">
+                {book.averageRate}
+              </div>
             </div>
             <Rating
               book_id={book.bookId}

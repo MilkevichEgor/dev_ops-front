@@ -3,7 +3,7 @@ import userApi from '../../../api/userApi';
 import { BooksArray } from '../../../types';
 import BooksRender from '../../components/BooksRender';
 import CommonWrapper from '../../styles/CommonWrapper.styles';
-import FavoritesWrapper from './Favorites';
+import FavoritesWrapper from './Favorites.styles';
 
 const Favorites = () => {
   const [books, setBooks] = useState<BooksArray>([]);
@@ -12,8 +12,6 @@ const Favorites = () => {
     (async () => {
       try {
         const response = await userApi.getFavorite();
-        console.log('response', response);
-
         setBooks(response.data);
       } catch (err) {
         console.log('ERROR:', err);

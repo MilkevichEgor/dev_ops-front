@@ -94,7 +94,7 @@ const ProductPageWrapper = styled.div`
     column-gap: 21px;
     -webkit-column-gap: 21px;
 
-    .cover {
+    .cover_img {
       width: 391px;
       height: 584px;
     }
@@ -144,7 +144,7 @@ const ProductPageWrapper = styled.div`
   }
 
   @media (max-width: 833px) {
-    .cover {
+    .cover_img {
       width: 135px;
       height: 202px;
     }

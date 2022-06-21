@@ -42,11 +42,11 @@ const Header = () => {
           </Link>
         </div>
         <label htmlFor="global-search"
-          className="search-field"
+          className="search"
         >
-          <img className="search-icon" src={searchIcon} />
+          <img className="search__icon" src={searchIcon} />
           <input
-            className="search-input"
+            className="search__input"
             type="text"
             id="global-search"
             placeholder="Search"

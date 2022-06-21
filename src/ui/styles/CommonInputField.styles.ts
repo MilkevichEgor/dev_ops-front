@@ -5,8 +5,6 @@ type StylesProps = {
   isSuccess?: boolean;
 }
 
-// (props.isError ? '#ED2E7E' : 'transparent')
-
 const CommonInputWrapper = styled.div<StylesProps>`
   display: flex;
   background: #F0F4EF;
@@ -24,17 +22,13 @@ const CommonInputWrapper = styled.div<StylesProps>`
     return 'transparent';
   }};
   
-  .icon {
+  .input__icon {
     width: 24px;
     height: 100%;
     padding: 20px 16px 20px 24px;
   }
 
-  .info__general {
-    margin-bottom: 30px;
-  }
-
-  .info__row {
+  .input__info-block {
     position: relative;
     padding: 6px 0;
   }
@@ -48,14 +42,14 @@ const CommonInputWrapper = styled.div<StylesProps>`
     left: -66px;
   }
 
-  .info__row-name {
+  .input__info-name {
     margin: 0;
     font-size: 14px;
     line-height: 24px;
     letter-spacing: 0.75px;
   }
 
-  .info__row-value {
+  .input__info-value {
     font-family: 'Poppins',sans-serif;
     margin: 0;
     font-weight: 400;
@@ -65,11 +59,7 @@ const CommonInputWrapper = styled.div<StylesProps>`
     background: inherit;
   }
 
-  .info__password {
-    margin-top: 40px
-  }
-
-  .info__input {
+  .input__input {
     border: none;
     outline: none;
     background: inherit;
@@ -82,10 +72,6 @@ const CommonInputWrapper = styled.div<StylesProps>`
    align-items:center;
   }
 
-  .new-password__row-name {
-    margin: 0;
-  }
-
   @media (max-width: 1279px) {
     max-width: 529px;
     width: 100%;
@@ -94,20 +80,20 @@ const CommonInputWrapper = styled.div<StylesProps>`
   @media (max-width: 833px) {
     align-items: center;
 
-    .icon {
+    .input__icon {
       padding: 12px 16px 11px 24px;
     }
 
-    .info__row-name {
+    .input__info-name {
       font-size: 12px;
       line-height: 24px;
     }
 
-    .info__row-value {
+    .input__info-value {
       font-size: 14px;
     }
 
-    .info__row {
+    .input__info-block {
       padding: 2px 0;
     }
 

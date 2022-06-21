@@ -15,8 +15,7 @@ type CommonInputProps = {
   submit?: React.FormEvent<HTMLFormElement>
   error?: string;
   success?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  fieldInputProps?: FieldInputProps<any>;
+  fieldInputProps?: FieldInputProps<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
   onClickOnIcon?: () => void;
 }
 
@@ -27,11 +26,11 @@ const CommonInputField: React.FC<CommonInputProps> = (props) => {
       isSuccess={!!props.success}
     >
       <img
-        className="icon"
+        className="input__icon"
         src={props.icon}
         onClick={props.onClickOnIcon}
       />
-      <div className={props.hint ? 'info__row' : 'info__row no-hint'}>
+      <div className={props.hint ? 'input__info-block' : 'input__info-block no-hint'}>
         {props.error
           ? (<div
             className="error"
@@ -39,7 +38,7 @@ const CommonInputField: React.FC<CommonInputProps> = (props) => {
           : null
         }
         {props.hint &&
-          <p className="info__row-name">
+          <p className="input__info-name">
             {props.hint}
           </p>
         }
@@ -49,7 +48,7 @@ const CommonInputField: React.FC<CommonInputProps> = (props) => {
         }
         <input
           name={props.name}
-          className="info__row-value info__input"
+          className="input__info-value input__input"
           type={props.type}
           placeholder={props.placeholder}
           disabled={props.disabled}

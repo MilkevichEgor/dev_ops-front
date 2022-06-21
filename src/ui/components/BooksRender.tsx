@@ -19,29 +19,28 @@ type BookProps = {
 
 const BooksRender: React.FC<BookProps> = (props) => {
   const navigate = useNavigate();
-  const [favorites, setFavorites] = useState<number[]>([]);
+  const [favoritesIds, setFavoritesIds] = useState<number[]>([]);
   const user = useAppSelector((state) => state.userReducer.user);
 
   useEffect(() => {
-    const arr: number[] = [];
+    const updatedFavoritesIds: number[] = [];
     props.booksArray.forEach((book) => {
       if (book.isInFavorite) {
-        arr.push(book.bookId);
+        updatedFavoritesIds.push(book.bookId);
       }
     });
-    setFavorites(arr);
+    setFavoritesIds(updatedFavoritesIds);
   }, [props.booksArray]);
 
   const handleClickOnFavorite = async (book_id: number) => {
     if (!user) {
       navigate(routePath.signIn);
     }
-
     try {
-      const indexInFavorites = favorites.indexOf(book_id);
+      const indexInFavorites = favoritesIds.indexOf(book_id);
       if (indexInFavorites !== -1) {
         await userApi.removeFromFavorite({ book_id });
-        setFavorites((favorites) => favorites.filter((id) => {
+        setFavoritesIds((favorites) => favorites.filter((id) => {
           return id !== book_id;
         }));
         if (props.handleFavorites) {
@@ -49,7 +48,7 @@ const BooksRender: React.FC<BookProps> = (props) => {
         }
       } else {
         await userApi.addToFavorite({ book_id });
-        setFavorites([...favorites, book_id]);
+        setFavoritesIds([...favoritesIds, book_id]);
       }
     } catch (err) {
       console.log('ERROR:', err);
@@ -67,39 +66,38 @@ const BooksRender: React.FC<BookProps> = (props) => {
             key={book.bookId}
           >
             <Link
-              className="link"
+              className="book__link"
               to={{ pathname: `${routePath.product}/${book.bookId}` }}>
               <img
                 src={book.cover}
-                className="cover"
-                alt="book cover"
+                className="book__cover"
               />
-              <p className="title">
+              <p className="book__title">
                 {book.title}
               </p>
             </Link>
-            {favorites.includes(book.bookId)
-              ? < img
-                className="favorite"
+            {favoritesIds.includes(book.bookId)
+              ? (< img
+                className="book__favorite"
                 src={favoriteChoosenIcon}
                 onClick={() => handleClickOnFavorite(book.bookId)}
-              />
-              : <img
-                className="favorite"
+              />)
+              : (<img
+                className="book__favorite"
                 src={favoriteUnchoosenIcon}
                 onClick={() => handleClickOnFavorite(book.bookId)}
-              />
+              />)
             }
-            <p className="author">
+            <p className="book__author">
               {book.author}
             </p>
-            <div className="rating">
+            <div className="book__rating">
               <Rating
                 rate={book.averageRate}
                 isChangeRating={false}
                 book_id={book.bookId}
               />
-              <div className="average_rating">
+              <div className="book__average-rating">
                 {book.averageRate}
               </div>
             </div>

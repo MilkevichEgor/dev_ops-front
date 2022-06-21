@@ -14,20 +14,40 @@ const Footer = () => {
         <div className="main-block ">
           <div className="contacts">
             <Link to={routePath.home}>
-              <Logo src={logo} className="logo" alt="store logo" />
+              <Logo
+                src={logo}
+                className="logo"
+              />
             </Link>
-            <p className="text">ye.alexey@gmail.com</p>
-            <p className="text">(480) 555-0103</p>
+            <p className="text">
+              ye.alexey@gmail.com
+            </p>
+            <p className="text">
+              (480) 555-0103
+            </p>
           </div>
           <div className="nav">
-            <Link to={routePath.home} className="link">Home Page</Link>
-            <Link to={routePath.home} className="link">Catalog</Link>
-            <Link to={routePath.profile} className="link">My Account</Link>
-            <Link to={routePath.cart} className="link">Cart</Link>
+            <Link to={routePath.home} className="link">
+              Home Page
+            </Link>
+            <Link to={routePath.home} className="link">
+              Catalog
+            </Link>
+            <Link to={routePath.profile} className="link">
+              My Account
+            </Link>
+            <Link to={routePath.cart} className="link">
+              Cart
+            </Link>
           </div>
           <div>
-            <p className="text">6391 Elgin St. Celina, Delaware 10299</p>
-            <img className="map" src={map} alt="map" />
+            <p className="text">
+              6391 Elgin St. Celina, Delaware 10299
+            </p>
+            <img
+              className="map"
+              src={map}
+            />
           </div>
         </div>
       </CommonWrapper>
