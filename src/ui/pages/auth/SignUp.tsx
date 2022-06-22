@@ -49,9 +49,7 @@ const SignUpForm = () => {
         });
         dispatch(setUser(response.data.user));
 
-        if (response.status === 201) {
-          return navigate(`${routePath.home}`);
-        }
+        return navigate(`${routePath.home}`);
       } catch (error) {
         if (error instanceof AxiosError) {
           const status = error.response?.status;
@@ -72,7 +70,9 @@ const SignUpForm = () => {
           className="form-wrapper"
           onSubmit={formik.handleSubmit}
         >
-          <h1 className="title">Sign Up</h1>
+          <h1 className="title">
+            Sign Up
+          </h1>
 
           <div className="input-wrapper">
             <CommonInputField
@@ -82,7 +82,9 @@ const SignUpForm = () => {
               fieldInputProps={formik.getFieldProps('email')}
               error={formik?.touched.email ? formik?.errors.email : ''}
             />
-            <p className="form__text">Enter your email</p>
+            <p className="form__text">
+              Enter your email
+            </p>
 
             <CommonInputField
               icon={hide}
@@ -92,7 +94,9 @@ const SignUpForm = () => {
               fieldInputProps={formik.getFieldProps('password')}
               error={formik?.touched.password ? formik?.errors.password : ''}
             />
-            <p className="form__text">Enter your password</p>
+            <p className="form__text">
+              Enter your password
+            </p>
 
             <CommonInputField
               icon={hide}
@@ -102,7 +106,9 @@ const SignUpForm = () => {
               fieldInputProps={formik.getFieldProps('passwordRepeat')}
               error={formik?.touched.passwordRepeat ? formik?.errors.passwordRepeat : ''}
             />
-            <p className="form__text">Repeat your password without errors</p>
+            <p className="form__text">
+              Repeat your password without errors
+            </p>
           </div>
           <CommonButton
             size="permanent"

@@ -19,8 +19,11 @@ const SortingList = () => {
   };
 
   return (
-    <SortingListWrapper>
-      <img src={arrowUpIcon} className="arrow-up" />
+    <SortingListWrapper >
+      <img
+        src={arrowUpIcon}
+        className="arrow-up"
+      />
       <ul>
         {sortArray.map((item) => {
           return (

@@ -7,14 +7,10 @@ import { QuerySearchOptions } from '../../../../types';
 import checkedIcon from '../../../images/checkboxChecked.png';
 import unchekedIcon from '../../../images/checkboxUnchecked.png';
 
-type GenreCheckboxProps = {
-  toggleGenreSelector: () => void;
-}
-
-const GenresCheckbox: React.FC<GenreCheckboxProps> = () => {
+const GenresCheckbox = () => {
   const [checkedGenres, setCheckedGenres] = useState<string[]>([]);
-  const genres = useAppSelector((state) => state.genreReducer.genres);
   const [parsedParams, setParams] = useQuery<QuerySearchOptions>();
+  const genres = useAppSelector((state) => state.genreReducer.genres);
 
   useEffect(() => {
     if (parsedParams.genres) {
@@ -49,9 +45,7 @@ const GenresCheckbox: React.FC<GenreCheckboxProps> = () => {
 
   return (
     <GenreCheckboxWrapper
-      onClick={(e) => {
-        e.stopPropagation();
-      }}
+      // ref={wrapperRef}
     >
       <img src={arrowUpIcon} className="arrow-up" />
       <div

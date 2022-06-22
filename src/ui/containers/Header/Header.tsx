@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 import logo from '../../images/logo.svg';
 import searchIcon from '../../images/SearchIcon.png';
@@ -30,7 +31,7 @@ const Header = () => {
 
   return (
     <CommonWrapper>
-      <HeaderWrapper>
+      <HeaderWrapper >
         <div className="link-block">
           <Link to={routePath.home}>
             <Logo src={logo} />

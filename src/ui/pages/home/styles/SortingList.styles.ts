@@ -9,6 +9,7 @@ const SortingListWrapper = styled.div`
   width: 100%;
   line-height: 28px;
   color: #344966;
+  z-index: 1;
 
   ul {
     list-style-type: none;

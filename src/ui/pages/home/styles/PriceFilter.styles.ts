@@ -8,6 +8,8 @@ const PriceFilterWrapper = styled.div`
   position: absolute;
   top: 74px;
   left: 0;
+  z-index: 1;
+
   .slider {
   position: relative;
   width: 379px;

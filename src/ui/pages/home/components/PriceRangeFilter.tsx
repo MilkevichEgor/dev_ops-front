@@ -56,6 +56,7 @@ const PriceFilter: FC<MultiRangeSliderProps> = (props) => {
 
   return (
     <PriceFilterWrapper
+      // ref={wrapperRef}
       onClick={(e) => {
         e.stopPropagation();
       }}

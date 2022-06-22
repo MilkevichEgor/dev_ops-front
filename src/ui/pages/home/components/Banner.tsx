@@ -15,11 +15,12 @@ const Banner = () => {
       <BannerWrapper>
         <img
           src={booksImg}
-          alt="background image with books"
           className="background-img"
         />
         <CommonTextBlock>
-          <p className="title">Build your library with us</p>
+          <p className="title">
+            Build your library with us
+          </p>
           <p className="text text-block">
             Buy two books and get one for free
           </p>

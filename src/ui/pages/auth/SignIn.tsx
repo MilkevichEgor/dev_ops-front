@@ -38,9 +38,8 @@ const SignInForm = () => {
           password: values.password,
         });
         dispatch(setUser(response.data.user));
-        if (response.status === 200) {
-          return navigate(`${routePath.home}`);
-        }
+
+        return navigate(`${routePath.home}`);
       } catch (error) {
         if (error instanceof AxiosError) {
           const status = error.response?.status;
@@ -66,7 +65,9 @@ const SignInForm = () => {
           className="form-wrapper"
           onSubmit={formik.handleSubmit}
         >
-          <h1 className="title">Log In</h1>
+          <h1 className="title">
+            Log In
+          </h1>
 
           <div className="input-wrapper">
             <CommonInputField
@@ -76,7 +77,10 @@ const SignInForm = () => {
               fieldInputProps={formik.getFieldProps('email')}
               error={formik?.touched.email ? formik?.errors.email : ''}
             />
-            <p className="form__text">Enter your email</p>
+            <p className="form__text">
+              Enter your email
+            </p>
+
             <CommonInputField
               icon={hide}
               type="password"
@@ -85,7 +89,9 @@ const SignInForm = () => {
               fieldInputProps={formik.getFieldProps('password')}
               error={formik?.touched.password ? formik?.errors.password : ''}
             />
-            <p className="form__text">Enter your password</p>
+            <p className="form__text">
+              Enter your password
+            </p>
           </div>
           <CommonButton
             size="permanent"

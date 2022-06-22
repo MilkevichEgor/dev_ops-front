@@ -18,16 +18,11 @@ const BooksList = () => {
   useEffect(() => {
     (async () => {
       try {
-        // let response;
-        // if (user) {
-        //   const options = { options: parsedParams, user: user.id };
-        //   response = await bookApi.getAllBooks(options);
-        // }
         const response = await bookApi.getAllBooks({ options: parsedParams });
 
         dispatch(setBooks(response.data.books));
         const pagesQuantity = Math.ceil(
-          response.data.pagesQuantity / constants.booksQuantityPerPage,
+          response.data.totalCount / constants.booksQuantityPerPage,
         );
         dispatch(setPagesQuantity(pagesQuantity));
       } catch (err) {

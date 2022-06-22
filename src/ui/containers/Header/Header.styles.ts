@@ -39,6 +39,7 @@ const HeaderWrapper = styled.header`
   .catalog-link {
     padding-left: 128px;
     color: black;
+    cursor: pointer;
   }
 
   .link {
