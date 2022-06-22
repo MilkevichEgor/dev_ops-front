@@ -31,10 +31,14 @@ const AuthorizeBanner = () => {
             <p className="text">
               Authorize now and discover the fabulous world of books
             </p>
-            <Link className="button" to={routePath.signIn}>
+            <Link
+              className="button"
+              to={routePath.signIn}
+            >
               <CommonButton
                 size="permanent"
-                text="Log In/ Sign Up" />
+                text="Log In/ Sign Up"
+              />
             </Link>
           </CommonTextBlock>
         </div>

@@ -12,11 +12,11 @@ const GenreCheckboxWrapper = styled.div`
   margin-left: -15px;
   z-index: 1;
 
-  .genres-block {
+  .genres-checkbox__wrapper {
     overflow: auto;
   }
 
-  .option {
+  .genres-checkbox__option {
     color: #344966;
     line-height: 28px;
     letter-spacing: 0.75px;
@@ -24,14 +24,14 @@ const GenreCheckboxWrapper = styled.div`
     cursor: pointer;
   }
 
-  .checkbox_icon {
+  .genres-checkbox__icon {
     width: 24px;
     height: 24px;
     vertical-align: text-bottom;
     margin: 0 10px 0 15px;
   }
 
-  .arrow-up {
+  .genres-checkbox__arrow-up {
     width: 33px;
     height: 20px;
     position: absolute;

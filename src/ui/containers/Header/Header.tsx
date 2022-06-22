@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
 
 import logo from '../../images/logo.svg';
 import searchIcon from '../../images/SearchIcon.png';
@@ -32,12 +31,12 @@ const Header = () => {
   return (
     <CommonWrapper>
       <HeaderWrapper >
-        <div className="link-block">
+        <div className="header__link-block">
           <Link to={routePath.home}>
             <Logo src={logo} />
           </Link>
-          <Link className="link" to={routePath.home}>
-            <span className="catalog-link">
+          <Link className="header__link" to={routePath.home}>
+            <span className="header__catalog-link">
               Catalog
             </span>
           </Link>
@@ -62,7 +61,7 @@ const Header = () => {
         <AuthDependentRenderController
           noAuthOnly
         >
-          <Link className="link" to={routePath.signIn}>
+          <Link className="header__link" to={routePath.signIn}>
             <CommonButton
               text="Log In / Sign Up"
             />

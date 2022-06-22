@@ -58,7 +58,8 @@ const Catalog = () => {
       children: <GenresCheckbox />,
       toggle: toggleIsGenresSelect,
       ref: refGenre,
-    }, {
+    },
+    {
       title: 'Price',
       state: isPriceRangeSelect,
       children: (
@@ -69,7 +70,8 @@ const Catalog = () => {
       ),
       toggle: toggleIsPriceRangeSelect,
       ref: refPrice,
-    }, {
+    },
+    {
       title: `Sort by ${sortByTitle}`,
       state: isOrderSelect,
       children: <SortingList />,
@@ -81,22 +83,26 @@ const Catalog = () => {
   return (
     <CommonWrapper>
       <CatalogWrapper>
-        <h1 className="title">Catalog</h1>
-        <div className="form">
+        <h1 className="filter__title">
+          Catalog
+        </h1>
+        <div
+          className="filter__form"
+        >
           {dropdownsList.map((filter) => {
             return (
               <div
                 ref={filter.ref}
                 key={filter.title}
-                className="filterWrapper input"
+                className="filter__wrapper"
                 onClick={() => filter.toggle()}
               >
-                <p className="filter">
+                <p className="filter__name">
                   {filter.title}
                 </p>
                 <img
                   src={forwardIcon}
-                  className="icon"
+                  className="filter__icon"
                 />
                 {filter.state && filter.children}
               </div>

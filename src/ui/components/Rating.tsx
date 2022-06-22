@@ -56,12 +56,12 @@ const Rating: React.FC<RatingProps> = (props) => {
         fullIcon={
           <img
             src={filledStarIcon}
-            className="star"
+            className="rating__star"
           />}
         emptyIcon={
           <img
             src={emptyStarIcon}
-            className="star"
+            className="rating__star"
           />}
       />
     </RatingWrapper>

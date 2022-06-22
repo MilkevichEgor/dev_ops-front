@@ -27,7 +27,7 @@ const Favorites = () => {
   return (
     <CommonWrapper>
       <FavoritesWrapper>
-        <h1 className="title">Favorites</h1>
+        <h1 className="favorites__title">Favorites</h1>
         {books && (
           <BooksRender
             booksArray={books}

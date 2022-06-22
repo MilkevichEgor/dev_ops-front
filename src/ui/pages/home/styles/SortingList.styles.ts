@@ -20,7 +20,7 @@ const SortingListWrapper = styled.div`
     margin: 12px 0;
   }
 
-  .arrow-up {
+  .sorting__arrow-up {
     width: 33px;
     height: 20px;
     position: absolute;

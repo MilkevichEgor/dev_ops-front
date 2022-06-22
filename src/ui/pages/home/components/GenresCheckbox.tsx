@@ -44,12 +44,10 @@ const GenresCheckbox = () => {
   };
 
   return (
-    <GenreCheckboxWrapper
-      // ref={wrapperRef}
-    >
-      <img src={arrowUpIcon} className="arrow-up" />
+    <GenreCheckboxWrapper >
+      <img src={arrowUpIcon} className="genres-checkbox__arrow-up" />
       <div
-        className="genres-block"
+        className="genres-checkbox__wrapper"
         onClick={(e) => {
           e.stopPropagation();
         }}
@@ -59,11 +57,10 @@ const GenresCheckbox = () => {
             <label htmlFor={genre.genreId.toString()} key={genre.genreId}>
               <div
                 key={genre.genreId}
-                className="option"
+                className="genres-checkbox__option"
               >
                 <input
                   id={genre.genreId.toString()}
-                  className="checkbox"
                   type="checkbox"
                   name={genre.name}
                   value={genre.genreId}
@@ -72,8 +69,8 @@ const GenresCheckbox = () => {
                   hidden
                 />
                 {checkedGenres.includes(`${genre.genreId}`)
-                  ? <img className="checkbox_icon" src={checkedIcon} />
-                  : <img className="checkbox_icon" src={unchekedIcon} />
+                  ? <img className="genres-checkbox__icon" src={checkedIcon} />
+                  : <img className="genres-checkbox__icon" src={unchekedIcon} />
                 }
                 {genre.name}
               </div>

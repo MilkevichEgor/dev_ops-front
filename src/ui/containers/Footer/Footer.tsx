@@ -11,41 +11,41 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <CommonWrapper>
-        <div className="main-block ">
-          <div className="contacts">
+        <div className="footer__main">
+          <div className="footer__contacts">
             <Link to={routePath.home}>
               <Logo
                 src={logo}
-                className="logo"
+                className="footer__logo"
               />
             </Link>
-            <p className="text">
+            <p className="footer__text">
               ye.alexey@gmail.com
             </p>
-            <p className="text">
+            <p className="footer__text">
               (480) 555-0103
             </p>
           </div>
-          <div className="nav">
-            <Link to={routePath.home} className="link">
+          <div className="footer__nav nav">
+            <Link to={routePath.home} className="nav__link">
               Home Page
             </Link>
-            <Link to={routePath.home} className="link">
+            <Link to={routePath.home} className="nav__link">
               Catalog
             </Link>
-            <Link to={routePath.profile} className="link">
+            <Link to={routePath.profile} className="nav__link">
               My Account
             </Link>
-            <Link to={routePath.cart} className="link">
+            <Link to={routePath.cart} className="nav__link">
               Cart
             </Link>
           </div>
           <div>
-            <p className="text">
+            <p className="footer__text">
               6391 Elgin St. Celina, Delaware 10299
             </p>
             <img
-              className="map"
+              className="footer__map"
               src={map}
             />
           </div>

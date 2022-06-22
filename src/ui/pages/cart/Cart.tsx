@@ -13,20 +13,23 @@ const Cart = () => {
     <CommonWrapper>
       <EmptyCartWrapper>
         <img
-          className="img"
+          className="empty-cart__img"
           src={booksImg}
         />
         <CommonTextBlock>
           <p className="title">
             Your cart is empty
           </p>
-          <p className="text text-block">
+          <p className="text empty-cart__text-block">
             Add items to cart to make a purchase. Go to the catalogue now.
           </p>
-          <Link to={routePath.home} className="link">
+          <Link
+            to={routePath.home}
+            className="empty-cart__link">
             <CommonButton
               size="permanent"
-              text="Go to catalog" />
+              text="Go to catalog"
+            />
           </Link>
         </CommonTextBlock>
       </EmptyCartWrapper>

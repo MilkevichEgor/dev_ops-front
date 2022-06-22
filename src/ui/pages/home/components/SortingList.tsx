@@ -22,7 +22,7 @@ const SortingList = () => {
     <SortingListWrapper >
       <img
         src={arrowUpIcon}
-        className="arrow-up"
+        className="sorting__arrow-up"
       />
       <ul>
         {sortArray.map((item) => {

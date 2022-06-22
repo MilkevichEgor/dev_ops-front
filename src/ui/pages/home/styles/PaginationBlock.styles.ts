@@ -4,20 +4,20 @@ const PaginationWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin: 60px 0 60px;
-  .back {
+  .pagination__back {
     transform: rotate(180deg);
   }
 
-  .arrow {
+  .pagination__arrow {
     cursor: pointer;
   }
 
-  .pages {
+  .pagination__pages {
     display: flex;
     margin: 0 53px;
   }
 
-  .page {
+  .pagination__page {
     width: 9px;
     height: 9px;
     border: 3px solid #0D1821;
@@ -26,7 +26,7 @@ const PaginationWrapper = styled.div`
     cursor: pointer;
   }
 
-  .page__current {
+  .pagination__page-current {
     background-color: #0D1821
   }
 `;

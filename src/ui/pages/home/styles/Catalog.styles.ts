@@ -5,24 +5,9 @@ const CatalogWrapper = styled.div`
   justify-content: space-between;
   margin-top: 110px;
 
-  .filterWrapper {
+  .filter__wrapper {
     position: relative;
     cursor: pointer;
-  }
-
-  .title {
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 60px;
-    margin: 0;
-  }
-
-  .form {
-    display: flex;
-    align-items: center;
-  }
-
-  .input {
     display: flex;
     justify-content: space-between;
     background-color: #F0F4EF;
@@ -32,7 +17,19 @@ const CatalogWrapper = styled.div`
     margin-left: 20px;
   }
 
-  .filter {
+  .filter__title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 60px;
+    margin: 0;
+  }
+
+  .filter__form {
+    display: flex;
+    align-items: center;
+  }
+
+  .filter__name {
     display: flex;
     align-items: center;
     text-align: center;
@@ -43,7 +40,7 @@ const CatalogWrapper = styled.div`
     margin: 0;
   }
 
-  .icon {
+  .filter__icon {
     width: 9px;
     height: 16px;
     padding: 17px;
@@ -51,29 +48,30 @@ const CatalogWrapper = styled.div`
 
   @media (max-width: 1279px) {
     flex-direction: column;
-    .input {
+    
+    .filter__wrapper {
       width: 255px;
     }
   }
 
   @media (max-width: 833px) {
-    .title {
+    .filter__title {
       font-size: 18px;
       line-height: 27px;
       margin-bottom: 13px;
     }
 
-    .form {
+    .filter__form {
       flex-direction: column;
     }
 
-    .input {
+    .filter__wrapper {
       width: 290px;
       margin-left: 0;
       margin-bottom: 20px;
     }
 
-    .filter {
+    .filter__name {
       font-size: 14px;
       line-height: 28px;
     }

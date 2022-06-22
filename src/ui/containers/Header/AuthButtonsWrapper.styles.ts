@@ -4,12 +4,12 @@ const AuthButtonsWrapper = styled.div`
   display: flex;
   align-items: center;
 
-  .icon {
+  .header__icon {
     padding-left: 27px;
     cursor: pointer;
   }
   @media (max-width: 833px) {
-    .icon {
+    .header__icon {
       width: 33px;
       padding-left: 18px;
     }

@@ -4,7 +4,7 @@ const UserProfileWrapper = styled.div`
   display: flex;
   margin-top: 60px;
 
-  .avatar-block {
+  .avatar {
     width: 305px;
     height: 305px;
     background: #F0F4EF;
@@ -12,21 +12,21 @@ const UserProfileWrapper = styled.div`
     position: relative;
   }
 
-  .avatar-img {
+  .avatar__img {
     width: inherit;
     height: inherit;
     object-fit: cover;
     border-radius: inherit;
   }
 
-  .avatar-button {
+  .avatar__button {
     position: absolute;
     right: 20px;
     bottom: 20px;
     cursor: pointer;
   }
 
-  .info {
+  .user-info {
     padding-left: 128px;
   }
 
@@ -56,17 +56,17 @@ const UserProfileWrapper = styled.div`
   }
 
   @media (max-width: 1279px) {
-    .avatar-block {
+    .avatar {
       width: 255px;
       height: 255px;
     }
 
-    .avatar-button {
+    .avatar__button {
       width: 40px;
       height: 40px;
     }
 
-    .info {
+    .user-info {
       padding-left: 20px;
       width: 100%;
     }
@@ -75,7 +75,7 @@ const UserProfileWrapper = styled.div`
   @media (max-width: 833px) {
     flex-direction: column;
 
-    .avatar-block {
+    .avatar {
       width: 290px;
       height: 290px;
     }

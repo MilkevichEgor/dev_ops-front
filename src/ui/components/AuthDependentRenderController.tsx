@@ -23,7 +23,9 @@ const AuthDependentRenderController: React.FC<PropsType> = (props) => {
   }
 
   if (props.noAuthOnly) {
-    return props.redirectTo ? <Navigate to={props.redirectTo} /> : null;
+    return props.redirectTo
+      ? <Navigate to={props.redirectTo} />
+      : null;
   }
 
   return props.children;

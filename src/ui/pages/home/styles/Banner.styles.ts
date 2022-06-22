@@ -9,27 +9,27 @@ const BannerWrapper = styled.div`
   background: #F0F4EF;
   border-radius: 16px;
 
-  .background-img {
+  .banner__background-img {
     position: absolute;
     left: 0;
     bottom: 0;
   }
 
-  .text-block {
+  .banner__text-block {
     width: 217px;
   }
   
-  .human-img {
+  .banner__human-img {
     width: 406px;
     height: 400px;
     padding-left: 136px;
   }
 
-  .link {
+  .banner__link {
     text-decoration-line: none;
   }
 
-  .link:visited {
+  .banner__link:visited {
     color: black;
   }
 
@@ -38,7 +38,7 @@ const BannerWrapper = styled.div`
     height: 100%;
     justify-content: left;
 
-    .human-img {
+    .banner__human-img {
       width: 328px;
       height: 364px;
       padding-left: 0;
@@ -47,7 +47,7 @@ const BannerWrapper = styled.div`
       right: 0;
     }
 
-    .background-img {
+    .banner__background-img {
       width: 361px;
     }
   }
@@ -56,14 +56,14 @@ const BannerWrapper = styled.div`
     max-height: 505px;
     height: 505px;
 
-    .human-img {
+    .banner__human-img {
       width: 253px;
       height: 282px;
       right: unset;
       padding: 0 18px;
     }
 
-    .background-img {
+    .banner__background-img {
       width: 232px;
       height: 140px;
       top: 17px;

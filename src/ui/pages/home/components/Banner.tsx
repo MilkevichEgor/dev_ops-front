@@ -15,16 +15,19 @@ const Banner = () => {
       <BannerWrapper>
         <img
           src={booksImg}
-          className="background-img"
+          className="banner__background-img"
         />
         <CommonTextBlock>
           <p className="title">
             Build your library with us
           </p>
-          <p className="text text-block">
+          <p className="text banner__text-block">
             Buy two books and get one for free
           </p>
-          <Link className="link" to={routePath.home}>
+          <Link
+            className="banner__link"
+            to={routePath.home}
+          >
             <CommonButton
               size="permanent"
               text="Choose a book"
@@ -32,9 +35,8 @@ const Banner = () => {
           </Link>
         </CommonTextBlock>
         <img
-          className="human-img"
+          className="banner__human-img"
           src={human}
-          alt="image of a human reading"
         />
       </ BannerWrapper>
     </CommonWrapper>

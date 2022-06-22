@@ -49,15 +49,15 @@ const PaginationBlock = () => {
         <PaginationWrapper>
           <img
             src={arrow}
-            className="arrow back"
-            alt="back arrow"
+            className="pagination__arrow pagination__back"
+            alt="pagination__back pagination__arrow"
             onClick={turnPageBack}
           />
-          <div className="pages">
+          <div className="pagination__pages">
             {new Array(totalPages).fill(1).map((page, index) => {
-              let style = 'page';
+              let style = 'pagination__page';
               if (index + 1 === currentPage) {
-                style = 'page page__current';
+                style = 'pagination__page pagination__page-current';
               }
               return (
                 <div
@@ -70,8 +70,8 @@ const PaginationBlock = () => {
           </div>
           <img
             src={arrow}
-            className="arrow forward"
-            alt="arrow forward"
+            className="pagination__arrow"
+            alt="pagination__arrow"
             onClick={turnPageForward}
           />
         </PaginationWrapper>}

@@ -51,21 +51,21 @@ const UserProfile = () => {
   return (
     <CommonWrapper>
       <UserProfileWrapper>
-        <div className="avatar-block">
-          <img className="avatar-img" src={avatar} />
+        <div className="avatar">
+          <img className="avatar__img" src={avatar} />
           <label
             htmlFor="ava"
           >
             <img
               src={changeAvatarButton}
-              className="avatar-button"
-              alt="change avatar button" />
+              className="avatar__button"
+            />
             <input hidden type="file" name="ava" id="ava"
               onChange={(e) => handleAvatar(e)}
             />
           </label>
         </div>
-        <div className="info">
+        <div className="user-info">
           <div className="title">
             <p className="title__name">Personal information</p>
             <p
