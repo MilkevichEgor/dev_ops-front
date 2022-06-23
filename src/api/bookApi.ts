@@ -19,6 +19,10 @@ export type GetAllBooksOptions = {
   options: QuerySearchOptions;
 }
 
+type toggleFavoritesType = {
+  book_id: number;
+}
+
 const getAllBooks = (data: GetAllBooksOptions) => {
   return axios.get(`${config.bookPath}/all`, {
     params: data.options,
@@ -35,7 +39,7 @@ const searchForValue = (options: QuerySearchOptions) => {
   });
 };
 
-const getOneBook = (id: string): Promise<AxiosResponse<{book: Book}>> => {
+const getOneBook = (id: string): Promise<AxiosResponse<{ book: Book }>> => {
   return axios.get(`${config.bookPath}/${id}`);
 };
 
@@ -44,11 +48,23 @@ const setRating = (data: SetRatingOptions) => {
 };
 
 const addComment = (data: AddCommentOptions) => {
-  return axios.post(`${config.bookPath}/addComment`, data);
+  return axios.post(`${config.bookPath}/add-comment`, data);
 };
 
 const getRecommendations = () => {
   return axios.get(`${config.bookPath}/recommendations`);
+};
+
+const getFavorite = () => {
+  return axios.get(`${config.bookPath}/favorites`);
+};
+
+const addToFavorite = (data: toggleFavoritesType) => {
+  return axios.post(`${config.bookPath}/add-favorites`, data);
+};
+
+const removeFromFavorite = (data: toggleFavoritesType) => {
+  return axios.delete(`${config.bookPath}/remove-favorites`, { data });
 };
 
 export default {
@@ -59,4 +75,7 @@ export default {
   setRating,
   addComment,
   getRecommendations,
+  getFavorite,
+  addToFavorite,
+  removeFromFavorite,
 };

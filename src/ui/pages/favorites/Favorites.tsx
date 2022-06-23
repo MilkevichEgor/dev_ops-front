@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import userApi from '../../../api/userApi';
+import bookApi from '../../../api/bookApi';
 import { BooksArray } from '../../../types';
 import BooksRender from '../../components/BooksRender';
 import CommonWrapper from '../../styles/CommonWrapper.styles';
@@ -11,7 +11,7 @@ const Favorites = () => {
   useEffect(() => {
     (async () => {
       try {
-        const response = await userApi.getFavorite();
+        const response = await bookApi.getFavorite();
         setBooks(response.data);
       } catch (err) {
         console.log('ERROR:', err);

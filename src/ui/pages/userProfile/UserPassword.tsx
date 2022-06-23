@@ -22,7 +22,7 @@ const changePasswordValidationSchema = new YupObject().shape({
   oldPassword: new YupString().required('Required'),
   password: new YupString().required('Required'),
   passwordRepeat: new YupString().when('password', {
-    is: (value: string) => (!!(value && value.length > 0)), // eslinter :(
+    is: (value: string) => (Boolean(value && value.length > 0)),
     then: new YupString().oneOf(
       [new YupRef('password')],
       'Both password need to be the same',

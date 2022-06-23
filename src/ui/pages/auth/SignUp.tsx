@@ -22,7 +22,7 @@ const signUpValidationSchema = new YupObject().shape({
   email: new YupString().email('Invalid email address').required('Required'),
   password: new YupString().required('Required'),
   passwordRepeat: new YupString().when('password', {
-    is: (value: string) => (!!(value && value.length > 0)),
+    is: (value: string) => (Boolean(value && value.length > 0)),
     then: new YupString().oneOf(
       [new YupRef('password')],
       'Both password need to be the same',

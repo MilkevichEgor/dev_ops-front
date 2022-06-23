@@ -13,10 +13,6 @@ type UploadAvatarType = {
   img: string;
 }
 
-type toggleFavoritesType = {
-  book_id: number;
-}
-
 const updateUser = (id: number, data: UpdateUserDataType) => {
   return axios.patch(`${config.userPath}/${id}`, data);
 };
@@ -29,23 +25,8 @@ const checkToken = (data: Token) => {
   return axios.get<AuthResponse>(`${config.userPath}/me`, { data });
 };
 
-const getFavorite = () => {
-  return axios.get(`${config.userPath}/getFavorite`);
-};
-
-const addToFavorite = (data: toggleFavoritesType) => {
-  return axios.post(`${config.userPath}/addToFavorites`, data);
-};
-
-const removeFromFavorite = (data: toggleFavoritesType) => {
-  return axios.delete(`${config.userPath}/removeFromFavorites`, { data });
-};
-
 export default {
   updateUser,
   uploadAvatar,
   checkToken,
-  getFavorite,
-  addToFavorite,
-  removeFromFavorite,
 };

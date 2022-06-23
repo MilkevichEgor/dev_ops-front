@@ -9,7 +9,7 @@ import BooksWrapper from '../styles/Books.styles';
 import favoriteUnchoosenIcon from '../images/fav_unchoosen.png';
 import favoriteChoosenIcon from '../images/favorites.png';
 import { useAppSelector } from '../../store';
-import userApi from '../../api/userApi';
+import bookApi from '../../api/bookApi';
 
 type BookProps = {
   booksArray: BooksArray;
@@ -39,7 +39,7 @@ const BooksRender: React.FC<BookProps> = (props) => {
     try {
       const indexInFavorites = favoritesIds.indexOf(book_id);
       if (indexInFavorites !== -1) {
-        await userApi.removeFromFavorite({ book_id });
+        await bookApi.removeFromFavorite({ book_id });
         setFavoritesIds((favorites) => favorites.filter((id) => {
           return id !== book_id;
         }));
@@ -47,7 +47,7 @@ const BooksRender: React.FC<BookProps> = (props) => {
           props.handleFavorites(book_id);
         }
       } else {
-        await userApi.addToFavorite({ book_id });
+        await bookApi.addToFavorite({ book_id });
         setFavoritesIds([...favoritesIds, book_id]);
       }
     } catch (err) {

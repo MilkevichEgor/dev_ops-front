@@ -22,8 +22,8 @@ type CommonInputProps = {
 const CommonInputField: React.FC<CommonInputProps> = (props) => {
   return (
     <CommonInputWrapper
-      isError={!!props.error}
-      isSuccess={!!props.success}
+      isError={Boolean(props.error)}
+      isSuccess={Boolean(props.success)}
     >
       <img
         className="input__icon"
