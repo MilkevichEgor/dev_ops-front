@@ -13,6 +13,7 @@ const HeaderWrapper = styled.header`
     align-items: center;
     max-width: 630px;
     width: 100%;
+    cursor: text;
   }
 
   .search__input {

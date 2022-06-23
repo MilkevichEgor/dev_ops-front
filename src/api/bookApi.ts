@@ -1,8 +1,7 @@
 import { AxiosResponse } from 'axios';
+import config from '../config';
 import { Book, QuerySearchOptions } from '../types';
 import axios from './axios';
-
-const bookPath = '/book';
 
 export type SetRatingOptions = {
   book_id: number;
@@ -21,35 +20,35 @@ export type GetAllBooksOptions = {
 }
 
 const getAllBooks = (data: GetAllBooksOptions) => {
-  return axios.get(`${bookPath}/all`, {
+  return axios.get(`${config.bookPath}/all`, {
     params: data.options,
   });
 };
 
 const getAllGenres = () => {
-  return axios.get(`${bookPath}/genres`);
+  return axios.get(`${config.bookPath}/genres`);
 };
 
 const searchForValue = (options: QuerySearchOptions) => {
-  return axios.get(`${bookPath}/search`, {
+  return axios.get(`${config.bookPath}/search`, {
     params: options,
   });
 };
 
 const getOneBook = (id: string): Promise<AxiosResponse<{book: Book}>> => {
-  return axios.get(`${bookPath}/${id}`);
+  return axios.get(`${config.bookPath}/${id}`);
 };
 
 const setRating = (data: SetRatingOptions) => {
-  return axios.post(`${bookPath}/rate`, data);
+  return axios.post(`${config.bookPath}/rate`, data);
 };
 
 const addComment = (data: AddCommentOptions) => {
-  return axios.post(`${bookPath}/addComment`, data);
+  return axios.post(`${config.bookPath}/addComment`, data);
 };
 
 const getRecommendations = () => {
-  return axios.get(`${bookPath}/recommendations`);
+  return axios.get(`${config.bookPath}/recommendations`);
 };
 
 export default {

@@ -8,6 +8,7 @@ import UserInfo from './UserInfo';
 import userApi from '../../../api/userApi';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { setUser } from '../../../store/userReducer';
+import config from '../../../config';
 
 const UserProfile = () => {
   const dispatch = useAppDispatch();
@@ -42,7 +43,7 @@ const UserProfile = () => {
   };
 
   const avatar = useMemo(() => {
-    if (!user?.avatar || user?.avatar === 'http://localhost:4000/user/null') {
+    if (!user?.avatar || user?.avatar === `${config.apiBaseUrl}${config.userPath}/null`) {
       return defaultAvatar;
     }
     return user.avatar;
@@ -52,37 +53,50 @@ const UserProfile = () => {
     <CommonWrapper>
       <UserProfileWrapper>
         <div className="avatar">
-          <img className="avatar__img" src={avatar} />
-          <label
-            htmlFor="ava"
-          >
+          <img
+            className="avatar__img"
+            src={avatar}
+          />
+          <label htmlFor="ava" >
             <img
               src={changeAvatarButton}
               className="avatar__button"
             />
-            <input hidden type="file" name="ava" id="ava"
+            <input
+              hidden
+              type="file"
+              name="ava"
+              id="ava"
               onChange={(e) => handleAvatar(e)}
             />
           </label>
         </div>
         <div className="user-info">
           <div className="title">
-            <p className="title__name">Personal information</p>
+            <p className="title__name">
+              Personal information
+            </p>
             <p
               onClick={() => setIsChangeUserInfo(!isChangeUserInfo)}
-              className="title__change">
-              Change information</p>
+              className="title__change"
+            >
+              Change information
+            </p>
           </div>
           <UserInfo
             isChangeUserInfo={isChangeUserInfo}
             toggleChangeUserInfo={toggleChangeUserInfo}
           />
           <div className="title title__description">
-            <p className="title__name">Password</p>
+            <p className="title__name">
+              Password
+            </p>
             <p
               className="title__change"
               onClick={() => toggleChangePassword()}
-            >Change password</p>
+            >
+              Change password
+            </p>
           </div>
           <UserPassword
             isChangePassword={!isChangePassword}

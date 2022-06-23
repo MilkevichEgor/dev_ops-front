@@ -45,7 +45,10 @@ const GenresCheckbox = () => {
 
   return (
     <GenreCheckboxWrapper >
-      <img src={arrowUpIcon} className="genres-checkbox__arrow-up" />
+      <img
+        src={arrowUpIcon}
+        className="genres-checkbox__arrow-up"
+      />
       <div
         className="genres-checkbox__wrapper"
         onClick={(e) => {
@@ -69,8 +72,14 @@ const GenresCheckbox = () => {
                   hidden
                 />
                 {checkedGenres.includes(`${genre.genreId}`)
-                  ? <img className="genres-checkbox__icon" src={checkedIcon} />
-                  : <img className="genres-checkbox__icon" src={unchekedIcon} />
+                  ? (<img
+                    className="genres-checkbox__icon"
+                    src={checkedIcon}
+                  />)
+                  : (<img
+                    className="genres-checkbox__icon"
+                    src={unchekedIcon}
+                  />)
                 }
                 {genre.name}
               </div>

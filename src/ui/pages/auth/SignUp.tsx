@@ -115,7 +115,10 @@ const SignUpForm = () => {
             text="Sign up"
           />
         </form>
-        <img className="image" src={man} />
+        <img
+          className="image"
+          src={man}
+        />
       </Wrapper>
     </CommonWrapper>
   );

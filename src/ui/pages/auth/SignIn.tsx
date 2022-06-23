@@ -104,7 +104,10 @@ const SignInForm = () => {
             </Link>
           </h4>
         </form>
-        <img className="image" src={man} />
+        <img
+          className="image"
+          src={man}
+        />
       </Wrapper>
     </CommonWrapper>
   );

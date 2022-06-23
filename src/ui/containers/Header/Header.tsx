@@ -44,7 +44,10 @@ const Header = () => {
         <label htmlFor="global-search"
           className="search"
         >
-          <img className="search__icon" src={searchIcon} />
+          <img
+            className="search__icon"
+            src={searchIcon}
+          />
           <input
             className="search__input"
             type="text"
@@ -61,7 +64,10 @@ const Header = () => {
         <AuthDependentRenderController
           noAuthOnly
         >
-          <Link className="header__link" to={routePath.signIn}>
+          <Link
+            className="header__link"
+            to={routePath.signIn}
+          >
             <CommonButton
               text="Log In / Sign Up"
             />

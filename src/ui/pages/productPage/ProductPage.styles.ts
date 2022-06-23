@@ -10,7 +10,7 @@ const ProductPageWrapper = styled.div`
     grid-row-end: 3;
   }
   
-  .cover_img {
+  .cover__img {
     width: 522px;
     height: 779px;
     border-radius: 16px;
@@ -22,14 +22,14 @@ const ProductPageWrapper = styled.div`
     grid-row-start: 1;
   }
 
-  .title {
+  .book-info__title {
     margin: 0;
     font-weight: 700;
     font-size: 40px;
     line-height: 60px;
   }
 
-  .subtitle {
+  .book-info__subtitle {
     margin: 0;
     font-size: 24px;
     line-height: 36px;
@@ -41,7 +41,7 @@ const ProductPageWrapper = styled.div`
     margin: 30px 0;
   }
 
-  .average_rate {
+  .rating__average {
     display: flex;
     margin-right: 41px;
   }
@@ -52,13 +52,13 @@ const ProductPageWrapper = styled.div`
     margin-right: 14px;
   }
 
-  .arrow {
+  .rating__arrow {
     opacity: 0.2;
     margin: 0 10px 0 44px;
     white-space: nowrap;
   }
 
-  .update_rate {
+  .rating__update {
     display: flex;
     align-items: center;
     color: #B9BAC4;
@@ -94,17 +94,17 @@ const ProductPageWrapper = styled.div`
     column-gap: 21px;
     -webkit-column-gap: 21px;
 
-    .cover_img {
+    .cover__img {
       width: 391px;
       height: 584px;
     }
 
-    .title {
+    .book-info__title {
       font-size: 32px;
       line-height: 48px;
     }
 
-    .subtitle {
+    .book-info__subtitle {
       font-size: 20px;
       line-height: 30px;
     }
@@ -134,28 +134,28 @@ const ProductPageWrapper = styled.div`
       margin-bottom: 90px;
     }
 
-    .arrow {
+    .rating__arrow {
       margin: 0 10px 0 41px;
     }
 
-    .average_rate {
+    .rating__average {
       width: 100%;
     }
   }
 
   @media (max-width: 833px) {
-    .cover_img {
+    .cover__img {
       width: 135px;
       height: 202px;
     }
 
-    .title {
+    .book-info__title {
       font-size: 18px;
       line-height: 20px;
       width: 135px;
     }
 
-    .subtitle {
+    .book-info__subtitle {
       font-size: 12px;
       line-height: 28px;
     }
@@ -165,7 +165,7 @@ const ProductPageWrapper = styled.div`
       height: 14px;
     }
 
-    .arrow {
+    .rating__arrow {
       display: none;
     }
 
@@ -174,7 +174,7 @@ const ProductPageWrapper = styled.div`
       margin-bottom: 90px;
     }
 
-    .update_rate > p {
+    .rating__update > p {
       font-size: 12px;
       line-height: 18px;
       margin: 0;

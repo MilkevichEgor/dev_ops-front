@@ -56,12 +56,14 @@ const PriceFilter: FC<MultiRangeSliderProps> = (props) => {
 
   return (
     <PriceFilterWrapper
-      // ref={wrapperRef}
       onClick={(e) => {
         e.stopPropagation();
       }}
     >
-      <img src={arrowUpIcon} className="arrow-up" />
+      <img
+        src={arrowUpIcon}
+        className="arrow-up"
+      />
 
       <input
         type="range"
@@ -95,16 +97,12 @@ const PriceFilter: FC<MultiRangeSliderProps> = (props) => {
       />
 
       <div className="slider">
-        <div className="slider__track"></div>
-        <div ref={range} className="slider__range"></div>
-        <div
-          className="slider__left-value"
-        >
+        <div className="slider__track" />
+        <div ref={range} className="slider__range" />
+        <div className="slider__left-value" >
           {`$ ${minVal}`}
         </div>
-        <div
-          className="slider__right-value"
-        >
+        <div className="slider__right-value" >
           {`$ ${maxVal}`}
         </div>
       </div>

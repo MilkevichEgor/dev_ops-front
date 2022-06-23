@@ -57,24 +57,24 @@ const ProductPage = () => {
       <ProductPageWrapper>
         <div className="cover">
           <img
-            className="cover_img"
+            className="cover__img"
             src={book.cover}
           />
         </div>
         <div className="book-info">
-          <p className="title">
+          <p className="book-info__title">
             {book.title}
           </p>
-          <p className="subtitle">
+          <p className="book-info__subtitle">
             {book.author}
           </p>
           <div className="rating">
-            <div className="average_rate">
+            <div className="rating__average">
               <img
                 src={filledStarIcon}
                 className="icon"
               />
-              <div className="update_rate">
+              <div className="rating__update">
                 {book.averageRate}
               </div>
             </div>
@@ -85,10 +85,10 @@ const ProductPage = () => {
               handleChangeRating={handleChangeRating}
             />
             <div
-              className="update_rate"
+              className="rating__update"
               onClick={handleChangeRating}
             >
-              <img className="arrow" src={backArrow} />
+              <img className="rating__arrow" src={backArrow} />
               {isChangeRating || !currentUserRating?.rating
                 ? <p>Rate this book</p>
                 : <p>Update rating</p>}
@@ -96,7 +96,7 @@ const ProductPage = () => {
           </div>
         </div>
         <div className="description">
-          <p className="subtitle description__title">
+          <p className="book-info__subtitle description__title">
             Description
           </p>
           <p className="description__text">
