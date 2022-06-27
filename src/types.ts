@@ -11,7 +11,7 @@ export type AuthData = {
 
 export type Token = string | undefined;
 
-export interface User {
+export type User = {
   id: number;
   email: string;
   name?: string;
@@ -25,7 +25,7 @@ export type RatingObj = {
   rating: number;
 }
 
-export interface Book {
+export type Book = {
   author: string;
   bookId: number;
   cover: string;
@@ -51,7 +51,7 @@ export type QuerySearchOptions = {
   value?: string;
 }
 
-export interface Genre {
+export type Genre = {
   genreId: number;
   name: string;
 }

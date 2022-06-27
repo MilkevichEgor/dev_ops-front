@@ -11,6 +11,7 @@ const CommonInputWrapper = styled.div<StylesProps>`
   border-radius: 16px;
   width: 522px;
   margin: 20px 0;
+  cursor: text;
   border:  2px solid ${(props) => {
     if (props.isError) {
       return '#ED2E7E';

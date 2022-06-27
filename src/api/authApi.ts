@@ -6,6 +6,11 @@ type AuthOptions = {
   email: string;
 }
 
+type CheckRefreshResponse = {
+  token: string;
+  refreshToken: string;
+}
+
 const authPath = '/auth';
 
 const signIn = (data: AuthOptions) => {
@@ -16,7 +21,12 @@ const signUp = (data: AuthOptions) => {
   return axios.post<AuthResponse>(`${authPath}/signup`, data);
 };
 
+const checkRefresh = (refreshToken: string) => {
+  return axios.post<CheckRefreshResponse>(`${authPath}/check-token`, { refreshToken });
+};
+
 export default {
   signIn,
   signUp,
+  checkRefresh,
 };
