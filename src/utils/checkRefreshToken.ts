@@ -5,14 +5,15 @@ const checkRefreshToken = async () => {
   try {
     const refreshToken = Cookies.get('refreshToken');
     if (!refreshToken) {
-      throw new Error();
+      throw new Error('No saved refresh token in cookies');
     }
 
     const response = await authApi.checkRefresh(refreshToken);
     Cookies.set('token', response.data.token);
     Cookies.set('refreshToken', response.data.refreshToken);
+    return true;
   } catch (error) {
-    console.log('error >>>', error);
+    return false;
   }
 };
 

@@ -19,7 +19,11 @@ instance.interceptors.request.use((config) => {
   return config;
 });
 
+let isCheckRefreshJWTSend: Promise<boolean> | null = null;
+
 instance.interceptors.response.use((response) => {
+  console.log('response >>', response);
+
   if (response.data === 'OK') {
     return response;
   }
@@ -31,12 +35,29 @@ instance.interceptors.response.use((response) => {
 
   return response;
 }, async (err) => {
-  if (err.response.status === 401 &&
-    err.response.data.data.message === 'Token expired') {
-    await checkRefreshToken();
-    const req = { ...err.config };
-    req.headers.authorization = `Bearer ${Cookies.get('token')}`;
-    return axios.request(req);
+  if (
+    err.response.status === 401 &&
+    err.response.data.data.message === 'Token expired'
+  ) {
+    if (!isCheckRefreshJWTSend) {
+      isCheckRefreshJWTSend = checkRefreshToken();
+    }
+    const isChecked = await isCheckRefreshJWTSend;
+    if (isChecked) {
+      const req = { ...err.config };
+      req.headers.authorization = `Bearer ${Cookies.get('token')}`;
+      isCheckRefreshJWTSend = null;
+      return axios.request(req);
+    }
+  }
+
+  if (
+    err.response.status === 401 &&
+    (err.response.data.data.message === 'Refresh token expired' ||
+      err.response.data.data.message === 'Refresh token is not valid')
+  ) {
+    Cookies.remove('token');
+    Cookies.remove('refreshToken');
   }
 });
 
