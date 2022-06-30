@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getAllBooksThunk, getRecommendations } from './bookThunk';
+import constants from '../constants';
 import { BooksArray } from '../types';
 
 export interface BookState {
@@ -18,27 +20,16 @@ export const initialState: BookState = {
 export const bookReducer = createSlice({
   initialState,
   name: 'books',
-  reducers: {
-    setBooks: (state, action: PayloadAction<BooksArray>) => {
-      state.books = action.payload;
-    },
-    setPagesQuantity: (state, action) => {
-      state.pages = action.payload;
-    },
-    setSearchResult: (state, action: PayloadAction<BooksArray>) => {
-      state.searchResult = action.payload;
-    },
-    setRecommended: (state, action: PayloadAction<BooksArray>) => {
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getAllBooksThunk.fulfilled, (state, action) => {
+      state.books = action.payload.books;
+      state.pages = Math.ceil(action.payload.totalCount / constants.booksQuantityPerPage);
+    });
+    builder.addCase(getRecommendations.fulfilled, (state, action: PayloadAction<BooksArray>) => {
       state.recommended = action.payload;
-    },
+    });
   },
 });
-
-export const {
-  setBooks,
-  setPagesQuantity,
-  setSearchResult,
-  setRecommended,
-} = bookReducer.actions;
 
 export default bookReducer.reducer;

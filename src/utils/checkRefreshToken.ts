@@ -9,8 +9,10 @@ const checkRefreshToken = async () => {
     }
 
     const response = await authApi.checkRefresh(refreshToken);
+
     Cookies.set('token', response.data.token);
     Cookies.set('refreshToken', response.data.refreshToken);
+
     return true;
   } catch (error) {
     return false;

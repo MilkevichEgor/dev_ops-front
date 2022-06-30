@@ -25,6 +25,7 @@ const HeaderWrapper = styled.header`
     line-height: 24px;
     letter-spacing: 0.75px;
     outline: none;
+    -webkit-box-shadow: inset 0 0 0 50px #f0f4ef;
   }
 
   .search__icon {

@@ -16,22 +16,11 @@ const App = () => {
   useEffect(() => {
     (async () => {
       const token = Cookies.get('token');
-      await Promise.all([
-        userApi.checkToken(token).then(({ data }) => console.log('RESULT', data)),
-        userApi.checkToken(token).then(({ data }) => console.log('RESULT', data)),
-        userApi.checkToken(token).then(({ data }) => console.log('RESULT', data)),
-        userApi.checkToken(token).then(({ data }) => console.log('RESULT', data)),
-        userApi.checkToken(token).then(({ data }) => console.log('RESULT', data)),
-        userApi.checkToken(token).then(({ data }) => console.log('RESULT', data)),
-        userApi.checkToken(token).then(({ data }) => console.log('RESULT', data)),
-        userApi.checkToken(token).then(({ data }) => console.log('RESULT', data)),
-        userApi.checkToken(token).then(({ data }) => console.log('RESULT', data)),
-        userApi.checkToken(token).then(({ data }) => console.log('RESULT', data)),
-        userApi.checkToken(token).then(({ data }) => console.log('RESULT', data)),
-        userApi.checkToken(token).then(({ data }) => console.log('RESULT', data)),
-        userApi.checkToken(token).then(({ data }) => console.log('RESULT', data)),
-        userApi.checkToken(token).then(({ data }) => console.log('RESULT', data)),
-      ]);
+      if (!token) {
+        setIsAuthChecked(true);
+
+        return;
+      }
       const response = await userApi.checkToken(token).catch(() => null);
       if (response) {
         dispatch(setUser(response.data.user));

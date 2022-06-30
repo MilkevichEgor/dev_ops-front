@@ -1,40 +1,26 @@
 import React, { useEffect } from 'react';
 
-import bookApi from '../../../../api/bookApi';
 import { useAppDispatch, useAppSelector } from '../../../../store';
-import { setBooks, setPagesQuantity } from '../../../../store/bookReducer';
+import { getAllBooksThunk } from '../../../../store/bookThunk';
+import { getAllGenres } from '../../../../store/genreThunk';
 import { QuerySearchOptions } from '../../../../types';
-import { setGenres } from '../../../../store/genreReducer';
-import constants from '../../../../constants';
 import useQuery from '../../../../utils/useQuery';
 import BooksRender from '../../../components/BooksRender';
 
 const BooksList = () => {
-  const user = useAppSelector((state) => state.userReducer.user);
   const books = useAppSelector((state) => state.bookReducer.books);
   const dispatch = useAppDispatch();
   const [parsedParams] = useQuery<QuerySearchOptions>();
 
   useEffect(() => {
     (async () => {
-      try {
-        const response = await bookApi.getAllBooks({ options: parsedParams });
-
-        dispatch(setBooks(response.data.books));
-        const pagesQuantity = Math.ceil(
-          response.data.totalCount / constants.booksQuantityPerPage,
-        );
-        dispatch(setPagesQuantity(pagesQuantity));
-      } catch (err) {
-        console.log('ERROR >>', err);
-      }
+      dispatch(getAllBooksThunk({ options: parsedParams }));
     })();
-  }, [dispatch, parsedParams, user]);
+  }, [dispatch, parsedParams]);
 
   useEffect(() => {
     (async () => {
-      const response = await bookApi.getAllGenres();
-      dispatch(setGenres(response.data.genres));
+      dispatch(getAllGenres());
     })();
   }, [dispatch]);
 

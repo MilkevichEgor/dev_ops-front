@@ -2,6 +2,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import config from '../config';
 import checkRefreshToken from '../utils/checkRefreshToken';
+import logOut from '../utils/logOut';
 
 const instance = axios.create({
   baseURL: config.apiBaseUrl,
@@ -22,8 +23,6 @@ instance.interceptors.request.use((config) => {
 let isCheckRefreshJWTSend: Promise<boolean> | null = null;
 
 instance.interceptors.response.use((response) => {
-  console.log('response >>', response);
-
   if (response.data === 'OK') {
     return response;
   }
@@ -46,19 +45,19 @@ instance.interceptors.response.use((response) => {
     if (isChecked) {
       const req = { ...err.config };
       req.headers.authorization = `Bearer ${Cookies.get('token')}`;
+
       isCheckRefreshJWTSend = null;
+
       return axios.request(req);
     }
+  } else if (
+    err.response.status === 401 &&
+    err.response.data.data.message === 'Refresh token expired'
+  ) {
+    return logOut();
   }
 
-  if (
-    err.response.status === 401 &&
-    (err.response.data.data.message === 'Refresh token expired' ||
-      err.response.data.data.message === 'Refresh token is not valid')
-  ) {
-    Cookies.remove('token');
-    Cookies.remove('refreshToken');
-  }
+  return err.response;
 });
 
 export default instance;

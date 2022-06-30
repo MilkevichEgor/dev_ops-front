@@ -33,12 +33,6 @@ const getAllGenres = () => {
   return axios.get(`${config.bookPath}/genres`);
 };
 
-const searchForValue = (options: QuerySearchOptions) => {
-  return axios.get(`${config.bookPath}/search`, {
-    params: options,
-  });
-};
-
 const getOneBook = (id: string): Promise<AxiosResponse<{ book: Book }>> => {
   return axios.get(`${config.bookPath}/${id}`);
 };
@@ -71,7 +65,6 @@ export default {
   getAllBooks,
   getAllGenres,
   getOneBook,
-  searchForValue,
   setRating,
   addComment,
   getRecommendations,
