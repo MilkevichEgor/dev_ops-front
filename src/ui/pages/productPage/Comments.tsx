@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-
+import { socket } from '../../../App';
 import bookApi from '../../../api/bookApi';
-import { Book } from '../../../types';
+import { Book, Comment } from '../../../types';
 import CommonButton from '../../components/CommonButton';
 import CommentsWrapper from './Comments.styles';
 import { useAppSelector } from '../../../store';
@@ -18,6 +18,7 @@ type CommentsProps = {
 const Comments: React.FC<CommentsProps> = (props) => {
   const user = useAppSelector((state) => state.userReducer.user);
   const commentsArray = props.book.comments;
+
   const formik = useFormik({
     initialValues: {
       text: '',
@@ -32,13 +33,21 @@ const Comments: React.FC<CommentsProps> = (props) => {
         };
         const response = await bookApi.addComment(newComment);
         value.text = '';
-        props.book.comments.push(response.data.newComment);
-        props.setBookInState(props.book);
+
+        socket.emit('comment:add', response.data);
       } catch (error) {
         console.log('ERROR>>', error);
       }
     },
   });
+
+  useEffect(() => {
+    socket.on('comment:save', (data: Comment) => {
+      props.book.comments.push(data);
+      const book = { ...props.book };
+      props.setBookInState(book);
+    });
+  }, [socket]);
 
   const dateToDateAgo = (date: string) => {
     dayjs.extend(relativeTime);

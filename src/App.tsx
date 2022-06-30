@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
+import { io } from 'socket.io-client';
 
 import Header from './ui/containers/Header';
 import Footer from './ui/containers/Footer';
@@ -9,9 +10,22 @@ import { setUser } from './store/userReducer';
 import MainWrapper from './ui/styles/Main.styles';
 import userApi from './api/userApi';
 
+export const socket = io('http://localhost:4000');
+
 const App = () => {
   const dispatch = useAppDispatch();
   const [isAuthChecked, setIsAuthChecked] = useState(false);
+
+  useEffect(() => {
+    const listener = () => {
+      console.log(`Connected with socket id: ${socket.id}`);
+    };
+    socket.on('connect', listener);
+
+    return () => {
+      socket.off('connect', listener);
+    };
+  }, []);
 
   useEffect(() => {
     (async () => {
