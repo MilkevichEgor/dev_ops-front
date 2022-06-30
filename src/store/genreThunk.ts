@@ -4,7 +4,11 @@ import bookApi from '../api/bookApi';
 export const getAllGenres = createAsyncThunk(
   'books/getAllGenres',
   async () => {
-    const response = await bookApi.getAllGenres();
-    return response.data.genres;
+    try {
+      const response = await bookApi.getAllGenres();
+      return response.data.genres;
+    } catch (err) {
+      console.log('ERROR >>', err);
+    }
   },
 );
