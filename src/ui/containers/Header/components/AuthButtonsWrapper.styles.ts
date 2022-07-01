@@ -8,6 +8,7 @@ const AuthButtonsWrapper = styled.div`
     padding-left: 27px;
     cursor: pointer;
   }
+
   @media (max-width: 833px) {
     .header__icon {
       width: 33px;

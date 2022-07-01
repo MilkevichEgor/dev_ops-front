@@ -3,18 +3,11 @@ import { getAllBooksThunk, getRecommendations } from './bookThunk';
 import constants from '../constants';
 import { BooksArray } from '../types';
 
-export interface BookState {
-  books: BooksArray | [],
-  pages: number,
-  searchResult: BooksArray | []
-  recommended: BooksArray | []
-}
-
-export const initialState: BookState = {
-  books: [],
+export const initialState = {
+  books: [] as BooksArray,
   pages: 0,
-  searchResult: [],
-  recommended: [],
+  searchResult: [] as BooksArray,
+  recommended: [] as BooksArray,
 };
 
 export const bookReducer = createSlice({

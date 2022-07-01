@@ -60,7 +60,6 @@ const HeaderWrapper = styled.header`
     .search {
       max-width: 247px;
     }
-
   }
 
   @media (max-width: 833px) {

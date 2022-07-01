@@ -5,7 +5,7 @@ import { getAllBooksThunk } from '../../../../store/bookThunk';
 import { getAllGenres } from '../../../../store/genreThunk';
 import { QuerySearchOptions } from '../../../../types';
 import useQuery from '../../../../utils/useQuery';
-import BooksRender from '../../../components/BooksRender';
+import BooksRender from '../../../components/Book/BooksRender';
 
 const BooksList = () => {
   const books = useAppSelector((state) => state.bookReducer.books);

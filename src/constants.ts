@@ -5,6 +5,10 @@ export const routePath = {
   profile: '/me',
   cart: '/cart',
   product: '/product',
+  // product: '/product/:productId',
+  // getProductLink(productId: number) {
+  //   return this.product.replace(':productId', productId.toString());
+  // },
   search: '/search',
   favorites: '/favorites',
 };

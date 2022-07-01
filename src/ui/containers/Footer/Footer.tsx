@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logoWhiteLetters.png';
 import map from '../../images/map.png';
-import Logo from '../../styles/Logo.styles';
+import Logo from '../../components/Logo';
 import FooterWrapper from './Footer.styles';
 import CommonWrapper from '../../styles/CommonWrapper.styles';
 import { routePath } from '../../../constants';

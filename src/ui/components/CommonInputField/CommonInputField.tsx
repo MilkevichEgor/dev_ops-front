@@ -1,7 +1,7 @@
 import React from 'react';
 import { FieldInputProps } from 'formik';
 
-import CommonInputWrapper from '../styles/CommonInputField.styles';
+import CommonInputWrapper from './CommonInputField.styles';
 
 type CommonInputProps = {
   icon: string;

@@ -8,7 +8,7 @@ export const getAllGenres = createAsyncThunk(
       const response = await bookApi.getAllGenres();
       return response.data.genres;
     } catch (err) {
-      console.log('ERROR >>', err);
+      console.error('ERROR >>', err);
     }
   },
 );

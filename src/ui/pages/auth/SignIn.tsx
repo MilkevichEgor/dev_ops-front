@@ -6,15 +6,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
 
 import authAPI from '../../../api/authApi';
-import Wrapper from '../../styles/Auth.styles';
+import Wrapper from './Auth.styles';
 import man from '../../images/man.png';
 import hide from '../../images/hide.png';
 import mail from '../../images/mail.png';
-import CommonButton from '../../components/CommonButton';
+import CommonButton from '../../components/CommonButton/CommonButton';
 import CommonWrapper from '../../styles/CommonWrapper.styles';
 import { setUser } from '../../../store/userReducer';
 import { routePath } from '../../../constants';
-import CommonInputField from '../../components/CommonInputField';
+import CommonInputField from '../../components/CommonInputField/CommonInputField';
 import { useAppDispatch } from '../../../store';
 
 const signInValidationSchema = new YupObject().shape({

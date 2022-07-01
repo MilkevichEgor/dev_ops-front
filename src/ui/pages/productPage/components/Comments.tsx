@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { socket } from '../../../App';
-import bookApi from '../../../api/bookApi';
-import { Book, Comment } from '../../../types';
-import CommonButton from '../../components/CommonButton';
+import { socket } from '../../../../App';
+import bookApi from '../../../../api/bookApi';
+import { Book, Comment } from '../../../../types';
+import CommonButton from '../../../components/CommonButton/CommonButton';
 import CommentsWrapper from './Comments.styles';
-import { useAppSelector } from '../../../store';
-import AuthDependentRenderController from '../../components/AuthDependentRenderController';
+import { useAppSelector } from '../../../../store';
+import AuthProtector from '../../../components/AuthProtector';
 
 type CommentsProps = {
   book: Book,
@@ -66,8 +66,8 @@ const Comments: React.FC<CommentsProps> = (props) => {
               className="comment"
             >
               <img src={comment.user.avatar} className="avatar" />
-              <div className="content_block">
-                <p className="author_name">{comment.user.name}</p>
+              <div className="content-block">
+                <p className="author-name">{comment.user.name}</p>
                 <p className="date">{dateToDateAgo(comment.date)}</p>
               </div>
               <p className="text">{comment.text}</p>
@@ -75,7 +75,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
           );
         })}
       </div>}
-      <AuthDependentRenderController>
+      <AuthProtector>
         <form
           onSubmit={formik.handleSubmit}
           className="comment_form"
@@ -91,7 +91,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
             text="Post a comment"
           />
         </form>
-      </AuthDependentRenderController>
+      </AuthProtector>
     </CommentsWrapper>
   );
 };

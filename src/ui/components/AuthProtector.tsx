@@ -2,18 +2,17 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAppSelector } from '../../store';
 
-type PropsType = {
-  children: JSX.Element;
+type PropsType = React.PropsWithChildren<{
   noAuthOnly?: boolean;
   redirectTo?: string;
-}
+}>
 
-const AuthDependentRenderController: React.FC<PropsType> = (props) => {
+const AuthProtector: React.FC<PropsType> = (props) => {
   const user = useAppSelector((state) => state.userReducer.user);
 
   if (!user) {
     if (props.noAuthOnly) {
-      return props.children;
+      return props.children as React.ReactElement;
     }
     if (props.redirectTo) {
       return <Navigate to={props.redirectTo} />;
@@ -28,7 +27,7 @@ const AuthDependentRenderController: React.FC<PropsType> = (props) => {
       : null;
   }
 
-  return props.children;
+  return props.children as React.ReactElement;
 };
 
-export default AuthDependentRenderController;
+export default AuthProtector;

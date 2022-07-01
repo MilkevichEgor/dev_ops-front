@@ -1,9 +1,9 @@
 import React from 'react';
 
 import Banner from './components/Banner';
-import AuthorizeBanner from '../../components/AuthorizeBanner';
+import AuthorizeBanner from '../../components/AuthorizeBanner/AuthorizeBanner';
 import Catalog from './components/Catalog';
-import AuthDependentRenderController from '../../components/AuthDependentRenderController';
+import AuthProtector from '../../components/AuthProtector';
 
 const Home = () => {
   return (
@@ -12,11 +12,11 @@ const Home = () => {
       <div id="catalog">
         <Catalog />
       </div>
-      <AuthDependentRenderController
+      <AuthProtector
         noAuthOnly
       >
         <AuthorizeBanner />
-      </AuthDependentRenderController>
+      </AuthProtector>
     </>
   );
 };

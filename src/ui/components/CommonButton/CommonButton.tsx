@@ -1,12 +1,12 @@
 import React from 'react';
-import CommonButtonWrapper from '../styles/CommonButton.styled';
+import CommonButtonWrapper from './CommonButton.styled';
 
 type ButtonProps = {
   size?: 'container' | 'small' | 'common' | 'permanent'
   text?: string;
   onClick?: () => void;
-  type?: 'button' | 'submit' | 'reset';
-}
+  type?: 'button' | 'submit';
+} & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 const CommonButton: React.FC<ButtonProps> = (props) => {
   const { type = 'submit' } = props;
@@ -18,7 +18,7 @@ const CommonButton: React.FC<ButtonProps> = (props) => {
       onClick={props.onClick}
     >
       {props.text}
-    </ CommonButtonWrapper>
+    </CommonButtonWrapper>
   );
 };
 

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Rating as RatingStars } from 'react-simple-star-rating';
-import emptyStarIcon from '../images/Star.png';
-import filledStarIcon from '../images/StarFilled.png';
-import { useAppSelector } from '../../store';
-import bookApi from '../../api/bookApi';
-import RatingWrapper from '../styles/Rating.styles';
+import emptyStarIcon from '../../images/Star.png';
+import filledStarIcon from '../../images/StarFilled.png';
+import { useAppSelector } from '../../../store';
+import bookApi from '../../../api/bookApi';
+import RatingWrapper from './Rating.styles';
 
 type RatingProps = {
   book_id: number,
@@ -53,16 +53,18 @@ const Rating: React.FC<RatingProps> = (props) => {
         ratingValue={rating * 20}
         allowHalfIcon={false}
         readonly={!props.isChangeRating}
-        fullIcon={
+        fullIcon={(
           <img
             src={filledStarIcon}
             className="rating__star"
-          />}
-        emptyIcon={
+          />
+        )}
+        emptyIcon={(
           <img
             src={emptyStarIcon}
             className="rating__star"
-          />}
+          />
+        )}
       />
     </RatingWrapper>
   );

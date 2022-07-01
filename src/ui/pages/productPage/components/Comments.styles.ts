@@ -27,11 +27,11 @@ const CommentsWrapper = styled.div`
     margin: 30px 20px 0 30px;
   }
 
-  .content_block {
+  .content-block {
     margin: 35px 30px 0 0;
   }
 
-  .author_name {
+  .author-name {
     font-weight: 600;
     letter-spacing: 0.75px;
     color: #0D1821;
@@ -104,11 +104,11 @@ const CommentsWrapper = styled.div`
       line-height: 18px;
     }
 
-    .content_block {
+    .content-block {
       margin-top: 10px;
     }
 
-    .author_name {
+    .author-name {
       font-size: 14px;
       line-height: 21px;
     }

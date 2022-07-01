@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { routePath } from '../../constants';
-import { BooksArray, Book } from '../../types';
-import CommonButton from './CommonButton';
-import Rating from './Rating';
-import BooksWrapper from '../styles/Books.styles';
-import favoriteUnchoosenIcon from '../images/fav_unchoosen.png';
-import favoriteChoosenIcon from '../images/favorites.png';
-import { useAppSelector } from '../../store';
-import bookApi from '../../api/bookApi';
+import { routePath } from '../../../constants';
+import { BooksArray, Book } from '../../../types';
+import CommonButton from '../CommonButton/CommonButton';
+import Rating from '../Rating/Rating';
+import BooksWrapper from './Books.styles';
+import favoriteUnchoosenIcon from '../../images/fav_unchoosen.png';
+import favoriteChoosenIcon from '../../images/favorites.png';
+import { useAppSelector } from '../../../store';
+import bookApi from '../../../api/bookApi';
 
 type BookProps = {
   booksArray: BooksArray;
@@ -77,7 +77,7 @@ const BooksRender: React.FC<BookProps> = (props) => {
               </p>
             </Link>
             {favoritesIds.includes(book.bookId)
-              ? (< img
+              ? (<img
                 className="book__favorite"
                 src={favoriteChoosenIcon}
                 onClick={() => handleClickOnFavorite(book.bookId)}

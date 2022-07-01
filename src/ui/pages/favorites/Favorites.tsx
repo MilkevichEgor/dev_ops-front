@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import bookApi from '../../../api/bookApi';
 import { BooksArray } from '../../../types';
-import BooksRender from '../../components/BooksRender';
+import BooksRender from '../../components/Book/BooksRender';
 import CommonWrapper from '../../styles/CommonWrapper.styles';
 import FavoritesWrapper from './Favorites.styles';
 

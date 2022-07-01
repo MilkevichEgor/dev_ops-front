@@ -5,13 +5,13 @@ import YupString from 'yup/lib/string';
 import YupObject from 'yup/lib/object';
 import YupRef from 'yup/lib/Reference';
 
-import hideIcon from '../../images/hide.png';
-import showIcon from '../../images/View.png';
-import CommonInputField from '../../components/CommonInputField';
-import CommonButton from '../../components/CommonButton';
-import { useAppSelector } from '../../../store';
-import { User } from '../../../types';
-import userApi from '../../../api/userApi';
+import hideIcon from '../../../images/hide.png';
+import showIcon from '../../../images/View.png';
+import CommonInputField from '../../../components/CommonInputField/CommonInputField';
+import CommonButton from '../../../components/CommonButton/CommonButton';
+import { useAppSelector } from '../../../../store';
+import { User } from '../../../../types';
+import userApi from '../../../../api/userApi';
 
 type UserProfileProps = {
   isChangePassword: boolean;
@@ -25,7 +25,7 @@ const changePasswordValidationSchema = new YupObject().shape({
     is: (value: string) => (Boolean(value && value.length > 0)),
     then: new YupString().oneOf(
       [new YupRef('password')],
-      'Both password need to be the same',
+      'Both passwords need to be the same',
     ),
   }),
 });

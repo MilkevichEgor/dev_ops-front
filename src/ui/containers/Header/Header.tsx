@@ -3,15 +3,15 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import logo from '../../images/logo.svg';
 import searchIcon from '../../images/SearchIcon.png';
-import Logo from '../../styles/Logo.styles';
+import Logo from '../../components/Logo';
 import CommonWrapper from '../../styles/CommonWrapper.styles';
-import HeaderWrapper from '../Header/Header.styles';
+import HeaderWrapper from './Header.styles';
 import { routePath } from '../../../constants';
-import AuthButtonsBlock from './AuthButtonsBlock';
+import AuthButtonsBlock from './components/AuthButtonsBlock';
 import useQuery from '../../../utils/useQuery';
 import { QuerySearchOptions } from '../../../types';
-import AuthDependentRenderController from '../../components/AuthDependentRenderController';
-import CommonButton from '../../components/CommonButton';
+import AuthProtector from '../../components/AuthProtector';
+import CommonButton from '../../components/CommonButton/CommonButton';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -57,13 +57,11 @@ const Header = () => {
           />
         </label>
 
-        <AuthDependentRenderController>
+        <AuthProtector>
           <AuthButtonsBlock />
-        </AuthDependentRenderController>
+        </AuthProtector>
 
-        <AuthDependentRenderController
-          noAuthOnly
-        >
+        <AuthProtector noAuthOnly>
           <Link
             className="header__link"
             to={routePath.signIn}
@@ -72,8 +70,7 @@ const Header = () => {
               text="Log In / Sign Up"
             />
           </Link>
-        </AuthDependentRenderController>
-
+        </AuthProtector>
       </HeaderWrapper>
     </CommonWrapper>
   );

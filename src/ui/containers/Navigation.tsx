@@ -6,7 +6,7 @@ import Home from '../pages/home';
 import Cart from '../pages/cart';
 import UserProfile from '../pages/userProfile';
 import { routePath } from '../../constants';
-import AuthDependentRenderController from '../components/AuthDependentRenderController';
+import AuthProtector from '../components/AuthProtector';
 import ProductPage from '../pages/productPage';
 import Favorites from '../pages/favorites';
 
@@ -30,63 +30,65 @@ const Navigation = () => {
       <Route
         path={routePath.signIn}
         element={(
-          <AuthDependentRenderController
+          <AuthProtector
             redirectTo={routePath.home}
             noAuthOnly
           >
             <SignInForm />
-          </AuthDependentRenderController>
+          </AuthProtector>
         )}
       />
 
       <Route
         path={routePath.signUp}
         element={(
-          <AuthDependentRenderController
+          <AuthProtector
             redirectTo={routePath.home}
             noAuthOnly
           >
             <SignUpForm />
-          </AuthDependentRenderController>
+          </AuthProtector>
         )}
       />
 
       <Route
         path={routePath.cart}
         element={(
-          <AuthDependentRenderController
+          <AuthProtector
             redirectTo={routePath.signIn}
           >
             <Cart />
-          </AuthDependentRenderController>
+          </AuthProtector>
         )}
       />
 
       <Route
         path={routePath.profile}
         element={(
-          <AuthDependentRenderController
+          <AuthProtector
             redirectTo={routePath.signIn}
           >
             <UserProfile />
-          </AuthDependentRenderController>
+          </AuthProtector>
         )}
       />
 
       <Route
         path={routePath.favorites}
         element={(
-          <AuthDependentRenderController
+          <AuthProtector
             redirectTo={routePath.signIn}
           >
             <Favorites />
-          </AuthDependentRenderController>
+          </AuthProtector>
         )}
       />
 
-      <Route path="*" element={(
-        <h1>404! PAGE NOT FOUND!</h1>
-      )}
+      <Route
+        path="*"
+        element={(
+          <h1>404! PAGE NOT FOUND!</h1>
+        )}
       />
     </Routes>
   );
