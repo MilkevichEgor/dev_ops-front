@@ -77,7 +77,7 @@ const CommentsWrapper = styled.div`
       max-width: 667px;
     }
 
-    .comment_form {
+    .comment__form {
       max-width: 738px;
       width: 100%;
     }

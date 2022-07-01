@@ -57,7 +57,7 @@ export type Genre = {
 }
 
 export type Comment = {
-  comment_id: number;
+  commentId: number;
   date: string;
   text: string;
   user: User;

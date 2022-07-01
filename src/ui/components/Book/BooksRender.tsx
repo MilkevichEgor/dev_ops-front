@@ -32,23 +32,23 @@ const BooksRender: React.FC<BookProps> = (props) => {
     setFavoritesIds(updatedFavoritesIds);
   }, [props.booksArray]);
 
-  const handleClickOnFavorite = async (book_id: number) => {
+  const handleClickOnFavorite = async (bookId: number) => {
     if (!user) {
       navigate(routePath.signIn);
     }
     try {
-      const indexInFavorites = favoritesIds.indexOf(book_id);
+      const indexInFavorites = favoritesIds.indexOf(bookId);
       if (indexInFavorites !== -1) {
-        await bookApi.removeFromFavorite({ book_id });
+        await bookApi.removeFromFavorite({ bookId });
         setFavoritesIds((favorites) => favorites.filter((id) => {
-          return id !== book_id;
+          return id !== bookId;
         }));
         if (props.handleFavorites) {
-          props.handleFavorites(book_id);
+          props.handleFavorites(bookId);
         }
       } else {
-        await bookApi.addToFavorite({ book_id });
-        setFavoritesIds([...favoritesIds, book_id]);
+        await bookApi.addToFavorite({ bookId });
+        setFavoritesIds([...favoritesIds, bookId]);
       }
     } catch (err) {
       console.log('ERROR:', err);
@@ -95,7 +95,7 @@ const BooksRender: React.FC<BookProps> = (props) => {
               <Rating
                 rate={book.averageRate}
                 isChangeRating={false}
-                book_id={book.bookId}
+                bookId={book.bookId}
               />
               <div className="book__average-rating">
                 {book.averageRate}

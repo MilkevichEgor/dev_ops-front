@@ -79,7 +79,7 @@ const ProductPage = () => {
               </div>
             </div>
             <Rating
-              book_id={book.bookId}
+              bookId={book.bookId}
               rate={currentUserRating?.rating || 0}
               isChangeRating={isChangeRating}
               handleChangeRating={handleChangeRating}

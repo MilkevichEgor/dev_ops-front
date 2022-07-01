@@ -7,7 +7,7 @@ import bookApi from '../../../api/bookApi';
 import RatingWrapper from './Rating.styles';
 
 type RatingProps = {
-  book_id: number,
+  bookId: number,
   rate: number | 0,
   isChangeRating: boolean,
   handleChangeRating?: () => void,
@@ -29,9 +29,8 @@ const Rating: React.FC<RatingProps> = (props) => {
         return;
       }
       await bookApi.setRating({
-        book_id: props.book_id,
+        bookId: props.bookId,
         rating: newRate,
-        user_id: user.id,
       });
     } catch (err) {
       console.log(err);

@@ -28,8 +28,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
         if (!user) { return; }
         const newComment = {
           text: value.text.trim(),
-          book_id: props.book.bookId,
-          user_id: user.id,
+          bookId: props.book.bookId,
         };
         const response = await bookApi.addComment(newComment);
         value.text = '';
@@ -62,7 +61,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
         {commentsArray.map((comment) => {
           return (
             <div
-              key={comment.comment_id}
+              key={comment.commentId}
               className="comment"
             >
               <img src={comment.user.avatar} className="avatar" />
@@ -78,7 +77,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
       <AuthProtector>
         <form
           onSubmit={formik.handleSubmit}
-          className="comment_form"
+          className="comment__form"
         >
           <textarea
             placeholder="Share a comment"

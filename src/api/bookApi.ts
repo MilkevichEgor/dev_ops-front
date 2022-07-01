@@ -4,15 +4,13 @@ import { Book, QuerySearchOptions } from '../types';
 import axios from './axios';
 
 export type SetRatingOptions = {
-  book_id: number;
+  bookId: number;
   rating: number;
-  user_id: number;
 }
 
 export type AddCommentOptions = {
-  book_id: number;
+  bookId: number;
   text: string;
-  user_id: number;
 }
 
 export type GetAllBooksOptions = {
@@ -20,7 +18,7 @@ export type GetAllBooksOptions = {
 }
 
 type toggleFavoritesType = {
-  book_id: number;
+  bookId: number;
 }
 
 const getAllBooks = (data: GetAllBooksOptions) => {
