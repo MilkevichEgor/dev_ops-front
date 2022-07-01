@@ -12,11 +12,14 @@ import useQuery from '../../../utils/useQuery';
 import { QuerySearchOptions } from '../../../types';
 import AuthProtector from '../../components/AuthProtector';
 import CommonButton from '../../components/CommonButton/CommonButton';
+import logOut from '../../../utils/logOut';
+import { useAppSelector } from '../../../store';
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [, setParams] = useQuery<QuerySearchOptions>();
+  const user = useAppSelector((state) => state.userReducer.user);
 
   const handleSearchRequest: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key === 'Enter') {
@@ -35,11 +38,13 @@ const Header = () => {
           <Link to={routePath.home}>
             <Logo src={logo} />
           </Link>
-          <Link className="header__link" to={routePath.home}>
-            <span className="header__catalog-link">
-              Catalog
-            </span>
-          </Link>
+          <span
+            className="header__catalog-link"
+            onClick={logOut}
+            hidden={Boolean(!user)}
+          >
+            Log out
+          </span>
         </div>
         <label htmlFor="global-search"
           className="search"

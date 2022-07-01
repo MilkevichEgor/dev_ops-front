@@ -57,7 +57,7 @@ instance.interceptors.response.use((response) => {
     return logOut();
   }
 
-  return err.response;
+  return Promise.reject(err);
 });
 
 export default instance;
