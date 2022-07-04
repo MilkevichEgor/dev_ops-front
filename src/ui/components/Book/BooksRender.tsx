@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { routePath } from '../../../constants';
-import { BooksArray, Book } from '../../../types';
+import { BooksArray, BookType } from '../../../types';
 import CommonButton from '../CommonButton/CommonButton';
 import Rating from '../Rating/Rating';
 import BooksWrapper from './Books.styles';
@@ -60,7 +60,7 @@ const BooksRender: React.FC<BookProps> = (props) => {
     <BooksWrapper
       wrap={props.wrap}
     >
-      {props.booksArray.map((book: Book) => {
+      {props.booksArray.map((book: BookType) => {
         return (
           <div
             className="book"

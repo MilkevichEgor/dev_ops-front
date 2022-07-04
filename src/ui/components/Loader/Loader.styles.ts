@@ -1,11 +1,20 @@
 import styled from 'styled-components';
 
 const LoaderWrapper = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 35%;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 0.7;
 
   .lds-spinner {
+    z-Index: 6;
+    position: relative;
+    left: calc(50% - 40px);
+    top: calc(50% - 40px);
     color: black;
     display: inline-block;
     position: relative;

@@ -15,17 +15,17 @@ export type User = {
   id: number;
   email: string;
   name?: string;
-  avatar?: string;
+  avatar?: string | null;
   ratings?: RatingObj[];
   books?: BooksArray;
 }
 
 export type RatingObj = {
-  book: Book;
+  book: BookType;
   rating: number;
 }
 
-export type Book = {
+export type BookType = {
   author: string;
   bookId: number;
   cover: string;
@@ -38,7 +38,7 @@ export type Book = {
   comments: Comment[];
   isInFavorite: boolean;
 }
-export type BooksArray = Book[];
+export type BooksArray = BookType[];
 
 export type QuerySearchOptions = {
   page?: string;

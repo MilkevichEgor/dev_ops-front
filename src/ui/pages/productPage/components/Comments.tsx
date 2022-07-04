@@ -6,15 +6,16 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 
 import { socket } from '../../../../App';
 import bookApi from '../../../../api/bookApi';
-import { Book, Comment } from '../../../../types';
+import { BookType, Comment } from '../../../../types';
 import CommonButton from '../../../components/CommonButton/CommonButton';
 import CommentsWrapper from './Comments.styles';
 import { useAppSelector } from '../../../../store';
 import AuthProtector from '../../../components/AuthProtector';
+import defaultAvatar from '../../../images/defaultAvatar.png';
 
 type CommentsProps = {
-  book: Book,
-  setBookInState: (data: Book) => void,
+  book: BookType,
+  setBookInState: (data: BookType) => void,
 }
 
 const Comments: React.FC<CommentsProps> = (props) => {
@@ -66,7 +67,9 @@ const Comments: React.FC<CommentsProps> = (props) => {
               key={comment.commentId}
               className="comment"
             >
-              <img src={comment.user.avatar} className="avatar" />
+              <img
+                src={comment.user.avatar || defaultAvatar}
+                className="avatar" />
               <div className="content-block">
                 <p className="author-name">{comment.user.name}</p>
                 <p className="date">{dateToDateAgo(comment.date)}</p>

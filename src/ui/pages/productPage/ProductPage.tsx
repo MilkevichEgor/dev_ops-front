@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router';
 import { toast } from 'react-toastify';
 
 import bookApi from '../../../api/bookApi';
-import { Book, RatingObj } from '../../../types';
+import { BookType, RatingObj } from '../../../types';
 import CommonButton from '../../components/CommonButton/CommonButton';
 import Rating from '../../components/Rating/Rating';
 import CommonWrapper from '../../styles/CommonWrapper.styles';
@@ -19,12 +19,12 @@ import { routePath } from '../../../constants';
 
 const ProductPage = () => {
   const navigate = useNavigate();
-  const [book, setBook] = useState<Book>();
+  const [book, setBook] = useState<BookType>();
   const [isChangeRating, setIsChangeRating] = useState(false);
   const user = useAppSelector((state) => state.userReducer.user);
   const params = useParams();
 
-  const setBookInState = (book: Book) => {
+  const setBookInState = (book: BookType) => {
     setBook(book);
   };
 

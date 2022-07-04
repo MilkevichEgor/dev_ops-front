@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import forwardIcon from '../../../images/forwardIcon.png';
 import CatalogWrapper from '../styles/Catalog.styles';
 import CommonWrapper from '../../../styles/CommonWrapper.styles';
-import BooksList from './Books';
+import BooksList from './BooksList';
 import GenresCheckbox from './GenresCheckbox';
 import PriceFilter from './PriceRangeFilter';
 import SortingList from './SortingList';

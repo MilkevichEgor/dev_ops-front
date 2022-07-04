@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getAllBooksThunk, getRecommendations } from './bookThunk';
 import constants from '../constants';
-import { Book } from '../types';
+import { BookType } from '../types';
 
 export const initialState = {
-  books: [] as Book[],
+  books: [] as BookType[],
   pages: 0,
-  searchResult: [] as Book[],
-  recommended: [] as Book[],
+  searchResult: [] as BookType[],
+  recommended: [] as BookType[],
 };
 
 export const bookReducer = createSlice({
@@ -24,7 +24,7 @@ export const bookReducer = createSlice({
       state.books = [];
       state.pages = 1;
     });
-    builder.addCase(getRecommendations.fulfilled, (state, action: PayloadAction<Book[]>) => {
+    builder.addCase(getRecommendations.fulfilled, (state, action: PayloadAction<BookType[]>) => {
       state.recommended = action.payload;
     });
     builder.addCase(getRecommendations.rejected, (state) => {

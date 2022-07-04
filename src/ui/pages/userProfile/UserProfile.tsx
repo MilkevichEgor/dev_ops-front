@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import CommonWrapper from '../../styles/CommonWrapper.styles';
 import UserProfileWrapper from './UserProfile.styles';
@@ -9,13 +9,13 @@ import UserInfo from './components/UserInfo';
 import userApi from '../../../api/userApi';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { setUser } from '../../../store/userReducer';
-import config from '../../../config';
+import { User } from '../../../types';
 
 const UserProfile = () => {
   const dispatch = useAppDispatch();
   const [isChangeUserInfo, setIsChangeUserInfo] = useState(false);
   const [isChangePassword, setIsChangePassword] = useState(false);
-  const user = useAppSelector((state) => state.userReducer.user);
+  const user = useAppSelector((state) => state.userReducer.user) as User;
 
   const toggleChangePassword = () => {
     setIsChangePassword(!isChangePassword);
@@ -43,22 +43,15 @@ const UserProfile = () => {
     }
   };
 
-  const avatar = useMemo(() => {
-    if (!user?.avatar || user?.avatar === `${config.apiBaseUrl}${config.userPath}/null`) {
-      return defaultAvatar;
-    }
-    return user.avatar;
-  }, [user?.avatar]);
-
   return (
     <CommonWrapper>
       <UserProfileWrapper>
         <div className="avatar">
           <img
             className="avatar__img"
-            src={avatar}
+            src={user.avatar || defaultAvatar}
           />
-          <label htmlFor="ava" >
+          <label htmlFor="ava">
             <img
               src={changeAvatarButton}
               className="avatar__button"
@@ -68,7 +61,7 @@ const UserProfile = () => {
               type="file"
               name="ava"
               id="ava"
-              onChange={(e) => handleAvatar(e)}
+              onChange={handleAvatar}
             />
           </label>
         </div>

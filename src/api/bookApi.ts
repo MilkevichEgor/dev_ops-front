@@ -1,5 +1,5 @@
 import config from '../config';
-import { Book, Genre, QuerySearchOptions, User } from '../types';
+import { BookType, Genre, QuerySearchOptions, User } from '../types';
 import axios from './axios';
 
 export type SetRatingOptions = {
@@ -21,7 +21,7 @@ type toggleFavoritesType = {
 }
 
 type GetAllBooksResponse = {
-  books: Book[];
+  books: BookType[];
   totalCount: number;
 }
 
@@ -30,11 +30,11 @@ type GetAllGenresResponse = {
 }
 
 type GetOneBookResponse = {
-  book: Book;
+  book: BookType;
 }
 
 type AddCommentResponse = {
-  book: Book;
+  book: BookType;
   commentId: number
   date: Date;
   text: string
@@ -64,11 +64,11 @@ const addComment = (data: AddCommentOptions) => {
 };
 
 const getRecommendations = () => {
-  return axios.get<Book[]>(`${config.bookPath}/recommendations`);
+  return axios.get<BookType[]>(`${config.bookPath}/recommendations`);
 };
 
 const getFavorite = () => {
-  return axios.get<Book[]>(`${config.bookPath}/favorites`);
+  return axios.get<BookType[]>(`${config.bookPath}/favorites`);
 };
 
 const addToFavorite = (data: toggleFavoritesType) => {
