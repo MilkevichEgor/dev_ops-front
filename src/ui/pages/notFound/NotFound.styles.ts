@@ -5,6 +5,14 @@ const NotFoundWrapper = styled.div`
   text-align: center;
   margin: 150px;
 
+  .link {
+    text-decoration: none;
+  }
+
+  .link:visited {
+    color: #344966;
+  }
+
   @media (max-width: 1300px) {
     font-size: 40px;
   }

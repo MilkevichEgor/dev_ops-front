@@ -18,6 +18,9 @@ export const genreReducer = createSlice({
     builder.addCase(getAllGenres.fulfilled, (state, action: PayloadAction<Genres>) => {
       state.genres = action.payload;
     });
+    builder.addCase(getAllGenres.rejected, (state) => {
+      state.genres = [];
+    });
   },
 });
 

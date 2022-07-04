@@ -1,6 +1,5 @@
-import { AxiosResponse } from 'axios';
 import config from '../config';
-import { Book, QuerySearchOptions } from '../types';
+import { Book, Genre, QuerySearchOptions, User } from '../types';
 import axios from './axios';
 
 export type SetRatingOptions = {
@@ -21,18 +20,39 @@ type toggleFavoritesType = {
   bookId: number;
 }
 
+type GetAllBooksResponse = {
+  books: Book[];
+  totalCount: number;
+}
+
+type GetAllGenresResponse = {
+  genres: Genre[];
+}
+
+type GetOneBookResponse = {
+  book: Book;
+}
+
+type AddCommentResponse = {
+  book: Book;
+  commentId: number
+  date: Date;
+  text: string
+  user: User
+}
+
 const getAllBooks = (data: GetAllBooksOptions) => {
-  return axios.get(`${config.bookPath}/all`, {
+  return axios.get<GetAllBooksResponse>(`${config.bookPath}/all`, {
     params: data.options,
   });
 };
 
 const getAllGenres = () => {
-  return axios.get(`${config.bookPath}/genres`);
+  return axios.get<GetAllGenresResponse>(`${config.bookPath}/genres`);
 };
 
-const getOneBook = (id: string): Promise<AxiosResponse<{ book: Book }>> => {
-  return axios.get(`${config.bookPath}/${id}`);
+const getOneBook = (id: string) => {
+  return axios.get<GetOneBookResponse>(`${config.bookPath}/${id}`);
 };
 
 const setRating = (data: SetRatingOptions) => {
@@ -40,23 +60,23 @@ const setRating = (data: SetRatingOptions) => {
 };
 
 const addComment = (data: AddCommentOptions) => {
-  return axios.post(`${config.bookPath}/add-comment`, data);
+  return axios.post<AddCommentResponse>(`${config.bookPath}/add-comment`, data);
 };
 
 const getRecommendations = () => {
-  return axios.get(`${config.bookPath}/recommendations`);
+  return axios.get<Book[]>(`${config.bookPath}/recommendations`);
 };
 
 const getFavorite = () => {
-  return axios.get(`${config.bookPath}/favorites`);
+  return axios.get<Book[]>(`${config.bookPath}/favorites`);
 };
 
 const addToFavorite = (data: toggleFavoritesType) => {
-  return axios.post(`${config.bookPath}/add-favorites`, data);
+  return axios.post<User>(`${config.bookPath}/add-favorites`, data);
 };
 
 const removeFromFavorite = (data: toggleFavoritesType) => {
-  return axios.delete(`${config.bookPath}/remove-favorites`, { data });
+  return axios.delete<User>(`${config.bookPath}/remove-favorites`, { data });
 };
 
 export default {

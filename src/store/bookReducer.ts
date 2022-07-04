@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getAllBooksThunk, getRecommendations } from './bookThunk';
 import constants from '../constants';
-import { BooksArray } from '../types';
+import { Book } from '../types';
 
 export const initialState = {
-  books: [] as BooksArray,
+  books: [] as Book[],
   pages: 0,
-  searchResult: [] as BooksArray,
-  recommended: [] as BooksArray,
+  searchResult: [] as Book[],
+  recommended: [] as Book[],
 };
 
 export const bookReducer = createSlice({
@@ -15,12 +15,20 @@ export const bookReducer = createSlice({
   name: 'books',
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getAllBooksThunk.fulfilled, (state, action) => {
-      state.books = action.payload.books;
-      state.pages = Math.ceil(action.payload.totalCount / constants.booksQuantityPerPage);
+    builder.addCase(getAllBooksThunk.fulfilled,
+      (state, action) => {
+        state.books = action.payload.books;
+        state.pages = Math.ceil(action.payload.totalCount / constants.booksQuantityPerPage);
+      });
+    builder.addCase(getAllBooksThunk.rejected, (state) => {
+      state.books = [];
+      state.pages = 1;
     });
-    builder.addCase(getRecommendations.fulfilled, (state, action: PayloadAction<BooksArray>) => {
+    builder.addCase(getRecommendations.fulfilled, (state, action: PayloadAction<Book[]>) => {
       state.recommended = action.payload;
+    });
+    builder.addCase(getRecommendations.rejected, (state) => {
+      state.recommended = [];
     });
   },
 });
