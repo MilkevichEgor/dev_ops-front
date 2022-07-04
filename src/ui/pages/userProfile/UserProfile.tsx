@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { toast } from 'react-toastify';
 import CommonWrapper from '../../styles/CommonWrapper.styles';
 import UserProfileWrapper from './UserProfile.styles';
 import defaultAvatar from '../../images/defaultAvatar.png';
@@ -35,7 +36,7 @@ const UserProfile = () => {
           const response = await userApi.uploadAvatar({ img: encoded });
           dispatch(setUser(response.data.user));
         } catch (error) {
-          console.log('ERROR >>', error);
+          toast.error('Sorry, we were unable to upload the avatar now...', { autoClose: 3000 });
         }
       };
       reader.readAsDataURL(file);

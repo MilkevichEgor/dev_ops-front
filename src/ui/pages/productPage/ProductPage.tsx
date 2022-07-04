@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
+import { toast } from 'react-toastify';
 
 import bookApi from '../../../api/bookApi';
 import { Book, RatingObj } from '../../../types';
@@ -35,7 +36,7 @@ const ProductPage = () => {
         setBookInState(response.data.book);
       })();
     } catch (err) {
-      console.log('ERROR', err);
+      toast.error('Sorry, something went wrong...', { autoClose: 3000 });
     }
   }, [params.id]);
 

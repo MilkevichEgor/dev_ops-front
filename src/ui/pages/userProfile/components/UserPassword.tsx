@@ -4,6 +4,7 @@ import { AxiosError } from 'axios';
 import YupString from 'yup/lib/string';
 import YupObject from 'yup/lib/object';
 import YupRef from 'yup/lib/Reference';
+import { toast } from 'react-toastify';
 
 import hideIcon from '../../../images/hide.png';
 import showIcon from '../../../images/View.png';
@@ -58,6 +59,8 @@ const UserPassword: React.FC<UserProfileProps> = (props) => {
               oldPassword: error.response?.data.data.message,
             });
           }
+        } else {
+          toast.error('Sorry, something went wrong...', { autoClose: 3000 });
         }
       }
     },

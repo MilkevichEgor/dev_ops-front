@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import bookApi from '../../../api/bookApi';
 import { BooksArray } from '../../../types';
 import BooksRender from '../../components/Book/BooksRender';
@@ -14,7 +15,7 @@ const Favorites = () => {
         const response = await bookApi.getFavorite();
         setBooks(response.data);
       } catch (err) {
-        console.log('ERROR:', err);
+        toast.error('Sorry, favorites is not available now', { autoClose: 3000 });
       }
     })();
   }, [setBooks]);

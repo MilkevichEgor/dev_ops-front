@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { io } from 'socket.io-client';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Header from './ui/containers/Header';
 import Footer from './ui/containers/Footer';
@@ -56,6 +58,8 @@ const App = () => {
       </MainWrapper>
 
       <Footer />
+
+      <ToastContainer />
     </>
   );
 };

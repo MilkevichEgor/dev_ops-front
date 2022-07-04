@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import { routePath } from '../../../constants';
 import { BooksArray, Book } from '../../../types';
@@ -51,7 +52,7 @@ const BooksRender: React.FC<BookProps> = (props) => {
         setFavoritesIds([...favoritesIds, bookId]);
       }
     } catch (err) {
-      console.log('ERROR:', err);
+      toast.error('Sorry, changing favorites is not available now', { autoClose: 3000 });
     }
   };
 

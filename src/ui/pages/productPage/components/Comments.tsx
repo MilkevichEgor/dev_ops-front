@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import dayjs from 'dayjs';
+import { toast } from 'react-toastify';
 import relativeTime from 'dayjs/plugin/relativeTime';
+
 import { socket } from '../../../../App';
 import bookApi from '../../../../api/bookApi';
 import { Book, Comment } from '../../../../types';
@@ -35,7 +37,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
 
         socket.emit('comment:add', response.data);
       } catch (error) {
-        console.log('ERROR>>', error);
+        toast.error('Sorry, something went wrong...', { autoClose: 3000 });
       }
     },
   });

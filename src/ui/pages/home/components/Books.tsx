@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 import { useAppDispatch, useAppSelector } from '../../../../store';
 import { getAllBooksThunk } from '../../../../store/bookThunk';
@@ -14,13 +15,27 @@ const BooksList = () => {
 
   useEffect(() => {
     (async () => {
-      dispatch(getAllBooksThunk({ options: parsedParams }));
+      const loadingToast = toast.loading('Please wait...');
+      dispatch(getAllBooksThunk({ options: parsedParams })).then(() => {
+        toast.dismiss(loadingToast);
+      }).catch(() => {
+        toast.update(loadingToast, {
+          render: 'Sorry, we were unable to download the books, something went wrong...',
+          type: 'error',
+          isLoading: false,
+          autoClose: 5000,
+        });
+      });
     })();
   }, [dispatch, parsedParams]);
 
   useEffect(() => {
     (async () => {
-      dispatch(getAllGenres());
+      dispatch(getAllGenres()).catch(() => {
+        toast.error('Sorry, we were unable to download the genres, something went wrong...', {
+          autoClose: 5000,
+        });
+      });
     })();
   }, [dispatch]);
 

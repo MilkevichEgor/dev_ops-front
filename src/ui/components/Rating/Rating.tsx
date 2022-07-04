@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+
 import { Rating as RatingStars } from 'react-simple-star-rating';
 import emptyStarIcon from '../../images/Star.png';
 import filledStarIcon from '../../images/StarFilled.png';
@@ -33,7 +35,7 @@ const Rating: React.FC<RatingProps> = (props) => {
         rating: newRate,
       });
     } catch (err) {
-      console.log(err);
+      toast.error('Sorry, setting rating is not available now', { autoClose: 3000 });
     }
   };
 

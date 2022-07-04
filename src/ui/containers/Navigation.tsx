@@ -11,6 +11,7 @@ const Home = React.lazy(() => import('../pages/home'));
 const UserProfile = React.lazy(() => import('../pages/userProfile'));
 const ProductPage = React.lazy(() => import('../pages/productPage'));
 const Favorites = React.lazy(() => import('../pages/favorites'));
+const NotFound = React.lazy(() => import('../pages/notFound'));
 
 const Navigation = () => {
   return (
@@ -41,13 +42,6 @@ const Navigation = () => {
           />
         );
       })}
-
-      <Route
-        path="*"
-        element={(
-          <h1>404! PAGE NOT FOUND!</h1>
-        )}
-      />
     </Routes>
   );
 };
@@ -101,6 +95,13 @@ const navigationList = [
     redirectTo: routePath.signIn,
     noAuthOnly: false,
     isProtected: true,
+  },
+  {
+    path: '*',
+    children: NotFound,
+    redirectTo: undefined,
+    noAuthOnly: false,
+    isProtected: false,
   },
 ];
 
