@@ -1,3 +1,5 @@
+import constants from './constants';
+
 export type AuthResponse = {
   token: string;
   user: User
@@ -46,10 +48,12 @@ export type QuerySearchOptions = {
   genres?: string;
   priceFrom?: string;
   priceTo?: string;
-  order?: string;
-  orderDir?: string;
+  order?: BookSortOptions;
+  orderDir?: 'ASC' | 'DESC';
   value?: string;
 }
+
+export type BookSortOptions = keyof typeof constants.BOOK_SORTING_OPTIONS
 
 export type Genre = {
   genreId: number;

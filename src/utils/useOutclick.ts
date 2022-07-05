@@ -1,20 +1,24 @@
-import React, { useEffect } from 'react';
+import { useEffect, RefObject } from 'react';
 
-const useOutclick = (ref: React.RefObject<HTMLDivElement>, state: boolean, toggle: () => void) => {
+const useOutclick = (ref: RefObject<HTMLDivElement>, isOpen: boolean, toggle: () => void) => {
   useEffect(() => {
-    if (state) {
-      const handleClickOutside = (event: MouseEvent) => {
-        if (ref.current && !ref.current.contains(event.target as Node)) {
-          event.stopPropagation();
-          toggle();
-        }
-      };
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        event.stopPropagation();
+        toggle();
+      }
+    };
+
+    if (!isOpen) {
+      return;
     }
-  }, [ref, state]);
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [ref, isOpen]);
 };
 
 export default useOutclick;

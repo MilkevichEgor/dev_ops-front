@@ -9,48 +9,14 @@ import SortingList from './SortingList';
 import PaginationBlock from './PaginationBlock';
 import useQuery from '../../../../utils/useQuery';
 import { QuerySearchOptions } from '../../../../types';
+import constants from '../../../../constants';
 
 const Catalog = () => {
   const [parsedParams] = useQuery<QuerySearchOptions>();
 
   const order = useMemo(() => {
-    let sortByTitle = parsedParams.order || 'price';
-    switch (sortByTitle) {
-      case 'dateOfIssue':
-        sortByTitle = 'date';
-        break;
-      case 'averageRate':
-        sortByTitle = 'rating';
-        break;
-      case 'title':
-        sortByTitle = 'name';
-        break;
-      default:
-        break;
-    }
-
-    return sortByTitle;
+    return constants.BOOK_SORTING_OPTIONS[(parsedParams.order || 'price')];
   }, [parsedParams.order]);
-
-  const dropdownsList = [
-    {
-      title: 'Genre',
-      children: <GenresCheckbox />,
-    },
-    {
-      title: 'Price',
-      children: (
-        <PriceFilter
-          min={1}
-          max={100}
-        />
-      ),
-    },
-    {
-      title: `Sort by ${order}`,
-      children: <SortingList />,
-    },
-  ];
 
   return (
     <CommonWrapper>
@@ -58,19 +24,30 @@ const Catalog = () => {
         <h1 className="filter__title">
           Catalog
         </h1>
-        <div className="filter__form">
-          {dropdownsList.map((filter) => {
-            return (
-              <DropdownMenu
-                key={filter.title}
-                title={filter.title}
-              >
-                {filter.children}
-              </DropdownMenu>
-            );
-          })}
 
+        <div className="filter__form">
+          <DropdownMenu
+            title="Genre"
+          >
+            <GenresCheckbox />
+          </DropdownMenu>
+
+          <DropdownMenu
+            title="Price"
+          >
+            <PriceFilter
+              min={1}
+              max={100}
+            />
+          </DropdownMenu>
+
+          <DropdownMenu
+            title={`Sort by ${order}`}
+          >
+            <SortingList />
+          </DropdownMenu>
         </div>
+
       </CatalogWrapper>
 
       <BooksList />

@@ -5,17 +5,22 @@ export const routePath = {
   profile: '/me',
   cart: '/cart',
   product: '/product',
-  // product: '/product/:productId',
-  // getProductLink(productId: number) {
-  //   return this.product.replace(':productId', productId.toString());
-  // },
   search: '/search',
   favorites: '/favorites',
 };
 
 export const booksQuantityPerPage = 12;
 
+const BOOK_SORTING_OPTIONS = {
+  price: 'price',
+  averageRate: 'rating',
+  dateOfIssue: 'date',
+  author: 'author',
+  title: 'name',
+};
+
 export default {
   booksQuantityPerPage,
   routePath,
+  BOOK_SORTING_OPTIONS,
 };

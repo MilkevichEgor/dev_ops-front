@@ -8,12 +8,11 @@ type DropdownProps = React.PropsWithChildren<{
 
 const DropdownMenu: React.FC<DropdownProps> = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef(null);
 
   const toggleIsOpen = () => {
     setIsOpen(!isOpen);
   };
-
-  const ref = useRef(null);
 
   useOutclick(ref, isOpen, toggleIsOpen);
 

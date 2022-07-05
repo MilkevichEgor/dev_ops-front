@@ -2,12 +2,12 @@ import React from 'react';
 import SortingListWrapper from '../styles/SortingList.styles';
 import arrowUpIcon from '../../../images/arrowUp.png';
 import useQuery from '../../../../utils/useQuery';
-import { QuerySearchOptions } from '../../../../types';
+import { BookSortOptions, QuerySearchOptions } from '../../../../types';
 
 const SortingList = () => {
   const [parsedParams, setParams] = useQuery<QuerySearchOptions>();
 
-  const applySortOrder = (value: string) => {
+  const applySortOrder = (value: BookSortOptions) => {
     parsedParams.order = value;
 
     if (parsedParams.orderDir === 'ASC') {
@@ -47,22 +47,22 @@ export default SortingList;
 const sortArray = [
   {
     title: 'Price',
-    type: 'price',
+    type: 'price' as BookSortOptions,
   },
   {
     title: 'Name',
-    type: 'title',
+    type: 'title' as BookSortOptions,
   },
   {
     title: 'Author',
-    type: 'author',
+    type: 'author' as BookSortOptions,
   },
   {
     title: 'Rating',
-    type: 'averageRate',
+    type: 'averageRate' as BookSortOptions,
   },
   {
     title: 'Date of issue',
-    type: 'dateOfIssue',
+    type: 'dateOfIssue' as BookSortOptions,
   },
 ];
