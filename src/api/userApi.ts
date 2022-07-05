@@ -13,17 +13,16 @@ type UploadAvatarType = {
   img: string;
 }
 
-type UploadAvatarResponse = {
-  message?: string;
+type UpdateUserResponse = {
   user: User;
 }
 
 const updateUser = (id: number, data: UpdateUserDataType) => {
-  return axios.patch<UploadAvatarResponse>(`${config.userPath}/${id}`, data);
+  return axios.patch<UpdateUserResponse>(`${config.userPath}/${id}`, data);
 };
 
 const uploadAvatar = (data: UploadAvatarType) => {
-  return axios.post<{user: User}>(`${config.userPath}/upload-avatar`, data);
+  return axios.post<UpdateUserResponse>(`${config.userPath}/upload-avatar`, data);
 };
 
 const checkToken = (data: Token) => {

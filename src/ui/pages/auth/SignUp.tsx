@@ -25,7 +25,7 @@ const signUpValidationSchema = new YupObject().shape({
     is: (value: string) => (Boolean(value && value.length > 0)),
     then: new YupString().oneOf(
       [new YupRef('password')],
-      'Both password need to be the same',
+      'Both passwords need to be the same',
     ),
   }),
 });

@@ -6,7 +6,7 @@ import { getAllGenres } from '../../../../store/genreThunk';
 import { QuerySearchOptions } from '../../../../types';
 import useQuery from '../../../../utils/useQuery';
 import BooksRender from '../../../components/Book/BooksRender';
-import Loader from '../../../components/Loader/Loader';
+import Loader from '../../../components/Loader';
 
 const BooksList = () => {
   const books = useAppSelector((state) => state.bookReducer.books);
@@ -16,16 +16,11 @@ const BooksList = () => {
 
   useEffect(() => {
     (async () => {
+      await dispatch(getAllGenres());
       await dispatch(getAllBooksThunk({ options: parsedParams }));
       setIsLoading(false);
     })();
   }, [dispatch, parsedParams]);
-
-  useEffect(() => {
-    (async () => {
-      dispatch(getAllGenres());
-    })();
-  }, [dispatch]);
 
   return (
     <>
@@ -41,7 +36,5 @@ const BooksList = () => {
 
   );
 };
-
-// it makes sense to separate single components with logic?
 
 export default BooksList;
