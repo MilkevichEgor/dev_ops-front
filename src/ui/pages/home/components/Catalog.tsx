@@ -1,15 +1,17 @@
 import React, { useMemo } from 'react';
-import CatalogWrapper from '../styles/Catalog.styles';
-import CommonWrapper from '../../../styles/CommonWrapper.styles';
+
+import useQuery from '../../../../utils/useQuery';
+import { QuerySearchOptions } from '../../../../types';
+import constants from '../../../../constants';
+
 import BooksList from './BooksList';
 import DropdownMenu from './DropdownMenu';
 import GenresCheckbox from './GenresCheckbox';
 import PriceFilter from './PriceRangeFilter';
 import SortingList from './SortingList';
 import PaginationBlock from './PaginationBlock';
-import useQuery from '../../../../utils/useQuery';
-import { QuerySearchOptions } from '../../../../types';
-import constants from '../../../../constants';
+import CatalogWrapper from '../styles/Catalog.styles';
+import CommonWrapper from '../../../components/CommonWrapper.styles';
 
 const Catalog = () => {
   const [parsedParams] = useQuery<QuerySearchOptions>();

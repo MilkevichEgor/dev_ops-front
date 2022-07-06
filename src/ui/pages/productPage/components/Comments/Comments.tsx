@@ -7,11 +7,14 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { socket } from '../../../../../App';
 import bookApi from '../../../../../api/bookApi';
 import { BookType, Comment } from '../../../../../types';
-import CommonButton from '../../../../components/CommonButton';
-import CommentsWrapper from './Comments.styles';
 import { useAppSelector } from '../../../../../store';
+
 import AuthProtector from '../../../../components/AuthProtector';
-import defaultAvatar from '../../../../images/defaultAvatar.png';
+import CommonButton from '../../../../components/CommonButton';
+
+import CommentsWrapper from './Comments.styles';
+
+import defaultAvatar from '../../../../images/default-avatar.png';
 
 type CommentsProps = {
   book: BookType,

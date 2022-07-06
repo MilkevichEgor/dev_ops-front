@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
+
 import { useAppSelector } from '../../../../store';
-import arrow from '../../../images/pageForwardArrow.png';
-import PaginationWrapper from '../styles/PaginationBlock.styles';
+
 import useQuery from '../../../../utils/useQuery';
 import { QuerySearchOptions } from '../../../../types';
+
+import PaginationWrapper from '../styles/PaginationBlock.styles';
+
+import arrow from '../../../images/page-arrow.png';
 
 const PaginationBlock = () => {
   const [parsedParams, setParams] = useQuery<QuerySearchOptions>();

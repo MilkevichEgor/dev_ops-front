@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
+import { toast } from 'react-toastify';
 import { Rating as RatingStars } from 'react-simple-star-rating';
-import emptyStarIcon from '../../images/Star.png';
-import filledStarIcon from '../../images/StarFilled.png';
+
 import { useAppSelector } from '../../../store';
 import bookApi from '../../../api/bookApi';
-import RatingWrapper from './Rating.styles';
 import { routePath } from '../../../constants';
+
+import RatingWrapper from './Rating.styles';
+
+import emptyStarIcon from '../../images/star.png';
+import filledStarIcon from '../../images/star-filled.png';
 
 type RatingProps = {
   bookId: number,

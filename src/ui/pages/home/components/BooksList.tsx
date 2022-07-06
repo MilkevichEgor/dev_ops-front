@@ -3,8 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../store';
 import { getAllBooksThunk } from '../../../../store/bookThunk';
 import { getAllGenres } from '../../../../store/genreThunk';
+
 import { QuerySearchOptions } from '../../../../types';
 import useQuery from '../../../../utils/useQuery';
+
 import BooksRender from '../../../components/Book';
 import Loader from '../../../components/Loader';
 

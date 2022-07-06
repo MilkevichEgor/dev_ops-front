@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
 import { io } from 'socket.io-client';
+import Cookies from 'js-cookie';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import { useAppDispatch } from './store';
+import { setUser } from './store/userReducer';
+
+import userApi from './api/userApi';
+import constants from './constants';
+import config from './config';
 
 import Header from './ui/containers/Header';
 import Footer from './ui/containers/Footer';
 import Navigation from './ui/containers/Navigation';
-import { useAppDispatch } from './store';
-import { setUser } from './store/userReducer';
-import MainWrapper from './ui/styles/Main.styles';
-import userApi from './api/userApi';
+import MainWrapper from './ui/components/MainWrapper';
 
-export const socket = io('http://localhost:4000');
+export const socket = io(config.apiBaseUrl);
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -31,7 +36,7 @@ const App = () => {
 
   useEffect(() => {
     (async () => {
-      const token = Cookies.get('token');
+      const token = Cookies.get(constants.token.access);
       if (!token) {
         setIsAuthChecked(true);
 

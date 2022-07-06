@@ -2,13 +2,16 @@ import React from 'react';
 import { useFormik } from 'formik';
 
 import CommonInputField from '../../../components/CommonInputField';
-import defaultAvatar from '../../../images/defaultAvatar.png';
-import mailIcon from '../../../images/mail.png';
-import { useAppDispatch, useAppSelector } from '../../../../store';
+
 import userApi from '../../../../api/userApi';
-import { User } from '../../../../types';
+import { useAppDispatch, useAppSelector } from '../../../../store';
 import { setUser } from '../../../../store/userReducer';
+import { User } from '../../../../types';
+
 import CommonButton from '../../../components/CommonButton';
+
+import defaultAvatar from '../../../images/default-avatar.png';
+import mailIcon from '../../../images/mail.png';
 
 type UserInfoProps = {
   isChangeUserInfo: boolean;

@@ -4,7 +4,9 @@ export const routePath = {
   signUp: '/signup',
   profile: '/me',
   cart: '/cart',
-  product: '/product',
+  createProductURL: ((id: string) => {
+    return `/product/${id}`;
+  }),
   search: '/search',
   favorites: '/favorites',
 } as const;
@@ -19,8 +21,14 @@ const BOOK_SORTING_OPTIONS = {
   title: 'name',
 };
 
+const token = {
+  access: 'accessToken',
+  refresh: 'refreshToken',
+};
+
 export default {
   booksQuantityPerPage,
   routePath,
   BOOK_SORTING_OPTIONS,
+  token,
 };

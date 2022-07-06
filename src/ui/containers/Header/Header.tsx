@@ -1,19 +1,21 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-import logo from '../../images/logo.svg';
-import searchIcon from '../../images/SearchIcon.png';
-import Logo from '../../components/Logo';
-import CommonWrapper from '../../styles/CommonWrapper.styles';
-import HeaderWrapper from './Header.styles';
-import { routePath } from '../../../constants';
-import AuthButtonsBlock from './components/AuthButtonsBlock';
-import useQuery from '../../../utils/useQuery';
+import { useAppSelector } from '../../../store';
 import { QuerySearchOptions } from '../../../types';
+import { routePath } from '../../../constants';
+import useQuery from '../../../utils/useQuery';
+import logOut from '../../../utils/logOut';
+
+import Logo from '../../components/Logo';
+import AuthButtonsBlock from './components/AuthButtonsBlock';
 import AuthProtector from '../../components/AuthProtector';
 import CommonButton from '../../components/CommonButton';
-import logOut from '../../../utils/logOut';
-import { useAppSelector } from '../../../store';
+import CommonWrapper from '../../components/CommonWrapper.styles';
+import HeaderWrapper from './Header.styles';
+
+import logo from '../../images/logo.svg';
+import searchIcon from '../../images/search-icon.png';
 
 const Header = () => {
   const navigate = useNavigate();

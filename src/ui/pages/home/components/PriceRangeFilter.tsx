@@ -1,9 +1,12 @@
 import React, { ChangeEvent, FC, useCallback, useEffect, useState, useRef } from 'react';
 import classnames from 'classnames';
-import PriceFilterWrapper from '../styles/PriceFilter.styles';
-import arrowUpIcon from '../../../images/arrowUp.png';
+
 import useQuery from '../../../../utils/useQuery';
 import { QuerySearchOptions } from '../../../../types';
+
+import PriceFilterWrapper from '../styles/PriceFilter.styles';
+
+import arrowUpIcon from '../../../images/arrow-up.png';
 
 interface MultiRangeSliderProps {
   min: number;

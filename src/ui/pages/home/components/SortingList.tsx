@@ -1,8 +1,11 @@
 import React from 'react';
-import SortingListWrapper from '../styles/SortingList.styles';
-import arrowUpIcon from '../../../images/arrowUp.png';
+
 import useQuery from '../../../../utils/useQuery';
 import { BookSortOptions, QuerySearchOptions } from '../../../../types';
+
+import SortingListWrapper from '../styles/SortingList.styles';
+
+import arrowUpIcon from '../../../images/arrow-up.png';
 
 const SortingList = () => {
   const [parsedParams, setParams] = useQuery<QuerySearchOptions>();

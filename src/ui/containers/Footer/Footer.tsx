@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../images/logoWhiteLetters.png';
-import map from '../../images/map.png';
+
+import { routePath } from '../../../constants';
+
 import Logo from '../../components/Logo';
 import FooterWrapper from './Footer.styles';
-import CommonWrapper from '../../styles/CommonWrapper.styles';
-import { routePath } from '../../../constants';
+import CommonWrapper from '../../components/CommonWrapper.styles';
+
+import logo from '../../images/logo-white-letters.png';
+import map from '../../images/map-img.png';
 
 const Footer = () => {
   return (

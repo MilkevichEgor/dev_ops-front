@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import CommonWrapper from '../../styles/CommonWrapper.styles';
-import UserProfileWrapper from './UserProfile.styles';
-import defaultAvatar from '../../images/defaultAvatar.png';
-import changeAvatarButton from '../../images/changeAvatarButton.png';
-import UserPassword from './components/UserPassword';
-import UserInfo from './components/UserInfo';
+
 import userApi from '../../../api/userApi';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { setUser } from '../../../store/userReducer';
 import { User } from '../../../types';
+
+import UserPassword from './components/UserPassword';
+import UserInfo from './components/UserInfo';
+import CommonWrapper from '../../components/CommonWrapper.styles';
+
+import UserProfileWrapper from './UserProfile.styles';
+
+import defaultAvatar from '../../images/default-avatar.png';
+import changeAvatarButton from '../../images/change-avatar-button.png';
 
 const UserProfile = () => {
   const dispatch = useAppDispatch();

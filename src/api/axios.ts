@@ -1,6 +1,9 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
+
 import config from '../config';
+import constants from '../constants';
+
 import checkRefreshToken from '../utils/checkRefreshToken';
 import logOut from '../utils/logOut';
 
@@ -9,7 +12,7 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-  const token = Cookies.get('token');
+  const token = Cookies.get(constants.token.access);
   if (token) {
     if (!config.headers) {
       config.headers = {};
@@ -28,8 +31,8 @@ instance.interceptors.response.use((response) => {
   }
 
   if ('token' in response.data) {
-    Cookies.set('token', response.data.token);
-    Cookies.set('refreshToken', response.data?.refreshToken);
+    Cookies.set(constants.token.access, response.data.token);
+    Cookies.set(constants.token.refresh, response.data?.refreshToken);
   }
 
   return response;
@@ -44,7 +47,7 @@ instance.interceptors.response.use((response) => {
     const isChecked = await isCheckRefreshJWTSend;
     if (isChecked) {
       const req = { ...err.config };
-      req.headers.authorization = `Bearer ${Cookies.get('token')}`;
+      req.headers.authorization = `Bearer ${Cookies.get(constants.token.access)}`;
 
       isCheckRefreshJWTSend = null;
 

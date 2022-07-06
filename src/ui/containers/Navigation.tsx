@@ -1,6 +1,8 @@
 import React, { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
+
 import { routePath } from '../../constants';
+
 import AuthProtector from '../components/AuthProtector';
 import Loader from '../components/Loader/Loader';
 
@@ -13,31 +15,43 @@ const ProductPage = React.lazy(() => import('../pages/productPage'));
 const Favorites = React.lazy(() => import('../pages/favorites'));
 const NotFound = React.lazy(() => import('../pages/notFound'));
 
+type RouteType = {
+    path: string;
+    children: React.LazyExoticComponent<() => JSX.Element | null>,
+    noAuthOnly?: boolean | false,
+    isProtected?: boolean | true,
+    redirectTo?: string,
+}
+
 const Navigation = () => {
+  const elementWithOptions = (route: RouteType) => {
+    const children = (
+      <Suspense fallback={<Loader />}>
+        {<route.children />}
+      </Suspense>
+    );
+
+    if (!route.isProtected) {
+      return children;
+    }
+
+    return (
+      <AuthProtector
+        redirectTo={route.redirectTo}
+        noAuthOnly={route.noAuthOnly}
+      >
+        {children}
+      </AuthProtector>
+    );
+  };
+
   return (
     <Routes>
       {navigationList.map((route, index) => (
         <Route
           key={index}
           path={route.path}
-          element={
-            route.isProtected
-              ? (
-                <AuthProtector
-                  redirectTo={route.redirectTo}
-                  noAuthOnly={route.noAuthOnly}
-                >
-                  <Suspense fallback={<Loader />}>
-                    {<route.children />}
-                  </Suspense>
-                </AuthProtector>
-              )
-              : (
-                <Suspense fallback={<Loader />}>
-                  {<route.children />}
-                </Suspense>
-              )
-          }
+          element={elementWithOptions(route)}
         />
       ))}
     </Routes>
@@ -48,13 +62,11 @@ const navigationList = [
   {
     path: routePath.home,
     children: Home,
-    noAuthOnly: false,
     isProtected: false,
   },
   {
-    path: `${routePath.product}/:id`,
+    path: routePath.createProductURL(':id'),
     children: ProductPage,
-    noAuthOnly: false,
     isProtected: false,
   },
   {
@@ -62,41 +74,31 @@ const navigationList = [
     children: SignInForm,
     redirectTo: routePath.home,
     noAuthOnly: true,
-    isProtected: true,
   },
   {
     path: routePath.signUp,
     children: SignUpForm,
     redirectTo: routePath.home,
     noAuthOnly: true,
-    isProtected: true,
   },
   {
     path: routePath.cart,
     children: Cart,
     redirectTo: routePath.signIn,
-    noAuthOnly: false,
-    isProtected: true,
   },
   {
     path: routePath.profile,
     children: UserProfile,
     redirectTo: routePath.signIn,
-    noAuthOnly: false,
-    isProtected: true,
   },
   {
     path: routePath.favorites,
     children: Favorites,
     redirectTo: routePath.signIn,
-    noAuthOnly: false,
-    isProtected: true,
   },
   {
     path: '*',
     children: NotFound,
-    redirectTo: undefined,
-    noAuthOnly: false,
     isProtected: false,
   },
 ];

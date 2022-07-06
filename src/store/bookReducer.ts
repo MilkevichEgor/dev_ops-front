@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { getAllBooksThunk, getRecommendations } from './bookThunk';
+
 import constants from '../constants';
 import { BookType } from '../types';
 

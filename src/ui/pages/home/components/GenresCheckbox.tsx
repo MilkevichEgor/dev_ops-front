@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
+
 import { useAppSelector } from '../../../../store';
-import GenreCheckboxWrapper from '../styles/GenresCheckbox.styles';
-import arrowUpIcon from '../../../images/arrowUp.png';
-import useQuery from '../../../../utils/useQuery';
 import { QuerySearchOptions } from '../../../../types';
-import checkedIcon from '../../../images/checkboxChecked.png';
-import unchekedIcon from '../../../images/checkboxUnchecked.png';
+import useQuery from '../../../../utils/useQuery';
+
+import GenreCheckboxWrapper from '../styles/GenresCheckbox.styles';
+
+import arrowUpIcon from '../../../images/arrow-up.png';
+import checkedIcon from '../../../images/checkbox-checked.png';
+import unchekedIcon from '../../../images/checkbox-unchecked.png';
 
 const GenresCheckbox = () => {
   const [checkedGenres, setCheckedGenres] = useState<string[]>([]);

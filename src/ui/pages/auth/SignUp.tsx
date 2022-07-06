@@ -6,17 +6,20 @@ import { AxiosError } from 'axios';
 import YupString from 'yup/lib/string';
 import YupObject from 'yup/lib/object';
 import YupRef from 'yup/lib/Reference';
+
 import authAPI from '../../../api/authApi';
+import { routePath } from '../../../constants';
+import { useAppDispatch } from '../../../store';
+import { setUser } from '../../../store/userReducer';
+
+import CommonButton from '../../components/CommonButton';
+import CommonInputField from '../../components/CommonInputField';
+import Wrapper from './Auth.styles';
+import CommonWrapper from '../../components/CommonWrapper.styles';
+
 import man from '../../images/man.png';
 import hide from '../../images/hide.png';
 import mail from '../../images/mail.png';
-import Wrapper from './Auth.styles';
-import CommonButton from '../../components/CommonButton';
-import CommonWrapper from '../../styles/CommonWrapper.styles';
-import CommonInputField from '../../components/CommonInputField';
-import { useAppDispatch } from '../../../store';
-import { setUser } from '../../../store/userReducer';
-import { routePath } from '../../../constants';
 
 const signUpValidationSchema = new YupObject().shape({
   email: new YupString().email('Invalid email address').required('Required'),

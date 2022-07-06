@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
+
 import { useAppDispatch, useAppSelector } from '../../../../../store';
-import RecommendationsWrapper from './Recommendations.styles';
-import BooksRender from '../../../../components/Book/BooksRender';
 import { getRecommendations } from '../../../../../store/bookThunk';
+
+import BooksRender from '../../../../components/Book/BooksRender';
+
+import RecommendationsWrapper from './Recommendations.styles';
 
 const Recommendations = () => {
   const recommendedBooks = useAppSelector((state) => state.bookReducer.recommended);

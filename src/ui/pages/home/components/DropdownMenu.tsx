@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
+
 import useOutclick from '../../../../utils/useOutclick';
-import forwardIcon from '../../../images/forwardIcon.png';
+
+import forwardIcon from '../../../images/forward-icon.png';
 
 type DropdownProps = React.PropsWithChildren<{
   title: string;

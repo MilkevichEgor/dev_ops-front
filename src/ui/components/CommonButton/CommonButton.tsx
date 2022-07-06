@@ -1,4 +1,5 @@
 import React from 'react';
+
 import CommonButtonWrapper from './CommonButton.styled';
 
 type ButtonProps = {

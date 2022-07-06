@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
-import { useFormik } from 'formik';
 import { AxiosError } from 'axios';
+import { toast } from 'react-toastify';
+import { useFormik } from 'formik';
+
 import YupString from 'yup/lib/string';
 import YupObject from 'yup/lib/object';
 import YupRef from 'yup/lib/Reference';
-import { toast } from 'react-toastify';
 
-import hideIcon from '../../../images/hide.png';
-import showIcon from '../../../images/View.png';
-import CommonInputField from '../../../components/CommonInputField';
-import CommonButton from '../../../components/CommonButton';
+import userApi from '../../../../api/userApi';
 import { useAppSelector } from '../../../../store';
 import { User } from '../../../../types';
-import userApi from '../../../../api/userApi';
+
+import CommonInputField from '../../../components/CommonInputField';
+import CommonButton from '../../../components/CommonButton';
+
+import hideIcon from '../../../images/hide.png';
+import showIcon from '../../../images/view.png';
 
 type UserProfileProps = {
   isChangePassword: boolean;

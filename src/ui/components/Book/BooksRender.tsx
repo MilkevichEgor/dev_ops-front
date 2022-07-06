@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import bookApi from '../../../api/bookApi';
+import { useAppSelector } from '../../../store';
 import { routePath } from '../../../constants';
 import { BooksArray, BookType } from '../../../types';
+
 import CommonButton from '../CommonButton';
 import Rating from '../Rating';
 import BooksWrapper from './Books.styles';
-import favoriteUnchoosenIcon from '../../images/fav_unchoosen.png';
+
+import favoriteUnchoosenIcon from '../../images/fav-unchoosen.png';
 import favoriteChoosenIcon from '../../images/favorites.png';
-import { useAppSelector } from '../../../store';
-import bookApi from '../../../api/bookApi';
 
 type BookProps = {
   booksArray: BooksArray;
@@ -68,7 +70,7 @@ const BooksRender: React.FC<BookProps> = (props) => {
           >
             <Link
               className="book__link"
-              to={{ pathname: `${routePath.product}/${book.bookId}` }}>
+              to={{ pathname: routePath.createProductURL(book.bookId.toString()) }}>
               <img
                 src={book.cover}
                 className="book__cover"

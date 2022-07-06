@@ -3,19 +3,22 @@ import { useNavigate, useParams } from 'react-router';
 import { toast } from 'react-toastify';
 
 import bookApi from '../../../api/bookApi';
+import { useAppSelector } from '../../../store';
 import { BookType, RatingObj } from '../../../types';
+import { routePath } from '../../../constants';
+
 import CommonButton from '../../components/CommonButton';
 import Rating from '../../components/Rating';
-import CommonWrapper from '../../styles/CommonWrapper.styles';
-import ProductPageWrapper from './ProductPage.styles';
-import filledStarIcon from '../../images/StarFilled.png';
-import backArrow from '../../images/backArrow.png';
-import { useAppSelector } from '../../../store';
 import Comments from './components/Comments';
 import AuthProtector from '../../components/AuthProtector';
 import AuthorizeBanner from '../../components/AuthorizeBanner';
 import Recommendations from './components/Recommendation';
-import { routePath } from '../../../constants';
+import CommonWrapper from '../../components/CommonWrapper.styles';
+
+import ProductPageWrapper from './ProductPage.styles';
+
+import filledStarIcon from '../../images/star-filled.png';
+import backArrow from '../../images/back-arrow.png';
 
 const ProductPage = () => {
   const navigate = useNavigate();

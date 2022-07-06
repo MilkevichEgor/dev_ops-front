@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Genre } from '../types';
+
 import { getAllGenres } from './genreThunk';
+
+import { Genre } from '../types';
 
 export interface GenreState {
   genres: Genre[] | [],

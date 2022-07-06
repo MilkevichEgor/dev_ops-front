@@ -1,6 +1,5 @@
-import config from '../config';
-import { BookType, Genre, QuerySearchOptions, User } from '../types';
 import axios from './axios';
+import { BookType, Genre, QuerySearchOptions, User } from '../types';
 
 export type SetRatingOptions = {
   bookId: number;
@@ -41,42 +40,44 @@ type AddCommentResponse = {
   user: User
 }
 
+const bookPath = '/book';
+
 const getAllBooks = (data: GetAllBooksOptions) => {
-  return axios.get<GetAllBooksResponse>(`${config.bookPath}/all`, {
+  return axios.get<GetAllBooksResponse>(`${bookPath}/all`, {
     params: data.options,
   });
 };
 
 const getAllGenres = () => {
-  return axios.get<GetAllGenresResponse>(`${config.bookPath}/genres`);
+  return axios.get<GetAllGenresResponse>(`${bookPath}/genres`);
 };
 
 const getOneBook = (id: string) => {
-  return axios.get<GetOneBookResponse>(`${config.bookPath}/${id}`);
+  return axios.get<GetOneBookResponse>(`${bookPath}/${id}`);
 };
 
 const setRating = (data: SetRatingOptions) => {
-  return axios.post(`${config.bookPath}/rate`, data);
+  return axios.post(`${bookPath}/rate`, data);
 };
 
 const addComment = (data: AddCommentOptions) => {
-  return axios.post<AddCommentResponse>(`${config.bookPath}/add-comment`, data);
+  return axios.post<AddCommentResponse>(`${bookPath}/add-comment`, data);
 };
 
 const getRecommendations = () => {
-  return axios.get<BookType[]>(`${config.bookPath}/recommendations`);
+  return axios.get<BookType[]>(`${bookPath}/recommendations`);
 };
 
 const getFavorite = () => {
-  return axios.get<BookType[]>(`${config.bookPath}/favorites`);
+  return axios.get<BookType[]>(`${bookPath}/favorites`);
 };
 
 const addToFavorite = (data: toggleFavoritesType) => {
-  return axios.post<User>(`${config.bookPath}/add-favorites`, data);
+  return axios.post<User>(`${bookPath}/add-favorites`, data);
 };
 
 const removeFromFavorite = (data: toggleFavoritesType) => {
-  return axios.delete<User>(`${config.bookPath}/remove-favorites`, { data });
+  return axios.delete<User>(`${bookPath}/remove-favorites`, { data });
 };
 
 export default {

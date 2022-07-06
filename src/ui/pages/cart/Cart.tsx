@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import CommonWrapper from '../../styles/CommonWrapper.styles';
-import booksImg from '../../images/emptyCardBooks.png';
-import CommonTextBlock from '../../styles/CommonTextBlock.styles';
-import CommonButton from '../../components/CommonButton';
-import EmptyCartWrapper from './EmptyCartWrapper.styles';
 import { routePath } from '../../../constants';
+
+import CommonButton from '../../components/CommonButton';
+import CommonWrapper from '../../components/CommonWrapper.styles';
+import CommonTextBlock from '../../components/CommonTextBlock.styles';
+import EmptyCartWrapper from './EmptyCartWrapper.styles';
+
+import booksImg from '../../images/empty-cart-books.png';
 
 const Cart = () => {
   return (
