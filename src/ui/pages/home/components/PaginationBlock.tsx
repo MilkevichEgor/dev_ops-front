@@ -21,12 +21,14 @@ const PaginationBlock = () => {
   }, [currentPage, setCurrentPage]);
 
   useEffect(() => {
-    if (currentPage) {
-      if (totalPages > 0 && (currentPage > totalPages || !parsedParams.page)) {
-        setCurrentPage(1);
-      }
-      setParams({ page: currentPage.toString() });
+    if (!currentPage) {
+      return;
     }
+
+    if (totalPages > 0 && (currentPage > totalPages || !parsedParams.page)) {
+      setCurrentPage(1);
+    }
+    setParams({ page: currentPage.toString() });
   }, [currentPage, totalPages]);
 
   const turnPageBack = () => {

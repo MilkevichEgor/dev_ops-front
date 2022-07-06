@@ -8,8 +8,8 @@ import { toast } from 'react-toastify';
 
 import hideIcon from '../../../images/hide.png';
 import showIcon from '../../../images/View.png';
-import CommonInputField from '../../../components/CommonInputField/CommonInputField';
-import CommonButton from '../../../components/CommonButton/CommonButton';
+import CommonInputField from '../../../components/CommonInputField';
+import CommonButton from '../../../components/CommonButton';
 import { useAppSelector } from '../../../../store';
 import { User } from '../../../../types';
 import userApi from '../../../../api/userApi';

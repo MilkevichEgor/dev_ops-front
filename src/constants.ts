@@ -7,7 +7,7 @@ export const routePath = {
   product: '/product',
   search: '/search',
   favorites: '/favorites',
-};
+} as const;
 
 export const booksQuantityPerPage = 12;
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import bookApi from '../../../api/bookApi';
 import { BooksArray } from '../../../types';
-import BooksRender from '../../components/Book/BooksRender';
+import BooksRender from '../../components/Book';
 import CommonWrapper from '../../styles/CommonWrapper.styles';
 import FavoritesWrapper from './Favorites.styles';
 
@@ -21,7 +21,9 @@ const Favorites = () => {
   }, [setBooks]);
 
   const changeBookList = (id: number) => {
-    const updatedList = books.filter((book) => book.bookId !== id);
+    const updatedList = books.filter((book) => {
+      return book.bookId !== id;
+    });
     setBooks(updatedList);
   };
 

@@ -4,8 +4,8 @@ import { toast } from 'react-toastify';
 
 import bookApi from '../../../api/bookApi';
 import { BookType, RatingObj } from '../../../types';
-import CommonButton from '../../components/CommonButton/CommonButton';
-import Rating from '../../components/Rating/Rating';
+import CommonButton from '../../components/CommonButton';
+import Rating from '../../components/Rating';
 import CommonWrapper from '../../styles/CommonWrapper.styles';
 import ProductPageWrapper from './ProductPage.styles';
 import filledStarIcon from '../../images/StarFilled.png';
@@ -13,8 +13,8 @@ import backArrow from '../../images/backArrow.png';
 import { useAppSelector } from '../../../store';
 import Comments from './components/Comments';
 import AuthProtector from '../../components/AuthProtector';
-import AuthorizeBanner from '../../components/AuthorizeBanner/AuthorizeBanner';
-import Recommendations from './components/Recommendations';
+import AuthorizeBanner from '../../components/AuthorizeBanner';
+import Recommendations from './components/Recommendation';
 import { routePath } from '../../../constants';
 
 const ProductPage = () => {

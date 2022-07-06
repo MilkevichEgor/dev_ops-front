@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import profileIcon from '../../../images/user_profile.png';
 import cartIcon from '../../../images/card.svg';

@@ -11,7 +11,7 @@ import AuthButtonsBlock from './components/AuthButtonsBlock';
 import useQuery from '../../../utils/useQuery';
 import { QuerySearchOptions } from '../../../types';
 import AuthProtector from '../../components/AuthProtector';
-import CommonButton from '../../components/CommonButton/CommonButton';
+import CommonButton from '../../components/CommonButton';
 import logOut from '../../../utils/logOut';
 import { useAppSelector } from '../../../store';
 
@@ -25,7 +25,7 @@ const Header = () => {
     if (e.key === 'Enter') {
       const value = e.currentTarget.value;
       setParams({ value });
-      if (location.pathname !== '/') {
+      if (location.pathname !== routePath.home) {
         navigate(`${routePath.home}?value=${value}`);
       }
     }
@@ -41,12 +41,13 @@ const Header = () => {
           <span
             className="header__catalog-link"
             onClick={logOut}
-            hidden={Boolean(!user)}
+            hidden={!user}
           >
             Log out
           </span>
         </div>
-        <label htmlFor="global-search"
+        <label
+          htmlFor="global-search"
           className="search"
         >
           <img
@@ -71,9 +72,7 @@ const Header = () => {
             className="header__link"
             to={routePath.signIn}
           >
-            <CommonButton
-              text="Log In / Sign Up"
-            />
+            <CommonButton text="Log In / Sign Up" />
           </Link>
         </AuthProtector>
       </HeaderWrapper>

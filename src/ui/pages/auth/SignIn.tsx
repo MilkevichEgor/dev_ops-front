@@ -10,11 +10,11 @@ import Wrapper from './Auth.styles';
 import man from '../../images/man.png';
 import hide from '../../images/hide.png';
 import mail from '../../images/mail.png';
-import CommonButton from '../../components/CommonButton/CommonButton';
+import CommonButton from '../../components/CommonButton';
 import CommonWrapper from '../../styles/CommonWrapper.styles';
 import { setUser } from '../../../store/userReducer';
 import { routePath } from '../../../constants';
-import CommonInputField from '../../components/CommonInputField/CommonInputField';
+import CommonInputField from '../../components/CommonInputField';
 import { useAppDispatch } from '../../../store';
 
 const signInValidationSchema = new YupObject().shape({

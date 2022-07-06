@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Banner from './components/Banner';
-import AuthorizeBanner from '../../components/AuthorizeBanner/AuthorizeBanner';
+import AuthorizeBanner from '../../components/AuthorizeBanner';
 import Catalog from './components/Catalog';
 import AuthProtector from '../../components/AuthProtector';
 

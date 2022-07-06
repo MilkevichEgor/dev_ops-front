@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { Rating as RatingStars } from 'react-simple-star-rating';
@@ -7,6 +8,7 @@ import filledStarIcon from '../../images/StarFilled.png';
 import { useAppSelector } from '../../../store';
 import bookApi from '../../../api/bookApi';
 import RatingWrapper from './Rating.styles';
+import { routePath } from '../../../constants';
 
 type RatingProps = {
   bookId: number,
@@ -16,6 +18,7 @@ type RatingProps = {
 }
 
 const Rating: React.FC<RatingProps> = (props) => {
+  const navigate = useNavigate();
   const user = useAppSelector((state) => state.userReducer.user);
   const [rating, setRating] = useState(props.rate);
 
@@ -28,7 +31,7 @@ const Rating: React.FC<RatingProps> = (props) => {
   const updateRating = async (newRate: number) => {
     try {
       if (!user) {
-        return;
+        return navigate(routePath.signIn);
       }
       await bookApi.setRating({
         bookId: props.bookId,
@@ -41,7 +44,9 @@ const Rating: React.FC<RatingProps> = (props) => {
 
   const handleRating = (rate: number) => {
     setRating(rate / 20);
-    if (!props.handleChangeRating) { return; }
+    if (!props.handleChangeRating) {
+      return;
+    }
 
     props.handleChangeRating();
     updateRating(rate / 20);

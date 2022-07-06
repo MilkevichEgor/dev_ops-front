@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import CommonWrapper from '../../styles/CommonWrapper.styles';
 import booksImg from '../../images/emptyCardBooks.png';
 import CommonTextBlock from '../../styles/CommonTextBlock.styles';
-import CommonButton from '../../components/CommonButton/CommonButton';
+import CommonButton from '../../components/CommonButton';
 import EmptyCartWrapper from './EmptyCartWrapper.styles';
 import { routePath } from '../../../constants';
 

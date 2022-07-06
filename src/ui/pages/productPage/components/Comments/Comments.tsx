@@ -4,14 +4,14 @@ import dayjs from 'dayjs';
 import { toast } from 'react-toastify';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
-import { socket } from '../../../../App';
-import bookApi from '../../../../api/bookApi';
-import { BookType, Comment } from '../../../../types';
-import CommonButton from '../../../components/CommonButton/CommonButton';
+import { socket } from '../../../../../App';
+import bookApi from '../../../../../api/bookApi';
+import { BookType, Comment } from '../../../../../types';
+import CommonButton from '../../../../components/CommonButton';
 import CommentsWrapper from './Comments.styles';
-import { useAppSelector } from '../../../../store';
-import AuthProtector from '../../../components/AuthProtector';
-import defaultAvatar from '../../../images/defaultAvatar.png';
+import { useAppSelector } from '../../../../../store';
+import AuthProtector from '../../../../components/AuthProtector';
+import defaultAvatar from '../../../../images/defaultAvatar.png';
 
 type CommentsProps = {
   book: BookType,

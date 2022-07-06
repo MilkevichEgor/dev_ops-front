@@ -66,5 +66,3 @@ export type Comment = {
   text: string;
   user: User;
 }
-
-export type Genres = Genre[];

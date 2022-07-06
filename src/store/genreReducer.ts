@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Genres } from '../types';
+import { Genre } from '../types';
 import { getAllGenres } from './genreThunk';
 
 export interface GenreState {
-  genres: Genres | [],
+  genres: Genre[] | [],
 }
 
 export const initialState: GenreState = {
@@ -15,7 +15,7 @@ export const genreReducer = createSlice({
   name: 'genres',
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getAllGenres.fulfilled, (state, action: PayloadAction<Genres>) => {
+    builder.addCase(getAllGenres.fulfilled, (state, action: PayloadAction<Genre[]>) => {
       state.genres = action.payload;
     });
     builder.addCase(getAllGenres.rejected, (state) => {

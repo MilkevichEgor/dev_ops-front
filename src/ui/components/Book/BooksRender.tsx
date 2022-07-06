@@ -4,8 +4,8 @@ import { toast } from 'react-toastify';
 
 import { routePath } from '../../../constants';
 import { BooksArray, BookType } from '../../../types';
-import CommonButton from '../CommonButton/CommonButton';
-import Rating from '../Rating/Rating';
+import CommonButton from '../CommonButton';
+import Rating from '../Rating';
 import BooksWrapper from './Books.styles';
 import favoriteUnchoosenIcon from '../../images/fav_unchoosen.png';
 import favoriteChoosenIcon from '../../images/favorites.png';
@@ -34,10 +34,10 @@ const BooksRender: React.FC<BookProps> = (props) => {
   }, [props.booksArray]);
 
   const handleClickOnFavorite = async (bookId: number) => {
-    if (!user) {
-      navigate(routePath.signIn);
-    }
     try {
+      if (!user) {
+        return navigate(routePath.signIn);
+      }
       const indexInFavorites = favoritesIds.indexOf(bookId);
       if (indexInFavorites !== -1) {
         await bookApi.removeFromFavorite({ bookId });

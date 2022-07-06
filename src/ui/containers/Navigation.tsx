@@ -16,32 +16,30 @@ const NotFound = React.lazy(() => import('../pages/notFound'));
 const Navigation = () => {
   return (
     <Routes>
-      {navigationList.map((route, index) => {
-        return (
-          <Route
-            key={index}
-            path={route.path}
-            element={
-              route.isProtected
-                ? (
-                  <AuthProtector
-                    redirectTo={route.redirectTo}
-                    noAuthOnly={route.noAuthOnly}
-                  >
-                    <Suspense fallback={<Loader />}>
-                      {<route.children />}
-                    </Suspense>
-                  </AuthProtector>
-                )
-                : (
+      {navigationList.map((route, index) => (
+        <Route
+          key={index}
+          path={route.path}
+          element={
+            route.isProtected
+              ? (
+                <AuthProtector
+                  redirectTo={route.redirectTo}
+                  noAuthOnly={route.noAuthOnly}
+                >
                   <Suspense fallback={<Loader />}>
                     {<route.children />}
                   </Suspense>
-                )
-            }
-          />
-        );
-      })}
+                </AuthProtector>
+              )
+              : (
+                <Suspense fallback={<Loader />}>
+                  {<route.children />}
+                </Suspense>
+              )
+          }
+        />
+      ))}
     </Routes>
   );
 };
@@ -50,14 +48,12 @@ const navigationList = [
   {
     path: routePath.home,
     children: Home,
-    redirectTo: undefined,
     noAuthOnly: false,
     isProtected: false,
   },
   {
     path: `${routePath.product}/:id`,
     children: ProductPage,
-    redirectTo: undefined,
     noAuthOnly: false,
     isProtected: false,
   },
