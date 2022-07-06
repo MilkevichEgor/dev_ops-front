@@ -16,42 +16,44 @@ const Favorites = React.lazy(() => import('../pages/favorites'));
 const NotFound = React.lazy(() => import('../pages/notFound'));
 
 type RouteType = {
-    path: string;
-    children: React.LazyExoticComponent<() => JSX.Element | null>,
-    noAuthOnly?: boolean | false,
-    isProtected?: boolean | true,
-    redirectTo?: string,
+  path: string;
+  children: React.LazyExoticComponent<() => JSX.Element | null>;
+  noAuthOnly?: boolean;
+  isProtected?: boolean;
+  redirectTo?: string;
 }
 
+const createElementWithOptions = (route: RouteType) => {
+  const { isProtected = true, noAuthOnly = false } = route;
+
+  const children = (
+    <Suspense fallback={<Loader />}>
+      <route.children />
+    </Suspense>
+  );
+
+  if (!isProtected) {
+    return children;
+  }
+
+  return (
+    <AuthProtector
+      redirectTo={route.redirectTo}
+      noAuthOnly={noAuthOnly}
+    >
+      {children}
+    </AuthProtector>
+  );
+};
+
 const Navigation = () => {
-  const elementWithOptions = (route: RouteType) => {
-    const children = (
-      <Suspense fallback={<Loader />}>
-        {<route.children />}
-      </Suspense>
-    );
-
-    if (!route.isProtected) {
-      return children;
-    }
-
-    return (
-      <AuthProtector
-        redirectTo={route.redirectTo}
-        noAuthOnly={route.noAuthOnly}
-      >
-        {children}
-      </AuthProtector>
-    );
-  };
-
   return (
     <Routes>
       {navigationList.map((route, index) => (
         <Route
           key={index}
           path={route.path}
-          element={elementWithOptions(route)}
+          element={createElementWithOptions(route)}
         />
       ))}
     </Routes>
