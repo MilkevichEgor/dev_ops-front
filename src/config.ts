@@ -10,17 +10,17 @@ const envType: EnvTypes =
   EnvTypes.development;
 
 const config = {
-  apiBaseUrl: 'http://localhost:8080/api/',
+  apiBaseUrl: 'http://158.160.102.242:8080/api/',
 };
 
 // eslint-disable-next-line default-case
 switch (envType) {
   case EnvTypes.production:
-    config.apiBaseUrl = 'http://localhost:8080/api/';
+    config.apiBaseUrl = 'http://158.160.102.242:8080/api/';
     break;
 
   case EnvTypes.stage:
-    config.apiBaseUrl = 'http://localhost:8080/api/';
+    config.apiBaseUrl = 'http://158.160.102.242:8080/api/';
     break;
 }
 
