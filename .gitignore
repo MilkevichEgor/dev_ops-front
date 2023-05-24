@@ -1,9 +1,12 @@
-# dependencies
-/node_modules
-
-# production
-# /build
-/public
-
-# misc
 .env
+.eslintignore
+.eslintrc.js
+node_modules/
+package.json
+package-lock.json
+public/
+README.md
+src/
+tsconfig.json
+.vscode
+Dockerfile
